@@ -1,0 +1,21 @@
+.title {
+    background: #8f1414;
+    width: 32rem;
+    height: 30rem;
+    border-radius: 15em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    margin-top: -20rem;
+}
+
+.title h1 {
+    width: 24rem;
+    margin-bottom: 4rem;
+    font-family: 'Rubik Mono One', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 2.5rem;
+}

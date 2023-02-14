@@ -1,4 +1,4 @@
-.register{
+.register {
     display: flex;
     flex-direction: column;
     height: 57rem;
@@ -7,32 +7,10 @@
     align-items: center;
 }
 
-.wellcome {
-    background: #8f1414;
-    width: 32rem;
-    height: 40rem;
-    border-radius: 13em;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    position: absolute;
-    margin-top: -28.5rem;
-}
-
-.wellcome h1 {
-    width: 22rem;
-    margin-bottom: 3.5rem;
-    font-family: 'Rubik Mono One', sans-serif;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 3.3rem;
-}
-
-.info{
+.info {
     border-radius: 2rem;
-    width: 63.8rem;
-    height: 38.8rem;
+    width: 60rem;
+    height: 35rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -43,16 +21,42 @@
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.329);
 }
 
-.image{
-    border: 1px solid brown;
+.image {
     border-radius: 2rem 0 0 2rem;
-    height: 38.8rem;
-    width: 20rem;
+    height: 35rem;
+    width: 16rem;
+    background-image: url("./image/image-1.jpg");
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
 }
 
-.data{
-    height: 38.8rem;
-    width: 43.8rem;
+.image div {
+    background: #8f1414;
+    width: 6rem;
+    height: 10rem;
+    border-radius: 3rem;
+    margin-top: -3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.image svg {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.5rem;
+    fill: #FFF;
+}
+
+.data {
+    height: 35rem;
+    width: 44rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,27 +64,34 @@
     gap: 1rem;
 }
 
-.data button{
-    border-radius: .7rem;
-    background: #FCAC03;
+.data button {
+    margin-top: 1.5rem;
+    border-radius: 0.7rem;
+    border: none;
+    background: #fcac03;
     color: white;
     width: 13rem;
     height: 2.5rem;
-    font-family: 'Rubik Mono One', sans-serif;
+    font-family: "Rubik Mono One", sans-serif;
     font-size: medium;
 }
 
-.inputs{
+.inputs {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.inputs input{
+.inputs label {
+    font-size: small;
+}
+
+.inputs input {
     width: 20.5rem;
-    height: 2rem;
+    height: 1.7rem;
     background: #d9d9d9;
     opacity: 0.5;
     border-radius: 1rem;
     font-weight: bolder;
+    padding-left: 1rem;
 }
