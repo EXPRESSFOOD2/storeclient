@@ -80,11 +80,40 @@
 }
 
 .formLeft {
+  position: relative;
   width: 35%;
   height: 100%;
 }
 
-.formLeft > img {
+.formLeft::before {
+  content: "";
+  position: absolute;
+
+  width: 130px;
+  height: 65px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #8f1414;
+
+  z-index: 100;
+}
+
+.formLeft::after {
+  content: "";
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+  left: 50%;
+
+  transform: translate(-50%, 0);
+  background-color: #8f1414;
+  border-radius: 360px;
+
+  z-index: 100;
+}
+
+.formLeft > img:first-child {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -93,6 +122,7 @@
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+
 .checkboxCol {
   display: flex;
   justify-content: start;
@@ -105,4 +135,13 @@
 .checkboxCol > input {
   width: 21.62px;
   height: 21.62px;
+}
+
+.logoForm {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 65px;
+
+  z-index: 2000;
 }

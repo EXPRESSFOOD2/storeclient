@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./form.module.css";
 import img from "./image/leftImgBG.jpg";
+import logoForm from "./image/bx-edit.svg";
 
 export default function Form() {
   return (
@@ -8,6 +9,7 @@ export default function Form() {
       <form action="" className={style.formBox}>
         <div className={style.formLeft}>
           <img src={img} alt="" />
+          <img className={style.logoForm} src={logoForm} alt="" />
         </div>
         <div className={style.formRight}>
           <div className={style.col}>
