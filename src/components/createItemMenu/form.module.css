@@ -143,5 +143,8 @@
   transform: translate(-50%, -50%);
   top: 65px;
 
+  width: 70px;
+  height: 70px;
+  fill: white;
   z-index: 2000;
 }
