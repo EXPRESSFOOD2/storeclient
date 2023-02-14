@@ -1,12 +1,11 @@
 import React from 'react'
 import styles from "./Register.module.css"
+import Title from '../../Shared/Title/Title';
 
 const Register = () => {
   return (
       <div className={styles.register}>
-          <div className={styles.wellcome}>
-              <h1>Register</h1>
-          </div>
+          <Title data="Register"/>
           <div className={styles.info}>
               <div className={styles.image}>
                   
@@ -14,27 +13,27 @@ const Register = () => {
               <form className={styles.data}>
                   <div className={styles.inputs}>
                       <label htmlFor="name">Name*</label>
-                      <input type="text" name='name'/>
+                      <input type="text" placeholder='name' name='name'/>
                   </div>
                   <div className={styles.inputs}>
-                      <label htmlFor="name">Lastname*</label>
-                      <input type="text" name='name'/>
+                      <label htmlFor="lastname">Lastname*</label>
+                      <input type="text" placeholder='lastname' name='lastname'/>
                   </div>
                   <div className={styles.inputs}>
-                      <label htmlFor="name" >Username*</label>
-                      <input type="text" name='name'/>
+                      <label htmlFor="username" >Username*</label>
+                      <input type="text" placeholder='username' name='username'/>
                   </div>
                   <div className={styles.inputs}>
-                      <label htmlFor="name">Mail*</label>
-                      <input type="text" name='name'/>
+                      <label htmlFor="mail">Mail*</label>
+                      <input type="text" placeholder='mail' name='mail'/>
                   </div>
                   <div className={styles.inputs}>
-                      <label htmlFor="name">Password*</label>
-                      <input type="text" name='name'/>
+                      <label htmlFor="password">Password*</label>
+                      <input type="text" placeholder='password' name='password'/>
                   </div>
                   <div className={styles.inputs}>
-                      <label htmlFor="name">Phone*</label>
-                      <input type="text" name='name'/>
+                      <label htmlFor="phone">Phone*</label>
+                      <input type="text" placeholder='phone' name='phone'/>
                   </div>
                   <button>Register</button>
               </form>

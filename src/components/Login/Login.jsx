@@ -1,12 +1,11 @@
 import React from "react";
+import Title from "../../Shared/Title/Title";
 import styles from "./Login.module.css";
 
 const Login = () => {
     return (
         <div className={styles.login}>
-            <div className={styles.wellcome}>
-                <h1>Welcome to EXPRESSFOOD</h1>
-            </div>
+            <Title data="Welcome" />
             <form className={styles.data}>
                 <input type="text" placeholder="mail" className={styles.inputData} />
                 <input type="text" placeholder="password" className={styles.inputData} />
