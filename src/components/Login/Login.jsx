@@ -5,15 +5,15 @@ import styles from "./Login.module.css";
 const Login = () => {
     return (
         <div className={styles.login}>
-            <Title data="Welcome" />
+            <Title data="Bienvenido" />
             <form className={styles.data}>
-                <input type="text" placeholder="mail" className={styles.inputData} />
-                <input type="text" placeholder="password" className={styles.inputData} />
-                <span>Recover my password</span>
-                <button>Login</button>
+                <input type="text" placeholder="correo" className={styles.inputData} />
+                <input type="text" placeholder="contraseña" className={styles.inputData} />
+                <span>Recuperar mi contraseña</span>
+                <button>Iniciar sesión</button>
                 <div className={styles.checkbox}>
                     <input name="remember" type="checkbox" value="Remember me" id="remember" />
-                    <label htmlFor="remember">Remember me</label>
+                    <label htmlFor="remember">Recordarme</label>
                 </div>
             </form>
         </div>
