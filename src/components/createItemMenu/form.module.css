@@ -146,5 +146,6 @@
   width: 70px;
   height: 70px;
   fill: white;
+  color: white;
   z-index: 2000;
 }
