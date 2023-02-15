@@ -1,9 +1,19 @@
+.editStore {
+  display: flex;
+  flex-direction: column;
+  height: 57rem;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 621px;
+  margin-top: 175px;
 }
 
 .formBox {

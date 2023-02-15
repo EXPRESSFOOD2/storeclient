@@ -1,9 +1,19 @@
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  height: 57rem;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 621px;
+  margin-top: 175px;
 }
 
 .formBox {
@@ -130,11 +140,14 @@
 }
 .checkboxCol > label {
   text-align: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
 }
 
 .checkboxCol > input {
-  width: 21.62px;
-  height: 21.62px;
+  width: 15.62px;
+  height: 15.62px;
 }
 
 .logoForm {
