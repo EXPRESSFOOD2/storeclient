@@ -31,8 +31,8 @@
 
 .col {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
 
   width: auto;
@@ -135,8 +135,8 @@
 
 .checkboxCol {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .checkboxCol > label {
   text-align: center;
