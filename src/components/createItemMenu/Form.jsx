@@ -3,12 +3,16 @@ import style from "./form.module.css";
 import img from "./image/leftImgBG.jpg";
 import Title from "../../Shared/Title/Title";
 
-export default function Form() {
+export default function Form({ formik }) {
   return (
     <div className={style.menuItem}>
       <Title data="Crear Menú" />
       <div className={style.container}>
-        <form action="" className={style.formBox}>
+        <form
+          action=""
+          className={style.formBox}
+          onSubmit={formik.handleSubmit}
+        >
           <div className={style.formLeft}>
             <img src={img} alt="" />
             <svg
@@ -25,28 +29,71 @@ export default function Form() {
           <div className={style.formRight}>
             <div className={style.col}>
               <label>Nombre</label>
-              <input type="text" placeholder="Nombre" />
+              <input
+                type="text"
+                placeholder="Nombre"
+                name="name"
+                className={formik.errors.name ? style.errorInput : ""}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
+              />
             </div>
             <div className={style.col}>
               <label>Descripción</label>
-              <input type="text" placeholder="Descripción" />
+              <input
+                type="text"
+                name="description"
+                placeholder="Descripción"
+                className={formik.errors.description ? style.errorInput : ""}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.description}
+              />
             </div>
             <div className={style.col}>
               <label>Precio</label>
-              <input type="text" placeholder="Precio" />
+              <input
+                type="text"
+                placeholder="Precio"
+                name="price"
+                className={formik.errors.price ? style.errorInput : ""}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.price}
+              />
             </div>
             <div className={style.col}>
               <label>Stock</label>
-              <input type="text" placeholder="Stock" />
+              <input
+                className={formik.errors.stock ? style.errorInput : ""}
+                type="text"
+                placeholder="Stock"
+                name="stock"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.stock}
+              />
             </div>
             <div className={style.checkboxCol}>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={formik.handleChange}
+                value={formik.values.recomendado}
+                onBlur={formik.handleBlur}
+                name="recomendado"
+              />
               <label>
                 Recomendarías este ítem sobre los otros que has creado?
               </label>
             </div>
             <div className={style.col}>
-              <button>Crear</button>
+              <button
+                disabled={Object.keys(formik.errors).length}
+                type="submit"
+              >
+                Crear
+              </button>
             </div>
           </div>
         </form>
