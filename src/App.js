@@ -5,6 +5,10 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import CreateItemMenu from "./Pages/createItemMenu/CreateItemMenu";
 import CreateIngredient from "./Pages/CreateIngredient/CreateIngredient";
+import axios from 'axios';
+
+//Se establese la base de axios pensando en el deploy
+axios.defaults.baseURL ="http://localhost:3000/"
 
 function App() {
   const location = useLocation();

@@ -1,2 +1,2 @@
 
-export const GET_RECIPES = "GET_RECIPES"//Example
+export const GET_MENU = "GET_MENU"

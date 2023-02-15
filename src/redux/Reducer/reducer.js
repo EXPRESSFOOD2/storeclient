@@ -1,19 +1,16 @@
-import {GET_RECIPES} from "../Actions/actions"
+import { GET_MENU } from "../Actions/actions";
 const initialstate = {
-    //NIY STATES
+  menu: [],
+};
 
-}
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_MENU:
+      return { ...state, menu: action.payload };
 
-const rootReducer = (state = initialState, action) =>{
-    //NIY KEY'S
-    switch (key) {
-        case value:
-            
-            break;
-    
-        default:
-            break;
-    }
-}
+    default:
+      break;
+  }
+};
 
 export default rootReducer;
