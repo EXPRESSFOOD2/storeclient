@@ -5,6 +5,7 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import CreateItemMenu from "./Pages/createItemMenu/CreateItemMenu";
 import CreateIngredient from "./Pages/CreateIngredient/CreateIngredient";
+import EditStore from "./Pages/EditStore/EditSore";
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
       <Route exact path="/profile" />
       <Route exact path="/store" />
       <Route exact path="/orders" />
+      <Route exact path="/edit_store" component={EditStore} />
     </div>
   );
 }
