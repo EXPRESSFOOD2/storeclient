@@ -1,0 +1,29 @@
+.navbar{
+    height: 9rem;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo{
+    background-color: darkgrey;
+    color: #FFF;
+    width: 6rem;
+    height: 6rem;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    gap: 2.5rem;
+}
+
+.buttons button{
+    border: none;
+    background: none;
+    color: #FFF;
+    font-family: 'Rubik Mono One', sans-serif;
+}
