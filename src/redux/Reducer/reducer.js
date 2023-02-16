@@ -1,10 +1,8 @@
-
-import { GET_MENU, ERROR, GET_ALL_INGREDIENTS } from "../Actions/actions";
+import { GET_MENU, ERROR, GET_ALL_INGREDIENTS } from "../Actions/types";
 const initialState = {
   menus: [],
   ingredients: [],
   errors: false,
-
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,10 +12,9 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_INGREDIENTS:
       return { ...state, ingredients: action.payload };
     case ERROR:
-      return { ...state, errors: action.payload }
+      return { ...state, errors: action.payload };
     default:
-      return { ...state }
-
+      return { ...state };
   }
 };
 
