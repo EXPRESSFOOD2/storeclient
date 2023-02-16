@@ -2,9 +2,35 @@ import React from "react";
 import style from "./form.module.css";
 import img from "./image/leftImgBG.jpg";
 import Title from "../../Shared/Title/Title";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-export default function Form({ formik, path }) {
-  console.log(path);
+export default function Form({ path, menu }) {
+  const formik = useFormik({
+    initialValues: {
+      name: menu?.name || "",
+      description: menu?.description || "",
+      price: menu?.price || "",
+      stock: menu?.stock || "",
+      recomendado: menu?.recomend_first || "",
+    },
+
+    validationSchema: Yup.object({
+      name: Yup.string().required("Nombre requerido"),
+      description: Yup.string().required("Descripción requerida"),
+      price: Yup.number("Debe se ser un numero")
+        .min(1, "El precio debe ser minimo 1")
+        .required("Precio requerido"),
+      stock: Yup.number("Debe se ser un numero")
+        .min(0, "El stock debe ser minimo 0")
+        .required("Stock requerido"),
+    }),
+
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
     <div className={style.menuItem}>
       <Title data={path === "create" ? "Crear menu" : "Actualizar Menu"} />
@@ -93,10 +119,10 @@ export default function Form({ formik, path }) {
             <div className={style.checkboxCol}>
               <input
                 type="checkbox"
+                name="recomendado"
                 onChange={formik.handleChange}
                 value={formik.values.recomendado}
-                onBlur={formik.handleBlur}
-                name="recomendado"
+                checked={formik.values.recomendado}
               />
               <label>
                 Recomendarías este ítem sobre los otros que has creado?

@@ -12,6 +12,7 @@ export const getMenu = () => {
   };
 };
 
+
 export const createUser = (user) => {
   return axios
     .post("/users/create", user)

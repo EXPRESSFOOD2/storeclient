@@ -1,43 +1,39 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Form from "../../../components/createItemMenu/Form";
 import NavBar from "../../../Shared/NavBar/NavBar";
 
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { getMenu } from "../../../redux/Actions/actions";
+import { useEffect } from "react";
 
 export default function CreateItemMenu() {
+  // get Route [create | update]
   const route = useLocation().pathname.split("/").at(2);
+  // se puede mejorar, si es create aun asi busca menus y eso esta mal
+  const menus = useSelector((state) => state.menus);
+  const { id } = useParams();
+  const itemMenu = menus.find((item) => item.id === parseInt(id));
 
-  // Form Validation
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      description: "",
-      price: "",
-      stock: "",
-      recomendado: false,
-    },
+  const dispatch = useDispatch();
 
-    validationSchema: Yup.object({
-      name: Yup.string().required("Nombre requerido"),
-      description: Yup.string().required("Descripción requerida"),
-      price: Yup.number("Debe se ser un numero")
-        .min(1, "El precio debe ser minimo 1")
-        .required("Precio requerido"),
-      stock: Yup.number("Debe se ser un numero")
-        .min(1, "El stock debe ser minimo 1")
-        .required("Stock requerido"),
-    }),
-
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+  useEffect(() => {
+    if (route === "update" && !menus.length) {
+      dispatch(getMenu());
+    }
+  }, [menus, dispatch, route]);
 
   return (
     <div>
       <NavBar />
-      <Form path={route} formik={formik} />
+      {route === "update" ? (
+        menus.length ? (
+          <Form path={route} menu={itemMenu} />
+        ) : (
+          "Loading"
+        )
+      ) : (
+        <Form path={route} />
+      )}
     </div>
   );
 }
