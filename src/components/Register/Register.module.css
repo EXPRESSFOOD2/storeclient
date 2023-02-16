@@ -103,6 +103,25 @@
   z-index: 2000;
 }
 
+.select {
+  width: 349px;
+  height: 38px;
+  border-radius: 10px;
+  border: none;
+  color: rgba(143, 143, 143, 1);
+  background-color: rgba(183, 177, 177, 0.5);
+  font-family: inherit;
+  font-size: 17;
+  padding: 2px 10px;
+}
+
+.options {
+  font-family: inherit;
+  font-weight: 500;
+  color: rgba(143, 143, 143, 1);
+  font-size: 17;
+}
+
 .inputs {
   display: flex;
   justify-content: flex-start;
@@ -156,8 +175,4 @@
 .errorText {
   max-width: 329px;
   color: rgb(251, 133, 133);
-}
-
-.ok {
-  border: 0px !important;
 }
