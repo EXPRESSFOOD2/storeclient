@@ -29,7 +29,7 @@ const Register = ({ formik }) => {
               <input
                 type="text"
                 placeholder="nombre"
-                className={formik.errors.name ? styles.errorInput : styles.ok}
+                className={formik.errors.name ? styles.errorInput : ""}
                 id="name"
                 name="name"
                 {...formik.getFieldProps("name")}
@@ -39,38 +39,34 @@ const Register = ({ formik }) => {
               ) : null}
             </div>
             <div className={styles.inputs}>
-              <label htmlFor="lastname">Apellido</label>
+              <label htmlFor="last_name">Apellido</label>
               <input
                 type="text"
                 placeholder="apellido"
-                className={
-                  formik.errors.lastname ? styles.errorInput : styles.ok
-                }
-                id="lastname"
-                name="lastname"
-                {...formik.getFieldProps("lastname")}
+                className={formik.errors.last_name ? styles.errorInput : ""}
+                id="last_name"
+                name="last_name"
+                {...formik.getFieldProps("last_name")}
               />
-              {formik.touched.lastname && formik.errors.lastname ? (
+              {formik.touched.last_name && formik.errors.last_name ? (
                 <label className={styles.errorText}>
-                  {formik.errors.lastname}
+                  {formik.errors.last_name}
                 </label>
               ) : null}
             </div>
             <div className={styles.inputs}>
-              <label htmlFor="username">Nombre de usuario</label>
+              <label htmlFor="account_name">Nombre de usuario</label>
               <input
                 type="text"
                 placeholder="nombre de usuario"
-                className={
-                  formik.errors.username ? styles.errorInput : styles.ok
-                }
-                id="username"
-                name="username"
-                {...formik.getFieldProps("username")}
+                className={formik.errors.account_name ? styles.errorInput : ""}
+                id="account_name"
+                name="account_name"
+                {...formik.getFieldProps("account_name")}
               />
-              {formik.touched.username && formik.errors.username ? (
+              {formik.touched.account_name && formik.errors.account_name ? (
                 <label className={styles.errorText}>
-                  {formik.errors.username}
+                  {formik.errors.account_name}
                 </label>
               ) : null}
             </div>
@@ -79,7 +75,7 @@ const Register = ({ formik }) => {
               <input
                 type="text"
                 placeholder="telefono"
-                className={formik.errors.phone ? styles.errorInput : styles.ok}
+                className={formik.errors.phone ? styles.errorInput : ""}
                 id="phone"
                 name="phone"
                 {...formik.getFieldProps("phone")}
@@ -95,7 +91,7 @@ const Register = ({ formik }) => {
               <input
                 type="text"
                 placeholder="correo"
-                className={formik.errors.email ? styles.errorInput : styles.ok}
+                className={formik.errors.email ? styles.errorInput : ""}
                 id="email"
                 name="email"
                 {...formik.getFieldProps("email")}
@@ -111,9 +107,7 @@ const Register = ({ formik }) => {
               <input
                 type="password"
                 placeholder="contraseña"
-                className={
-                  formik.errors.password ? styles.errorInput : styles.ok
-                }
+                className={formik.errors.password ? styles.errorInput : ""}
                 id="password"
                 name="password"
                 {...formik.getFieldProps("password")}
