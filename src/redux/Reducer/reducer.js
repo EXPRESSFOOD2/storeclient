@@ -12,7 +12,8 @@ const rootReducer = (state = initialState, action) => {
     case ERROR:
       return { ...state, errors: action.payload }
     default:
-      break;
+      return { ...state }
+
   }
 };
 
