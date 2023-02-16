@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import styles from "./Paginations.module.css";
+import styles from "./Pagination.module.css";
 
-const Paginations = ({ pagina, setPagina, maximo }) => {
+const Pagination = ({ pagina, setPagina, maximo }) => {
     useEffect(() => {
         if (parseInt(pagina) > maximo) {
             setPagina(maximo);
@@ -52,7 +52,7 @@ const Paginations = ({ pagina, setPagina, maximo }) => {
                 <button className={styles.classbutton} onClick={previousFunction}>
                     <img
                         className={styles.previous}
-                        src="https://cdn-icons-png.flaticon.com/512/6276/6276701.png"
+                        src="https://cdn-icons-png.flaticon.com/512/2989/2989988.png"
                         alt="previous"
                     />
                 </button>
@@ -67,7 +67,7 @@ const Paginations = ({ pagina, setPagina, maximo }) => {
                 <button className={styles.classbutton} onClick={nextFunction}>
                     <img
                         className={styles.next}
-                        src="https://cdn-icons-png.flaticon.com/512/6276/6276701.png"
+                        src="https://cdn-icons-png.flaticon.com/512/2989/2989988.png"
                         alt="next"
                     />
                 </button>
@@ -75,3 +75,5 @@ const Paginations = ({ pagina, setPagina, maximo }) => {
         </div>
     );
 };
+
+export default Pagination;
