@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_MENU, ERROR } from "./types";
+import { GET_MENU, ERROR, GET_ALL_INGREDIENTS } from "./types";
 
 export const getMenu = () => {
   return async function (dispatch) {
@@ -12,6 +12,16 @@ export const getMenu = () => {
   };
 };
 
+export const getAllIngredients = () => {
+  return async function (dispatch) {
+    try {
+      const ingredients = (await axios.get("/ingredients/get")).data;
+      dispatch({ type: GET_ALL_INGREDIENTS, payload: ingredients });
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  };
+};
 
 export const createUser = (user) => {
   return axios
