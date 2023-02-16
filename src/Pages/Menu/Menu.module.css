@@ -1,0 +1,12 @@
+.menu{
+   display: grid;
+   grid-auto-flow: column;
+   justify-items: center;
+}
+
+.description{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 80%;
+    border: 1px solid red;
+}

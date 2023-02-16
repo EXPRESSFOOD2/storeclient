@@ -1,0 +1,63 @@
+.card {
+    height: 4rem;
+    border: 1px solid green;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding-left: 4.5rem;
+    font-weight:500;
+}
+
+.image {
+    height: 3.5rem;
+    width: 3.5rem;
+}
+.image img {
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+.id {
+    display: flex;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    background: #d9d9d9;
+    width: 3.5rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+.name {
+    margin-left: -2rem;
+    border-radius: .5rem;
+    background: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12rem;
+    height: 3rem;
+}
+.cuantity {
+    margin-left: 3rem;
+    border-radius: 0.5rem;
+    background: #d9d9d9;
+    width: 3.5rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ico{
+    width: 2rem;
+    height: 2rem;
+    background: #8F1414;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5rem;
+}
+

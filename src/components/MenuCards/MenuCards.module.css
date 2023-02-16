@@ -1,0 +1,27 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 80%;
+    font-family: "Rubik", sans-serif;
+    font-size:medium;
+}
+
+.container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #b7b1b1;
+    border-radius: 1rem;
+}

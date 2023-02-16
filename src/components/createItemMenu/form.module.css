@@ -31,12 +31,16 @@
 
 .col {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
 
   width: auto;
   height: auto;
+}
+
+.errorInput {
+  border: 2px rgb(255, 140, 140) solid !important;
 }
 
 .col > input {
@@ -47,8 +51,11 @@
   color: rgba(143, 143, 143, 1);
   background-color: rgba(183, 177, 177, 0.5);
   font-family: inherit;
-  font-size: 17;
   padding: 2px 10px;
+}
+
+.col > input:not(.errorInput) {
+  border: none;
 }
 
 .col > input::placeholder {
@@ -74,8 +81,13 @@
   font-size: 24px;
   padding: 4px 5px;
   border-radius: 5px;
+  cursor: pointer;
 
   border: none;
+}
+
+.col > button:disabled {
+  background-color: rgba(255, 174, 0, 0.567);
 }
 
 .formRight {
@@ -135,8 +147,8 @@
 
 .checkboxCol {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .checkboxCol > label {
   text-align: center;
@@ -161,4 +173,9 @@
   fill: white;
   color: white;
   z-index: 2000;
+}
+
+.errorText {
+  max-width: 329px;
+  color: rgb(251, 133, 133);
 }
