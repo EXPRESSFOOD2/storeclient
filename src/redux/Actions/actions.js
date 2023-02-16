@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_MENU, ERROR } from "./types";
+import { GET_MENU, ERROR, GET_INGREDIENTS} from "./types";
 
 export const getMenu = () => {
   return async function (dispatch) {
@@ -32,3 +32,13 @@ export const resetError = () => {
   //Funcion para resetear el estado de redux error en false, despues de un error
   return { type: ERROR, payload: false };
 };
+
+export const getIngredients = () => async (dispatch) => {
+  // Función que trae todos los ingredientes de la DataBase;
+  try {
+    const result = await axios.get("/ingredients/get")
+    dispatch({type:GET_INGREDIENTS, payload:result.data})
+  } catch (error) {
+    dispatch({ type: ERROR, payload: error.response?.data.error });
+  }
+}
