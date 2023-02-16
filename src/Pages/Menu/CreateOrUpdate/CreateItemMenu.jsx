@@ -1,10 +1,13 @@
-import Form from "../../components/createItemMenu/Form";
-import NavBar from "../../Shared/NavBar/NavBar";
+import { useLocation } from "react-router-dom";
+import Form from "../../../components/createItemMenu/Form";
+import NavBar from "../../../Shared/NavBar/NavBar";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function CreateItemMenu() {
+  const route = useLocation().pathname.split("/").at(2);
+
   // Form Validation
   const formik = useFormik({
     initialValues: {
@@ -34,7 +37,7 @@ export default function CreateItemMenu() {
   return (
     <div>
       <NavBar />
-      <Form formik={formik} />
+      <Form path={route} formik={formik} />
     </div>
   );
 }

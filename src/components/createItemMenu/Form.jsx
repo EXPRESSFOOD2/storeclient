@@ -3,10 +3,11 @@ import style from "./form.module.css";
 import img from "./image/leftImgBG.jpg";
 import Title from "../../Shared/Title/Title";
 
-export default function Form({ formik }) {
+export default function Form({ formik, path }) {
+  console.log(path);
   return (
     <div className={style.menuItem}>
-      <Title data="Crear Menú" />
+      <Title data={path === "create" ? "Crear menu" : "Actualizar Menu"} />
       <div className={style.container}>
         <form
           action=""
@@ -106,7 +107,7 @@ export default function Form({ formik }) {
                 disabled={Object.keys(formik.errors).length}
                 type="submit"
               >
-                Crear
+                {path === "create" ? "Crear" : "Actualizar"}
               </button>
             </div>
           </div>
