@@ -1,4 +1,5 @@
 import "./App.css";
+import axios from 'axios';
 import { Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
@@ -6,6 +7,9 @@ import CreateItemMenu from "./Pages/createItemMenu/CreateItemMenu";
 import CreateIngredient from "./Pages/CreateIngredient/CreateIngredient";
 import EditStore from "./Pages/EditStore/EditSore";
 import Menu from "./Pages/Menu/Menu";
+
+//Se establese la base de axios pensando en el deploy
+axios.defaults.baseURL ="http://localhost:3000/"
 
 function App() {
   return (
