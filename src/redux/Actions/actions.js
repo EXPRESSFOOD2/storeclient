@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_MENU } from "./types";
+import { GET_MENU, ERROR } from "./types";
 
 export const getMenu = () => {
   return async function (dispatch) {
@@ -7,8 +7,12 @@ export const getMenu = () => {
       const menu = (await axios.get("/menu/get")).data;
       dispatch({ type: GET_MENU, payload: menu });
     } catch (error) {
-      //NIY MANEJO DE ERRORES
+      dispatch({ type: ERROR, payload: error.response.data.error });
     }
   };
 };
 
+export const resetError = () => {
+  //Funcion para resetear el estado de redux error en false, despues de un error
+  return { type: ERROR, payload: false };
+};
