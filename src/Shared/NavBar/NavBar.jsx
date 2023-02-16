@@ -28,16 +28,16 @@ const NavBar = () => {
               location.pathname === "/register" ? styles.currentPag : ""
             }
           >
-            Registrar
+            Registros
           </button>
         </Link>
-        <Link to="/create_menu_item">
+        <Link to="/menu">
           <button
             className={
-              location.pathname === "/create_menu_item" ? styles.currentPag : ""
+              location.pathname === "/menu" ? styles.currentPag : ""
             }
           >
-            Crear menú
+            Menú
           </button>
         </Link>
         <button
@@ -45,15 +45,15 @@ const NavBar = () => {
             location.pathname === "/create_recipe" ? styles.currentPag : ""
           }
         >
-          Crear receta
+          Receta
         </button>
-        <Link to="/menu">
+        {/* <Link to="/menu"> */}
           <button
-            className={location.pathname === "/menu" ? styles.currentPag : ""}
+            // className={location.pathname === "/menu" ? styles.currentPag : ""}
           >
-            Menús
+            Ingrdientes
           </button>
-        </Link>
+        {/* </Link> */}
         <Link to="/login">
           <button>Salir</button>
         </Link>
