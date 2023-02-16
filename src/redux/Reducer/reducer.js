@@ -1,17 +1,19 @@
-import { GET_MENU,ERROR } from "../Actions/actions";
+import { GET_MENU, ERROR } from "../Actions/types";
+
 const initialState = {
-  menu: [],
-  error: false
+  menus: [],
+  errors: []
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MENU:
-      return { ...state, menu: action.payload };
+      return { ...state, menus: action.payload };
     case ERROR:
-        return {...state, error: action.payload}
+      return { ...state, errors: action.payload }
     default:
-      break;
+      return { ...state }
+
   }
 };
 

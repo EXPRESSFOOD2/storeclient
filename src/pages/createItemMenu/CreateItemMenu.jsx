@@ -1,10 +1,11 @@
-import React from "react";
 import Form from "../../components/createItemMenu/Form";
 import NavBar from "../../Shared/NavBar/NavBar";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function CreateItemMenu() {
+  // Form Validation
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -13,6 +14,7 @@ export default function CreateItemMenu() {
       stock: "",
       recomendado: false,
     },
+
     validationSchema: Yup.object({
       name: Yup.string().required("Nombre requerido"),
       description: Yup.string().required("Descripción requerida"),
