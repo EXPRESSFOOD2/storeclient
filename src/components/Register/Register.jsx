@@ -4,7 +4,8 @@ import img from "./image/image-1.jpg";
 import styles from "./Register.module.css";
 
 const Register = ({ formik }) => {
-  console.log(formik.values);
+  const questions = ["messi?", "verano o invierno?", "mayor de edad?"];
+
   return (
     <div className={styles.register}>
       <Title data="Regístrate" />
@@ -118,25 +119,25 @@ const Register = ({ formik }) => {
                 </label>
               ) : null}
             </div>
-            {/*//? ******************************************** */}
             <div className={styles.inputs}>
-              <label htmlFor="">Password_question</label>
-              <input
-                type="text"
-                placeholder="contraseña"
-                id="password_question"
+              <label htmlFor="">Pregunta Secreta</label>
+              <select
                 name="password_question"
-                {...formik.getFieldProps("password_question")}
-              />
-              {formik.touched.password_question &&
-              formik.errors.password_question ? (
-                <label className={styles.errorText}>
-                  {formik.errors.password_question}
-                </label>
-              ) : null}
+                id="password_question"
+                className={styles.select}
+              >
+                <option className={styles.options} value="none">
+                  opciones
+                </option>
+                {questions.map((quest) => (
+                  <option key={quest} className={styles.options}>
+                    {quest}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className={styles.inputs}>
-              <label htmlFor="">password_answer</label>
+              <label htmlFor="">Respuesta Secreta</label>
               <input
                 type="text"
                 placeholder="contraseña"

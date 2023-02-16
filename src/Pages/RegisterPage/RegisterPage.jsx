@@ -43,6 +43,10 @@ const RegisterPage = (props) => {
           passwordRegExp,
           "la contraseña debe ser mayor a 8 digitos y contener mayúsculas y números"
         ),
+      password_question: Yup.string()
+        .required("selecciona una pregunta")
+        .min(1),
+      password_answer: Yup.string().required("Se requiere una respuesta"),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
