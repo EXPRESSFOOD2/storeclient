@@ -14,12 +14,12 @@ export default function CreateItemMenu() {
       recomendado: false,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("El nombre es requerido"),
-      description: Yup.string().required("La descripción es requerida"),
-      price: Yup.number()
+      name: Yup.string().required("Nombre requerido"),
+      description: Yup.string().required("Descripción requerida"),
+      price: Yup.number("Debe se ser un numero")
         .min(1, "El precio debe ser minimo 1")
         .required("Precio requerido"),
-      stock: Yup.number()
+      stock: Yup.number("Debe se ser un numero")
         .min(1, "El stock debe ser minimo 1")
         .required("Stock requerido"),
     }),

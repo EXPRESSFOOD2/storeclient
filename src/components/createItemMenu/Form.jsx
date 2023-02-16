@@ -38,6 +38,9 @@ export default function Form({ formik }) {
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
               />
+              {formik.errors.name && (
+                <label className={style.errorText}>{formik.errors.name}</label>
+              )}
             </div>
             <div className={style.col}>
               <label>Descripción</label>
@@ -50,11 +53,16 @@ export default function Form({ formik }) {
                 onBlur={formik.handleBlur}
                 value={formik.values.description}
               />
+              {formik.errors.description && (
+                <label className={style.errorText}>
+                  {formik.errors.description}
+                </label>
+              )}
             </div>
             <div className={style.col}>
               <label>Precio</label>
               <input
-                type="text"
+                type="number"
                 placeholder="Precio"
                 name="price"
                 className={formik.errors.price ? style.errorInput : ""}
@@ -62,18 +70,24 @@ export default function Form({ formik }) {
                 onBlur={formik.handleBlur}
                 value={formik.values.price}
               />
+              {formik.errors.price && (
+                <label className={style.errorText}>{formik.errors.price}</label>
+              )}
             </div>
             <div className={style.col}>
               <label>Stock</label>
               <input
                 className={formik.errors.stock ? style.errorInput : ""}
-                type="text"
+                type="number"
                 placeholder="Stock"
                 name="stock"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.stock}
               />
+              {formik.errors.stock && (
+                <label className={style.errorText}>{formik.errors.stock}</label>
+              )}
             </div>
             <div className={style.checkboxCol}>
               <input

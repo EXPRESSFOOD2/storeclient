@@ -174,3 +174,8 @@
   color: white;
   z-index: 2000;
 }
+
+.errorText {
+  max-width: 329px;
+  color: rgb(251, 133, 133);
+}
