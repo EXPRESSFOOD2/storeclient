@@ -12,6 +12,22 @@ export const getMenu = () => {
   };
 };
 
+export const createUser = (user) => {
+  return axios
+    .post("/users/create", user)
+    .then((res) => console.log(res))
+    .catch((err) => console.error(err));
+  // después veré que hacer con la respuesta o el error por el momento la consologeo
+};
+
+export const deleteIngredient = (id) => {
+  return axios
+    .delete(`/ingredients/delete?id=${id}`)
+    .then((res) => console.log(res))
+    .catch((err) => console.error(err));
+  // después veré que hacer con la respuesta o el error por el momento la consologeo
+};
+
 export const resetError = () => {
   //Funcion para resetear el estado de redux error en false, despues de un error
   return { type: ERROR, payload: false };

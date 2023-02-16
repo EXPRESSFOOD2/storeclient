@@ -31,6 +31,10 @@
     -5px -5px 30px rgba(163, 163, 163, 0.23);
 }
 
+.errorInput {
+  border: 2px rgb(255, 140, 140) solid !important;
+}
+
 .formRight {
   display: flex;
   justify-content: center;
@@ -147,4 +151,13 @@
   border-radius: 5px;
 
   border: none;
+}
+
+.errorText {
+  max-width: 329px;
+  color: rgb(251, 133, 133);
+}
+
+.ok {
+  border: 0px !important;
 }

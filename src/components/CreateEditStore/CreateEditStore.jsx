@@ -2,7 +2,7 @@ import React from "react";
 import style from "./CreateEditStore.module.css";
 import img from "./image/burger.jpeg";
 import Title from "../../Shared/Title/Title";
-
+// viendo
 const EditStore = (props) => {
   return (
     <div className={style.editStore}>
