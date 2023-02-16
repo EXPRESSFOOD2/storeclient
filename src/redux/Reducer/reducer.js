@@ -1,8 +1,8 @@
 import { GET_MENU, ERROR, GET_ALL_INGREDIENTS } from "../Actions/actions";
 const initialState = {
-  menu: [],
+  menus: [],
   ingredients: [],
-  error: false,
+  errors: false,
 };
 
 const rootReducer = (state = initialState, action) => {
