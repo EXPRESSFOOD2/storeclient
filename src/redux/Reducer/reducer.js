@@ -1,5 +1,5 @@
 
-import { GET_MENU, ERROR, GET_ALL_INGREDIENTS } from "../Actions/actions";
+import { GET_MENU, ERROR, GET_ALL_INGREDIENTS } from "../Actions/types";
 const initialState = {
   menus: [],
   ingredients: [],
