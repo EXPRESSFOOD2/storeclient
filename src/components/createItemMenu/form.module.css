@@ -1,7 +1,7 @@
 .menuItem {
   display: flex;
   flex-direction: column;
-  height: 57rem;
+  height: 1121px;
   overflow: hidden;
   position: relative;
   align-items: center;
@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 621px;
+  height: 1021px;
   margin-top: 175px;
 }
 
@@ -22,7 +22,7 @@
   align-items: center;
 
   width: 1021px;
-  height: 621px;
+  height: 821px;
   border-radius: 10px;
 
   box-shadow: 5px 5px 30px rgba(163, 163, 163, 0.23),
@@ -176,6 +176,57 @@
 }
 
 .errorText {
+  position: absolute;
   max-width: 329px;
   color: rgb(251, 133, 133);
+}
+
+.table {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 329px;
+
+  max-height: 140px;
+  border-radius: 10px;
+
+  background-color: rgba(183, 177, 177, 0.5);
+  padding: 10px;
+  gap: 1em;
+
+  overflow: scroll;
+}
+
+.rowTableTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  position: sticky;
+
+  font-weight: bold;
+}
+
+.rowTableTitle > span {
+  width: 50%;
+}
+
+.rowTableData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.rowTableData > span {
+  width: 50%;
+}
+
+.rowTableData > input {
+  width: 50%;
+  text-align: center;
+  height: auto;
+  border: none;
+  background-color: rgba(225, 225, 225, 0.5);
 }
