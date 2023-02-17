@@ -13,6 +13,7 @@ const MenuCards = (props) => {
         <span>Foto</span>
         <span>Id</span>
         <span>Nombre</span>
+        <span>Precio</span>
         <span>Cantidad</span>
         <span>Acción</span>
       </div>
@@ -29,6 +30,7 @@ const MenuCards = (props) => {
               cuantity={element.stock}
               key={index}
               imgURL={element.url_image}
+              price={element.price}
             />
           ))}
       </div>

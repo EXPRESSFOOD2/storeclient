@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MenuCards from "../../components/MenuCards/MenuCards";
 import NavBar from "../../Shared/NavBar/NavBar";
 import Pagination from "../../Shared/Pagination/Pagination";
+import Filter from "../../Shared/Filter/Filter"
 
 import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from "../../redux/Actions/actions";
@@ -11,23 +12,24 @@ const Menu = () => {
   const [porPagina] = useState(10);
 
   const dispatch = useDispatch();
-  const menus = useSelector((state) => state.menus);
+  const render = useSelector((state) => state.render);
 
-  let maximo = Math.ceil(menus.length / porPagina);
+  let maximo = Math.ceil(render.length / porPagina);
 
   // Dispatch
 
   useEffect(() => {
-    if (!menus.length) {
+    if (!render.length) {
       dispatch(getMenu());
     }
-  }, [menus, dispatch]);
+  }, [render, dispatch]);
 
   return (
     <div>
       <NavBar />
       <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
-      <MenuCards pagina={pagina} porPagina={porPagina} render={menus} />
+      <Filter/>
+      <MenuCards pagina={pagina} porPagina={porPagina} render={render} />
     </div>
   );
 };
