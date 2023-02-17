@@ -31,7 +31,7 @@ const NavBar = () => {
         <button className={location === "recipe" ? styles.currentPag : ""}>
           Receta
         </button>
-        <Link to="/ingredient/create">
+        <Link to="/ingredient">
           <button
             className={location === "ingredient" ? styles.currentPag : ""}
           >

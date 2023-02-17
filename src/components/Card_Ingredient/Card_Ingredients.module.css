@@ -1,0 +1,29 @@
+.ingredient {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 20rem;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    align-items: center;
+    margin-left: 6.5rem;
+    font-weight: 500;
+}
+.ingredient div {
+    height: 2.7rem;
+    border-radius: 0.5rem;
+    background-color: rgba(128, 128, 128, 0.404);
+    display: grid;
+    place-items: center;
+}
+.id {
+    width: 3rem;
+    margin-left: 1rem;
+}
+.name{
+    width: 9rem;
+}
+.medida {
+    width: 3rem;
+    margin-left: 1.5rem;
+}
