@@ -16,10 +16,8 @@ export default function Login({ formik }) {
             onChange={formik.handleChange}
             value={formik.values.correo}
           />
-           {formik.errors.correo && (
-            <label className={style.errorText}>
-              {formik.errors.correo}
-            </label>
+          {formik.errors.correo && (
+            <label className={style.errorText}>{formik.errors.correo}</label>
           )}
         </div>
         <div className={style.col}>
