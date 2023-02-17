@@ -15,7 +15,6 @@ export default function Form({ path, menu, ingredientes }) {
     menu?.Ingredients.map((item) => item.IngredientsMenuItems.quantity) || []
   );
 
-  console.log(cantidad);
   const dispatch = useDispatch();
 
   // change ingredient quantity by type
@@ -37,7 +36,6 @@ export default function Form({ path, menu, ingredientes }) {
       price: menu?.price || "",
       stock: menu?.stock || "",
       recomendado: menu?.recomend_first || "",
-      // ingredientes: [],
     },
 
     validationSchema: Yup.object({
@@ -49,7 +47,6 @@ export default function Form({ path, menu, ingredientes }) {
       stock: Yup.number("Debe se ser un numero")
         .min(0, "El stock debe ser minimo 0")
         .required("Stock requerido"),
-      //  ingredientes: Yup.array
     }),
 
     onSubmit: (values) => {
@@ -216,7 +213,9 @@ export default function Form({ path, menu, ingredientes }) {
             </div>
             <div className={style.col}>
               <button
-                disabled={Object.keys(formik.errors).length}
+                disabled={
+                  Object.keys(formik.errors).length || cantidad.length === 0
+                }
                 type="submit"
               >
                 {path === "create" ? "Crear" : "Actualizar"}
