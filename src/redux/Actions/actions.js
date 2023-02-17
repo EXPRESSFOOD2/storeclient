@@ -23,20 +23,22 @@ export const getAllIngredients = () => {
   };
 };
 
-export const createUser = (user) => {
-  return axios
-    .post("/users/create", user)
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err));
-  // después veré que hacer con la respuesta o el error por el momento la consologeo
+export const createUser = async (user) => {
+  try {
+    const newUser = await axios.post("/users/create", user);
+    console.log(newUser);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export const deleteIngredient = (id) => {
-  return axios
-    .delete(`/ingredients/delete?id=${id}`)
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err));
-  // después veré que hacer con la respuesta o el error por el momento la consologeo
+export const deleteIngredient = async (id) => {
+  try {
+    const deleteIngredient = await axios.delete(`/ingredients/delete?id=${id}`);
+    console.log(deleteIngredient);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const resetError = () => {
