@@ -12,8 +12,10 @@ export default function Form({ path, menu, ingredientes }) {
     menu?.Ingredients || []
   );
   const [cantidad, setCantidad] = useState(
-    menu?.Ingredients.map((item) => item.quantity) || []
+    menu?.Ingredients.map((item) => item.IngredientsMenuItems.quantity) || []
   );
+
+  console.log(cantidad);
   const dispatch = useDispatch();
 
   // change ingredient quantity by type
@@ -158,6 +160,7 @@ export default function Form({ path, menu, ingredientes }) {
             <div className={style.col}>
               <label>Ingredientes</label>
               <input
+                hidden={path === "update"}
                 type="text"
                 name="ingredientes"
                 list="ingredientes"
@@ -176,15 +179,19 @@ export default function Form({ path, menu, ingredientes }) {
                   return (
                     <div className={style.rowTableData} key={i}>
                       <span>{item.name}</span>
-                      <input
-                        type="text"
-                        placeholder="Cantidad"
-                        value={cantidad[i]}
-                        onChange={(e) => {
-                          cantidad[i] = e.target.value;
-                          setCantidad([...cantidad]);
-                        }}
-                      />
+                      {path === "update" ? (
+                        <span>{cantidad[i]}</span>
+                      ) : (
+                        <input
+                          type="text"
+                          placeholder="Cantidad"
+                          value={cantidad[i]}
+                          onChange={(e) => {
+                            cantidad[i] = e.target.value;
+                            setCantidad([...cantidad]);
+                          }}
+                        />
+                      )}
                     </div>
                   );
                 })}
