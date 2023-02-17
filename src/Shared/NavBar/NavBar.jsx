@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const NavBar = () => {
-  const location = useLocation();
+  const location = useLocation().pathname.split("/").at(1);
 
   return (
     <div className={styles.navbar}>
@@ -13,45 +13,29 @@ const NavBar = () => {
         <img src={img} alt="" className={styles.logo} />
       </div>
       <div className={styles.buttons}>
-        <Link to="/edit_store">
-          <button
-            className={
-              location.pathname === "/edit_store" ? styles.currentPag : ""
-            }
-          >
+        <Link to="/store/update">
+          <button className={location === "store" ? styles.currentPag : ""}>
             Editar
           </button>
         </Link>
         <Link to="/register">
-          <button
-            className={
-              location.pathname === "/register" ? styles.currentPag : ""
-            }
-          >
-            Registrar
+          <button className={location === "register" ? styles.currentPag : ""}>
+            Registros
           </button>
         </Link>
-        <Link to="/create_menu_item">
-          <button
-            className={
-              location.pathname === "/create_menu_item" ? styles.currentPag : ""
-            }
-          >
-            Crear menú
-          </button>
-        </Link>
-        <button
-          className={
-            location.pathname === "/create_recipe" ? styles.currentPag : ""
-          }
-        >
-          Crear receta
-        </button>
         <Link to="/menu">
+          <button className={location === "menu" ? styles.currentPag : ""}>
+            Menú
+          </button>
+        </Link>
+        <button className={location === "recipe" ? styles.currentPag : ""}>
+          Receta
+        </button>
+        <Link to="/ingredient/create">
           <button
-            className={location.pathname === "/menu" ? styles.currentPag : ""}
+            className={location === "ingredient" ? styles.currentPag : ""}
           >
-            Menús
+            Ingredientes
           </button>
         </Link>
         <Link to="/login">
