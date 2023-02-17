@@ -1,4 +1,6 @@
+
 import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER,GET_INGREDIENT_ID } from "../Actions/types";
+
 const initialState = {
   menus: [],
   ingredients: [],
@@ -34,6 +36,7 @@ const rootReducer = (state = initialState, action) => {
     default:
       return { ...state };
   }
+
 };
 
 export default rootReducer;
