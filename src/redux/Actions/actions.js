@@ -45,10 +45,8 @@ export const getIngredientById = (id) => {
 
 export const updateIngredient = async (data) => {
   //no testeado
-  return await axios
-    .patch("/ingredients/update", data)
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err));
+  const Ingredient = await axios.patch("/ingredients/update", data);
+  console.log(Ingredient);
 };
 
 export const filter = () => (dispatch) => {
