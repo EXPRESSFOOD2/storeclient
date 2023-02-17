@@ -15,6 +15,10 @@ const CardMenu = (props) => {
         <span>{props.name}</span>
         {/* <span>Hamburguesa</span> */}
       </div>
+      <div className={styles.price}>
+        <span>{props.price}</span>
+        {/* <span>Hamburguesa</span> */}
+      </div>
       <div className={styles.cuantity}>
         <span>{props.cuantity}</span>
         {/* <span>15</span> */}

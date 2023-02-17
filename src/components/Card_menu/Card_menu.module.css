@@ -2,7 +2,7 @@
     height: 4rem;
     border: 1px solid green;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     align-items: center;
 
     background-color: #fff;
@@ -39,6 +39,16 @@
     justify-content: center;
     width: 12rem;
     height: 3rem;
+}
+.price{
+    margin-left: 3rem;
+    border-radius: 0.5rem;
+    background: #d9d9d9;
+    width: 3.5rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .cuantity {
     margin-left: 3rem;
