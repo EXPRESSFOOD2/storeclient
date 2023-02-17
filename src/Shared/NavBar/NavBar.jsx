@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const NavBar = () => {
-  const location = useLocation();
+  const location = useLocation().pathname.split("/").at(1);
 
   return (
     <div className={styles.navbar}>
@@ -13,47 +13,31 @@ const NavBar = () => {
         <img src={img} alt="" className={styles.logo} />
       </div>
       <div className={styles.buttons}>
-        <Link to="/edit_store">
-          <button
-            className={
-              location.pathname === "/edit_store" ? styles.currentPag : ""
-            }
-          >
+        <Link to="/store/update">
+          <button className={location === "store" ? styles.currentPag : ""}>
             Editar
           </button>
         </Link>
         <Link to="/register">
-          <button
-            className={
-              location.pathname === "/register" ? styles.currentPag : ""
-            }
-          >
+          <button className={location === "register" ? styles.currentPag : ""}>
             Registros
           </button>
         </Link>
         <Link to="/menu">
-          <button
-            className={
-              location.pathname === "/menu" ? styles.currentPag : ""
-            }
-          >
+          <button className={location === "menu" ? styles.currentPag : ""}>
             Menú
           </button>
         </Link>
-        <button
-          className={
-            location.pathname === "/create_recipe" ? styles.currentPag : ""
-          }
-        >
+        <button className={location === "recipe" ? styles.currentPag : ""}>
           Receta
         </button>
-        {/* <Link to="/menu"> */}
+        <Link to="/ingredient/create">
           <button
-            // className={location.pathname === "/menu" ? styles.currentPag : ""}
+            className={location === "ingredient" ? styles.currentPag : ""}
           >
-            Ingrdientes
+            Ingredientes
           </button>
-        {/* </Link> */}
+        </Link>
         <Link to="/login">
           <button>Salir</button>
         </Link>

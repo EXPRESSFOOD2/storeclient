@@ -17,16 +17,18 @@ function App() {
       <Route path="/" />
       <Route path="/login" component={LoginPage} />
       <Route exact path="/dashboard" />
+      {/* menu */}
       <Route exact path="/menu" component={Menu} />
       <Route exact path="/menu/create" component={CreateItemMenu} />
       <Route exact path="/menu/update/:id" component={CreateItemMenu} />
+      { }
       <Route exact path="/recipe/create" />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/create_ingredients" component={CreateIngredient} />
+      <Route exact path="/ingredient/create" component={CreateIngredient} />
       <Route exact path="/profile" />
       <Route exact path="/store" />
       <Route exact path="/orders" />
-      <Route exact path="/edit_store" component={EditStore} />
+      <Route exact path="/store/update" component={EditStore} />
     </div>
   );
 }
