@@ -5,6 +5,7 @@
   overflow: hidden;
   position: relative;
   align-items: center;
+  padding-top: 7rem;
 }
 
 .contentForm {
@@ -158,5 +159,5 @@
   height: 70px;
   fill: white;
   color: white;
-  z-index: 2000;
+  z-index: 200;
 }
