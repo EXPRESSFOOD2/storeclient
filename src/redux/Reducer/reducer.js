@@ -1,4 +1,4 @@
-import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER } from "../Actions/types";
+import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU } from "../Actions/types";
 const initialState = {
     menus: [],
     ingredients: [],
@@ -17,14 +17,19 @@ const filterFunction = (status, array) => {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-      case FILTER:
+        case FILTER:
             return {
                 ...state,
-                statusFilter: state.statusFilter?false:true,
+                statusFilter: state.statusFilter ? false : true,
                 render: filterFunction(state.statusFilter, state.menus),
             };
         case GET_MENU:
             return { ...state, menus: action.payload, render: [...action.payload] };
+        case CREATE_MENU:
+            return { ...state, menus: [...state.menus, action.payload] }
+        case UPDATE_MENU:
+            // no actualiza el estado
+            return { ...state, menus: [...state.menus] }
         case GET_ALL_INGREDIENTS:
             return { ...state, ingredients: action.payload };
         case ERROR:
