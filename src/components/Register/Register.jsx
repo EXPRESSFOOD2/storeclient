@@ -6,11 +6,20 @@ import styles from "./Register.module.css";
 const Register = ({ formik }) => {
   const questions = ["messi?", "verano o invierno?", "mayor de edad?"];
 
+  const selectQuestion = (e) => {
+    const value = e.target.value;
+    formik.values.password_question = value;
+  };
+
   return (
     <div className={styles.register}>
       <Title data="Regístrate" />
       <div className={styles.container}>
-        <form className={styles.formBox} onSubmit={formik.handleSubmit}>
+        <form
+          className={styles.formBox}
+          action=""
+          onSubmit={formik.handleSubmit}
+        >
           <div className={styles.formLeft}>
             <img src={img} alt="" />
             <svg
@@ -125,8 +134,9 @@ const Register = ({ formik }) => {
                 name="password_question"
                 id="password_question"
                 className={styles.select}
+                onChange={(e) => selectQuestion(e)}
               >
-                <option className={styles.options} value="none">
+                <option className={styles.options} value="1">
                   opciones
                 </option>
                 {questions.map((quest) => (
@@ -153,7 +163,7 @@ const Register = ({ formik }) => {
               ) : null}
             </div>
             <div className={styles.inputs}>
-              <button>Registrar</button>
+              <button type="submit">Registrar</button>
             </div>
           </div>
         </form>

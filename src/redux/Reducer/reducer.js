@@ -1,3 +1,4 @@
+
 import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER } from "../Actions/types";
 const initialState = {
     menus: [],
@@ -32,6 +33,7 @@ const rootReducer = (state = initialState, action) => {
         default:
             return { ...state };
     }
+
 };
 
 export default rootReducer;

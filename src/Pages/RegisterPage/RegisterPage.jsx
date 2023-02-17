@@ -1,10 +1,15 @@
 import React from "react";
 import Register from "../../components/Register/Register";
 import NavBar from "../../Shared/NavBar/NavBar";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../redux/Actions/actions";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const RegisterPage = (props) => {
+  const dispatch = useDispatch();
+
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -22,6 +27,7 @@ const RegisterPage = (props) => {
       password_question: "",
       password_answer: "",
     },
+
     validationSchema: Yup.object({
       name: Yup.string().required("El nombre es requerido"),
       last_name: Yup.string().required("El apellido es requerido"),
@@ -45,11 +51,12 @@ const RegisterPage = (props) => {
         ),
       password_question: Yup.string()
         .required("selecciona una pregunta")
-        .min(1),
+        .min(3, "se requiere seleccionar una pregunta"),
       password_answer: Yup.string().required("Se requiere una respuesta"),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      dispatch(createUser(values));
     },
   });
 
