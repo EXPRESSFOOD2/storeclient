@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 function App() {
+
+  const location = useLocation()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {location !== "/login" && (<Route path='/' />)}
+      <Route exact path='/login'/>
+      <Route exact path='/dashboard'/>
+      <Route exact path='/create_menu'/>
+      <Route exact path='/create_recipe'/>
+      <Route exact path='/register' />
+      <Route exact path='/create_ingredients' />
+      <Route exact path='/profile' />
+      <Route exact path='/store' />
+      <Route exact path='/orders' />
     </div>
   );
 }
