@@ -3,6 +3,7 @@ import Register from "../../components/Register/Register";
 import NavBar from "../../Shared/NavBar/NavBar";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/Actions/actions";
+import styles from './Registerpage.module.css';
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -63,7 +64,9 @@ const RegisterPage = (props) => {
   return (
     <div>
       <NavBar />
+      <div className={styles.page}>
       <Register formik={formik} />
+      </div>
     </div>
   );
 };
