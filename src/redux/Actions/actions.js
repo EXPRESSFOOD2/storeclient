@@ -1,6 +1,7 @@
 import axios from "axios";
 import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU } from "./types";
 
+
 export const getMenu = () => {
   return async function (dispatch) {
     try {
@@ -12,6 +13,9 @@ export const getMenu = () => {
   };
 };
 
+//Ingredients Section
+// get's section
+// Organizamos por section o por request?
 export const getAllIngredients = () => {
   return async function (dispatch) {
     try {
@@ -21,6 +25,25 @@ export const getAllIngredients = () => {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
   };
+
+
+};
+
+export const getIngredientById = (id) => {
+  return async function (dispatch) {
+    try {
+      const ingredient = (await axios.get(`/ingredients/get/${id}`)).data;
+      dispatch({ type: GET_INGREDIENT_ID, payload: ingredient });
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  };
+};
+
+export const updateIngredient = async (data) => {
+  //no testeado
+  const Ingredient = await axios.patch("/ingredients/update", data);
+  console.log(Ingredient);
 };
 
 export const createMenu = (data) => {
@@ -64,6 +87,7 @@ export const deleteIngredient = (id) => {
     .catch((err) => console.error(err));
   // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
+
 
 export const resetError = () => {
   //Funcion para resetear el estado de redux error en false, despues de un error
