@@ -14,16 +14,14 @@ const Ingredients = () => {
         !ingredients.length && dispatch(getAllIngredients())
     })
   return (
-      <div>
+      <div className={styles.page}>
           <NavBar />
-          <div className={styles.page}>
               <div className={styles.create}>
                   <Link to="/ingredient/create">
                       <button>Crear Ingrediente</button>
                   </Link>
               </div>
               <IngredientsCards />
-          </div>
       </div>
   );
 }
