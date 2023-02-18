@@ -25,8 +25,11 @@ function App() {
       { }
       <Route exact path="/recipe/create" />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/ingredient/create" component={CreateIngredient} />
+      { }
       <Route exact path="/ingredient" component={Ingredients} />
+      <Route exact path="/ingredient/create" component={CreateIngredient} />
+      <Route exact path="/ingredient/update/:id" component={CreateIngredient} />
+      { }
       <Route exact path="/profile" />
       <Route exact path="/store" />
       <Route exact path="/orders" />
