@@ -1,232 +1,246 @@
 .menuItem {
-  display: flex;
-  flex-direction: column;
-  height: 1121px;
-  overflow: hidden;
-  position: relative;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 1121px;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 1021px;
-  margin-top: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 1021px;
+    margin-top: 175px;
 }
 
 .formBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  width: 1021px;
-  height: 821px;
-  border-radius: 10px;
+    width: 1021px;
+    height: 821px;
+    border-radius: 10px;
 
-  box-shadow: 5px 5px 30px rgba(163, 163, 163, 0.23),
-    -5px -5px 30px rgba(163, 163, 163, 0.23);
+    box-shadow: 5px 5px 30px rgba(163, 163, 163, 0.23),
+        -5px -5px 30px rgba(163, 163, 163, 0.23);
 }
 
 .col {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
 
-  width: auto;
-  height: auto;
+    width: auto;
+    height: auto;
 }
 
 .errorInput {
-  border: 2px rgb(255, 140, 140) solid !important;
+    border: 2px rgb(255, 140, 140) solid !important;
 }
 
 .col > input {
-  width: 329px;
-  height: 37px;
-  border-radius: 10px;
-  border: none;
-  color: rgba(143, 143, 143, 1);
-  background-color: rgba(183, 177, 177, 0.5);
-  font-family: inherit;
-  padding: 2px 10px;
+    width: 329px;
+    height: 37px;
+    border-radius: 10px;
+    border: none;
+    color: rgba(143, 143, 143, 1);
+    background-color: rgba(183, 177, 177, 0.5);
+    font-family: inherit;
+    padding: 2px 10px;
 }
 
 .col > input:not(.errorInput) {
-  border: none;
+    border: none;
 }
 
 .col > input::placeholder {
-  font-family: inherit;
-  font-weight: 500;
-  color: rgba(143, 143, 143, 1);
-  font-size: 17;
+    font-family: inherit;
+    font-weight: 500;
+    color: rgba(143, 143, 143, 1);
+    font-size: 17;
 }
 
 .col > label {
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 13px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .col > button {
-  width: auto;
-  height: auto;
+    width: auto;
+    height: auto;
 
-  color: white;
-  background-color: rgba(252, 172, 3, 1);
-  font-weight: 900;
-  font-size: 24px;
-  padding: 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
+    color: white;
+    background-color: rgba(252, 172, 3, 1);
+    font-weight: 900;
+    font-size: 24px;
+    padding: 4px 5px;
+    border-radius: 5px;
+    cursor: pointer;
 
-  border: none;
+    border: none;
 }
 
 .col > button:disabled {
-  background-color: rgba(255, 174, 0, 0.567);
+    background-color: rgba(255, 174, 0, 0.567);
 }
 
 .formRight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-  gap: 1.5em;
-  width: 65%;
-  height: auto;
+    gap: 1.5em;
+    width: 65%;
+    height: auto;
+    margin-left: -2rem;
 }
 
 .formLeft {
-  position: relative;
-  width: 35%;
-  height: 100%;
+    position: relative;
+    width: 35%;
+    height: 100%;
 }
 
 .formLeft::before {
-  content: "";
-  position: absolute;
+    content: "";
+    position: absolute;
 
-  width: 130px;
-  height: 65px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  background-color: #8f1414;
+    width: 130px;
+    height: 65px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #8f1414;
 
-  z-index: 100;
+    z-index: 100;
 }
 
 .formLeft::after {
-  content: "";
-  position: absolute;
+    content: "";
+    position: absolute;
 
-  width: 130px;
-  height: 130px;
-  left: 50%;
+    width: 130px;
+    height: 130px;
+    left: 50%;
 
-  transform: translate(-50%, 0);
-  background-color: #8f1414;
-  border-radius: 360px;
+    transform: translate(-50%, 0);
+    background-color: #8f1414;
+    border-radius: 360px;
 
-  z-index: 100;
+    z-index: 100;
 }
 
 .formLeft > img:first-child {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.8);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
 
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .checkboxCol {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 .checkboxCol > label {
-  text-align: center;
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 13px;
+    text-align: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .checkboxCol > input {
-  width: 15.62px;
-  height: 15.62px;
+    width: 15.62px;
+    height: 15.62px;
 }
 
 .logoForm {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  top: 65px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 65px;
 
-  width: 70px;
-  height: 70px;
-  fill: white;
-  color: white;
-  z-index: 200;
+    width: 70px;
+    height: 70px;
+    fill: white;
+    color: white;
+    z-index: 200;
 }
 
 .errorText {
-  position: absolute;
-  max-width: 329px;
-  color: rgb(251, 133, 133);
+    position: absolute;
+    max-width: 329px;
+    color: rgb(251, 133, 133);
 }
 
 .table {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 329px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 329px;
 
-  max-height: 140px;
-  border-radius: 10px;
+    max-height: 140px;
+    border-radius: 10px;
 
-  background-color: rgba(183, 177, 177, 0.5);
-  padding: 10px;
-  gap: 1em;
+    background-color: rgba(183, 177, 177, 0.5);
+    padding: 10px;
+    gap: 1em;
 
-  overflow: scroll;
+    overflow: scroll;
 }
 
 .rowTableTitle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
-  position: sticky;
+    position: sticky;
 
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .rowTableTitle > span {
-  width: 50%;
+    width: 50%;
 }
 
 .rowTableData {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .rowTableData > span {
-  width: 50%;
+    width: 50%;
 }
 
 .rowTableData > input {
-  width: 50%;
-  text-align: center;
-  height: auto;
-  border: none;
-  background-color: rgba(225, 225, 225, 0.5);
+    width: 50%;
+    text-align: center;
+    height: auto;
+    border: none;
+    background-color: rgba(225, 225, 225, 0.5);
+}
+
+.image {
+    margin-left: -13rem;
+    position: relative;
+    background-color: #999999;
+}
+
+.image > img {
+    width: 18rem;
+    height: 18rem;
+    border: 1px solid #999999;
+    border-radius: .5rem;
 }
