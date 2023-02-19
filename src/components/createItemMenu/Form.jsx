@@ -11,7 +11,7 @@ export default function Form({ path, menu }) {
       name: menu?.name || "",
       description: menu?.description || "",
       price: menu?.price || "",
-      stock: menu?.stock || "",
+      stock: menu?.stock || 0,
       recomendado: menu?.recomend_first || "",
     },
 
