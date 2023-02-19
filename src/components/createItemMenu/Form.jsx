@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./form.module.css";
 import img from "./image/leftImgBG.jpg";
 import Title from "../../Shared/Title/Title";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { createMenu, updateMenu } from "../../redux/Actions/actions";
 
-export default function Form({ path, menu }) {
+export default function Form({ path, menu, ingredientes }) {
+  const [ingredientesArray, setIngredientesArray] = useState(
+    menu?.Ingredients || []
+  );
+  const [cantidad, setCantidad] = useState(
+    menu?.Ingredients.map((item) => item.IngredientsMenuItems.quantity) || []
+  );
+
+  const dispatch = useDispatch();
+
+  // change ingredient quantity by type
+  const onIngredeintFormChangeHandler = (e) => {
+    const ingre = ingredientes.find((item) => e.target.value === item.name);
+    if (ingre) {
+      if (!ingredientesArray.includes(ingre)) {
+        setIngredientesArray([...new Set([...ingredientesArray, ingre])]);
+        setCantidad([...cantidad, 0]);
+        e.target.value = "";
+      }
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       name: menu?.name || "",
@@ -27,13 +50,28 @@ export default function Form({ path, menu }) {
     }),
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const ingredientesMap = ingredientesArray.map((item, i) => {
+        return { id: item.id, quantity: cantidad[i] };
+      });
+      const menuMapData = {
+        ...values,
+        ingredArray: ingredientesMap,
+        is_active: true,
+        url_image:
+          "https://static.vecteezy.com/system/resources/previews/008/507/708/non_2x/classic-cheeseburger-with-beef-patty-pickles-cheese-tomato-onion-lettuce-and-ketchup-mustard-free-png.png",
+      };
+
+      if (path === "update") {
+        dispatch(updateMenu({ ...menuMapData, id: menu.id }));
+      } else {
+        dispatch(createMenu(menuMapData));
+      }
     },
   });
 
   return (
     <div className={style.menuItem}>
-      <Title data={path === "create" ? "Crear menu" : "Actualizar Menu"} />
+      <Title data={path === "create" ? "Crear menú" : "Actualizar Menú"} />
       <div className={style.container}>
         <form
           action=""
@@ -116,6 +154,51 @@ export default function Form({ path, menu }) {
                 <label className={style.errorText}>{formik.errors.stock}</label>
               )}
             </div>
+            <div className={style.col}>
+              <label>Ingredientes</label>
+              <input
+                hidden={path === "update"}
+                type="text"
+                name="ingredientes"
+                list="ingredientes"
+                placeholder="Ingredientes"
+                onChange={onIngredeintFormChangeHandler}
+              />
+            </div>
+            <div className={style.col}>
+              <div className={style.table}>
+                <div className={style.rowTableTitle}>
+                  <span>Nombre</span>
+                  <span>Cantidad</span>
+                </div>
+                {ingredientesArray.map((item, i) => {
+                  ingredientesArray[i].quantity = 0;
+                  return (
+                    <div className={style.rowTableData} key={i}>
+                      <span>{item.name}</span>
+                      {path === "update" ? (
+                        <span>{cantidad[i]}</span>
+                      ) : (
+                        <input
+                          type="text"
+                          placeholder="Cantidad"
+                          value={cantidad[i]}
+                          onChange={(e) => {
+                            cantidad[i] = e.target.value;
+                            setCantidad([...cantidad]);
+                          }}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+                <datalist id="ingredientes">
+                  {ingredientes.map((ingrediente) => {
+                    return <option value={ingrediente.name}></option>;
+                  })}
+                </datalist>
+              </div>
+            </div>
             <div className={style.checkboxCol}>
               <input
                 type="checkbox"
@@ -130,7 +213,9 @@ export default function Form({ path, menu }) {
             </div>
             <div className={style.col}>
               <button
-                disabled={Object.keys(formik.errors).length}
+                disabled={
+                  Object.keys(formik.errors).length || cantidad.length === 0
+                }
                 type="submit"
               >
                 {path === "create" ? "Crear" : "Actualizar"}

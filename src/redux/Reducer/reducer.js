@@ -1,5 +1,5 @@
 
-import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER,GET_INGREDIENT_ID } from "../Actions/types";
+import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU } from "../Actions/types";
 
 const initialState = {
   menus: [],
@@ -18,24 +18,30 @@ const filterFunction = (status, array) => {
 };
 
 const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FILTER:
-      return {
-        ...state,
-        statusFilter: state.statusFilter ? false : true,
-        render: filterFunction(state.statusFilter, state.menus),
-      };
-    case GET_MENU:
-      return { ...state, menus: action.payload, render: [...action.payload] };
-    case GET_ALL_INGREDIENTS:
-      return { ...state, ingredients: action.payload };
-    case GET_INGREDIENT_ID:
+
+    switch (action.type) {
+        case FILTER:
+            return {
+                ...state,
+                statusFilter: state.statusFilter ? false : true,
+                render: filterFunction(state.statusFilter, state.menus),
+            };
+        case GET_MENU:
+            return { ...state, menus: action.payload, render: [...action.payload] };
+        case CREATE_MENU:
+            return { ...state, menus: [...state.menus, action.payload] }
+        case UPDATE_MENU:
+            // no actualiza el estado
+            return { ...state, menus: [...state.menus] }
+        case GET_ALL_INGREDIENTS:
+            return { ...state, ingredients: action.payload };
+             case GET_INGREDIENT_ID:
         //NIY No se si guardarlo en el estado ingredients o crear otro estado....
-    case ERROR:
-      return { ...state, errors: action.payload };
-    default:
-      return { ...state };
-  }
+        case ERROR:
+            return { ...state, errors: action.payload };
+        default:
+            return { ...state };
+    }
 
 };
 
