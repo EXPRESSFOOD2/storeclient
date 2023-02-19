@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU } from "./types";
+import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU, GET_INGREDIENT_ID } from "./types";
 
 
 export const getMenu = () => {
