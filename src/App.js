@@ -16,8 +16,7 @@ axios.defaults.baseURL = "http://localhost:3001/"
 function App() {
   return (
     <div className="App">
-      <Route path="/" />
-      <Route path="/login" component={LoginPage} />
+      <Route exact path="/" component={LoginPage} />
       <Route exact path="/dashboard" />
       {/* menu */}
       <Route exact path="/menu" component={Menu} />
