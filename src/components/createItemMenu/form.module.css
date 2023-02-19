@@ -235,6 +235,7 @@
 .image {
     margin-left: -13rem;
     position: relative;
+    background-color: #999999;
 }
 
 .image > img {
