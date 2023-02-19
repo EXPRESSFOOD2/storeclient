@@ -8,6 +8,7 @@ import CreateIngredient from "./Pages/CreateIngredient/CreateIngredient";
 import EditStore from "./Pages/EditStore/EditSore";
 import Menu from "./Pages/Menu/Menu";
 import Ingredients from "./Pages/Ingredients/Ingredients";
+import UpdateIngredient from "./Pages/UpdateIngredient/UpdateIngredient";
 
 //Se establese la base de axios pensando en el deploy
 axios.defaults.baseURL = "http://localhost:3001/"
@@ -15,8 +16,7 @@ axios.defaults.baseURL = "http://localhost:3001/"
 function App() {
   return (
     <div className="App">
-      <Route path="/" />
-      <Route path="/login" component={LoginPage} />
+      <Route exact path="/" component={LoginPage} />
       <Route exact path="/dashboard" />
       {/* menu */}
       <Route exact path="/menu" component={Menu} />
@@ -28,7 +28,7 @@ function App() {
       { }
       <Route exact path="/ingredient" component={Ingredients} />
       <Route exact path="/ingredient/create" component={CreateIngredient} />
-      <Route exact path="/ingredient/update/:id" component={CreateIngredient} />
+      <Route exact path="/ingredient/update" component={UpdateIngredient} />
       { }
       <Route exact path="/profile" />
       <Route exact path="/store" />
