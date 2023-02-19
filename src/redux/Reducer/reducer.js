@@ -1,5 +1,5 @@
 
-import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU } from "../Actions/types";
+import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU, GET_INGREDIENT_ID } from "../Actions/types";
 
 const initialState = {
   menus: [],
@@ -35,7 +35,8 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, menus: [...state.menus] }
         case GET_ALL_INGREDIENTS:
             return { ...state, ingredients: action.payload };
-             case GET_INGREDIENT_ID:
+        case GET_INGREDIENT_ID:
+            return
         //NIY No se si guardarlo en el estado ingredients o crear otro estado....
         case ERROR:
             return { ...state, errors: action.payload };
