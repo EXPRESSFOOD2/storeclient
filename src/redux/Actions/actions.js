@@ -60,8 +60,8 @@ export const createMenu = (data) => {
 export const updateMenu = (data) => {
   return async function (dispatch) {
     try {
-      const newMenu = (await axios.patch("/menu/update", data));
-      dispatch({ type: UPDATE_MENU, payload: newMenu });
+      await axios.patch("/menu/update", data)
+      dispatch({ type: UPDATE_MENU, payload: data });
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
