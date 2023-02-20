@@ -8,8 +8,9 @@ import CreateIngredient from "./Pages/CreateIngredient/CreateIngredient";
 import EditStore from "./Pages/EditStore/EditSore";
 import Menu from "./Pages/Menu/Menu";
 import Ingredients from "./Pages/Ingredients/Ingredients";
+import GetRecipe from "./Pages/Recipe/Get/GetRecipe"
 
-//Se establese la base de axios pensando en el deploy
+//Se establece la base de axios pensando en el deploy
 axios.defaults.baseURL = "http://localhost:3001/"
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
       <Route exact path="/menu/create" component={CreateItemMenu} />
       <Route exact path="/menu/update/:id" component={CreateItemMenu} />
       { }
-      <Route exact path="/recipe/create" />
+      <Route exact path="/recipe/create"/>
+      <Route exact path="/get/recipe" component={GetRecipe}/> 
       <Route exact path="/register" component={RegisterPage} />
       { }
       <Route exact path="/ingredient" component={Ingredients} />
