@@ -13,6 +13,7 @@ import GetRecipe from "./Pages/Recipe/Get/GetRecipe"
 
 import UpdateIngredient from "./Pages/UpdateIngredient/UpdateIngredient";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 //Se establece la base de axios pensando en el deploy
 axios.defaults.baseURL = "http://localhost:3001/"
