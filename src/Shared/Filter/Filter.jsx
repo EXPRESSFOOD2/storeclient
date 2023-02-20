@@ -14,16 +14,17 @@ const Filter = () => {
     return (
         <div className={styles.filter}>
             <div>
-                <label htmlFor="">Ordenar</label>
+                <label htmlFor="">Ordenar: </label>
                 <select name="" id="">
-                    <option value="menor">menor precio</option>
-                    <option value="mayor">mayor precio</option>
+                    <option value="menor">Menor Precio</option>
+                    <option value="mayor">Mayor Precio</option>
                 </select>
             </div>
+
             <div>
-                <label htmlFor="">filtrar</label>
+                <label htmlFor="">Filtrar: </label>
                 <select name="" id="" onChange={handleChangeFilter}>
-                    <option value="false">Todos los menús</option>
+                    <option value="false">Todos los Menús</option>
                     <option value="true">Recomendados</option>
                 </select>
             </div>
