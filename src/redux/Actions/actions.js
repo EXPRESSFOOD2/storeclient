@@ -1,5 +1,14 @@
 import axios from "axios";
-import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU, GET_INGREDIENT_ID } from "./types";
+
+import {
+  GET_MENU,
+  ERROR,
+  GET_ALL_INGREDIENTS,
+  FILTER,
+  CREATE_MENU,
+  UPDATE_MENU,
+  GET_INGREDIENT_ID,
+} from "./types";
 
 
 export const getMenu = () => {
@@ -25,8 +34,6 @@ export const getAllIngredients = () => {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
   };
-
-
 };
 
 export const getIngredientById = (id) => {
@@ -49,13 +56,13 @@ export const updateIngredient = async (data) => {
 export const createMenu = (data) => {
   return async function (dispatch) {
     try {
-      const newMenu = (await axios.post("/menu/create", data));
+      const newMenu = await axios.post("/menu/create", data);
       dispatch({ type: CREATE_MENU, payload: newMenu });
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
   };
-}
+};
 
 export const updateMenu = (data) => {
   return async function (dispatch) {
@@ -66,10 +73,10 @@ export const updateMenu = (data) => {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
   };
-}
+};
 
 export const filter = () => (dispatch) => {
-  dispatch({ type: FILTER })
+  dispatch({ type: FILTER });
 };
 
 export const createUser = async (user) => {
@@ -93,7 +100,6 @@ export const deleteIngredient = async (id) => {
   }
   // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
-
 
 export const resetError = () => {
   //Funcion para resetear el estado de redux error en false, despues de un error
