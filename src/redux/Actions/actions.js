@@ -72,19 +72,25 @@ export const filter = () => (dispatch) => {
   dispatch({ type: FILTER })
 };
 
-export const createUser = (user) => {
-  return axios
-    .post("/users/create", user)
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err));
+export const createUser = async (user) => {
+  try {
+    const res = await axios
+      .post("/users/create", user);
+    return console.log(res);
+  } catch (err) {
+    return console.error(err);
+  }
   // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
 
-export const deleteIngredient = (id) => {
-  return axios
-    .delete(`/ingredients/delete?id=${id}`)
-    .then((res) => console.log(res))
-    .catch((err) => console.error(err));
+export const deleteIngredient = async (id) => {
+  try {
+    const res = await axios
+      .delete(`/ingredients/delete?id=${id}`);
+    return console.log(res);
+  } catch (err) {
+    return console.error(err);
+  }
   // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
 
