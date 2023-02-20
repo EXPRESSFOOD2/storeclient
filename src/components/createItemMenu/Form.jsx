@@ -41,6 +41,7 @@ export default function Form({ path, menu, ingredientes }) {
     };
   };
 
+  // input type = file
   const imgDefault =
     "https://c8.alamy.com/compes/her4w9/comida-tradicional-mexicana-de-fondo-con-el-burrito-croquis-dibujados-a-mano-ilustracion-vectorial-mexico-cocina-vintage-banner-her4w9.jpg";
 
@@ -87,8 +88,8 @@ export default function Form({ path, menu, ingredientes }) {
       if (path === "update") {
         dispatch(updateMenu({ ...menuMapData, id: menu.id }));
       } else {
-        dispatch(createMenu(menuMapData));
-        console.log(menuMapData);
+        // dispatch(createMenu(menuMapData));
+        console.log(urlImage);
       }
     },
   });
