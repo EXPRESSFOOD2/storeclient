@@ -2,19 +2,19 @@
 import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU, GET_INGREDIENT_ID } from "../Actions/types";
 
 const initialState = {
-  menus: [],
-  ingredients: [],
-  errors: false,
-  render: [],
-  statusFilter: true,
+    menus: [],
+    ingredients: [],
+    errors: false,
+    render: [],
+    statusFilter: true,
 };
 
 const filterFunction = (status, array) => {
-  let newRender;
-  if (status) {
-    newRender = array.filter((element) => element.recomend_first === true);
-  } else newRender = [...array];
-  return newRender;
+    let newRender;
+    if (status) {
+        newRender = array.filter((element) => element.recomend_first === true);
+    } else newRender = [...array];
+    return newRender;
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -31,8 +31,11 @@ const rootReducer = (state = initialState, action) => {
         case CREATE_MENU:
             return { ...state, menus: [...state.menus, action.payload] }
         case UPDATE_MENU:
-            // no actualiza el estado
-            return { ...state, menus: [...state.menus] }
+
+            const newMenu = [...state.menus].filter(menu => menu.id !== action.payload.id)
+            newMenu.unshift(action.payload);
+
+            return { ...state, menus: newMenu, render: newMenu }
         case GET_ALL_INGREDIENTS:
             return { ...state, ingredients: action.payload };
         case GET_INGREDIENT_ID:

@@ -17,6 +17,7 @@
 }
 
 .formBox {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +100,7 @@
   gap: 1.5em;
   width: 65%;
   height: auto;
+  margin-left: -2rem;
 }
 
 .formLeft {
@@ -229,4 +231,43 @@
   height: auto;
   border: none;
   background-color: rgba(225, 225, 225, 0.5);
+}
+
+.image {
+  position: absolute;
+  background-color: #999999;
+  width: auto;
+  height: auto;
+  filter: opacity(0);
+  z-index: -10;
+  transition: 0.5s;
+}
+
+.image > img {
+  right: 20px;
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 0.5rem;
+}
+
+.image:hover {
+  z-index: 10;
+}
+
+.show {
+  position: absolute;
+  background-color: #999999;
+  width: auto;
+  height: auto;
+  z-index: 10;
+  transition: 0.5;
+}
+
+.show > img {
+  right: 20px;
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 0.5rem;
 }

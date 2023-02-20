@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {
   GET_MENU,
   ERROR,
@@ -8,6 +9,7 @@ import {
   UPDATE_MENU,
   GET_INGREDIENT_ID,
 } from "./types";
+
 
 export const getMenu = () => {
   return async function (dispatch) {
@@ -65,8 +67,8 @@ export const createMenu = (data) => {
 export const updateMenu = (data) => {
   return async function (dispatch) {
     try {
-      const newMenu = await axios.patch("/menu/update", data);
-      dispatch({ type: UPDATE_MENU, payload: newMenu });
+      await axios.patch("/menu/update", data)
+      dispatch({ type: UPDATE_MENU, payload: data });
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
