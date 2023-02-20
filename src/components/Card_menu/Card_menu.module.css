@@ -1,73 +1,51 @@
 .card {
-    height: 4rem;
-    border: 1px solid green;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    align-items: center;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-    background-color: #fff;
-    border-radius: 0.5rem;
-    padding-left: 4.5rem;
-    font-weight:500;
+  padding: 0px 40px;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  font-weight: 500;
 }
 
-.image {
-    height: 3.5rem;
-    width: 3.5rem;
-}
 .image img {
-    height: 3.5rem;
-    width: 3.5rem;
+  height: 50px;
+  width: 80px;
+  object-fit: cover;
+
+  border-radius: 5px;
+  margin-top: 3px;
 }
 
 .id {
-    display: flex;
-    margin-left: 1rem;
-    border-radius: 0.5rem;
-    background: #d9d9d9;
-    width: 3.5rem;
-    height: 3rem;
-    align-items: center;
-    justify-content: center;
+  padding: 13px 15px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  margin-left: -20px;
 }
+
 .name {
-    margin-left: -2rem;
-    border-radius: .5rem;
-    background: #d9d9d9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 12rem;
-    height: 3rem;
+  border-radius: 5px;
+  background: #d9d9d9;
+  padding: 13px 40px;
+  margin-left: -15px;
 }
-.price{
-    margin-left: 3rem;
-    border-radius: 0.5rem;
-    background: #d9d9d9;
-    width: 3.5rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.price {
+  border-radius: 0.5rem;
+  background: #d9d9d9;
+  padding: 13px 15px;
 }
 .cuantity {
-    margin-left: 3rem;
-    border-radius: 0.5rem;
-    background: #d9d9d9;
-    width: 3.5rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border-radius: 0.5rem;
+  background: #d9d9d9;
+  padding: 13px 15px;
 }
 
-.ico{
-    width: 2rem;
-    height: 2rem;
-    background: #8F1414;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 5rem;
+.ico {
+  background-color: #d9d9d9;
+  padding: 10px 15px 6px 15px;
+  border-radius: 5px;
 }
-
