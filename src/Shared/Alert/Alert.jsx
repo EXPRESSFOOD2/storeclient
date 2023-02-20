@@ -7,7 +7,7 @@ export default function Alert({
   message = "Todo salio bien",
   type = "danger",
 }) {
-  const img = data[type].icon;
+  const img = data[type]?.icon | data.success;
   const [show, setShow] = useState(true);
 
   return (
