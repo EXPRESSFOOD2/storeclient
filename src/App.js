@@ -1,6 +1,6 @@
 import "./App.css";
 import axios from 'axios';
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import CreateItemMenu from "./Pages/Menu/CreateOrUpdate/CreateItemMenu";
@@ -12,12 +12,22 @@ import Ingredients from "./Pages/Ingredients/Ingredients";
 import GetRecipe from "./Pages/Recipe/Get/GetRecipe"
 
 import UpdateIngredient from "./Pages/UpdateIngredient/UpdateIngredient";
+import { useSelector } from "react-redux";
 
 //Se establece la base de axios pensando en el deploy
 axios.defaults.baseURL = "http://localhost:3001/"
 
 function App() {
+  const loginStatus = useSelector((state) => state.loginStatus);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!loginStatus) {
+      history.push("/login");
+    }
+  }, [loginStatus]);
   return (
+    
     <div className="App">
       <Route exact path="/" component={LoginPage} />
       <Route exact path="/dashboard" />
