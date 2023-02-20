@@ -6,8 +6,10 @@ import Filter from "../../Shared/Filter/Filter";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from "../../redux/Actions/actions";
+
 import { NavLink } from "react-router-dom";
 import style from "./Menu.module.css";
+
 
 const Menu = () => {
   const [pagina, setPagina] = useState(1);
@@ -36,7 +38,9 @@ const Menu = () => {
           <button className={style.button}>Crear menú</button>
         </NavLink>
       </div>
+
       <MenuCards pagina={pagina} porPagina={porPagina} render={render} />
+      <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
     </div>
   );
 };

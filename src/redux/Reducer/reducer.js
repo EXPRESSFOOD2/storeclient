@@ -1,5 +1,7 @@
 
+import Alert from "../../Shared/Alert/Alert";
 import { GET_MENU, ERROR, GET_ALL_INGREDIENTS, FILTER, CREATE_MENU, UPDATE_MENU, GET_INGREDIENT_ID } from "../Actions/types";
+import ReactDOM from "react-dom";
 
 const initialState = {
     menus: [],
@@ -42,6 +44,8 @@ const rootReducer = (state = initialState, action) => {
             return
         //NIY No se si guardarlo en el estado ingredients o crear otro estado....
         case ERROR:
+            ReactDOM.render(<Alert title="Error" message={action.payload} type="danger" />,
+                document.getElementById('alert'))
             return { ...state, errors: action.payload };
         default:
             return { ...state };

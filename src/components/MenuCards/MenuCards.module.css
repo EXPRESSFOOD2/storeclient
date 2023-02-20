@@ -11,12 +11,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .description {
   margin-left: 2rem;
   display: grid;
-
   grid-template-columns: repeat(6, 1fr);
   width: 80%;
   font-family: "Rubik", sans-serif;
@@ -45,6 +45,7 @@
 
 .accion {
   padding: 0px 30px;
+
 }
 
 .container {

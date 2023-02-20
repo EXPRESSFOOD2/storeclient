@@ -26,8 +26,8 @@ function App() {
       <Route exact path="/menu/create" component={CreateItemMenu} />
       <Route exact path="/menu/update/:id" component={CreateItemMenu} />
       { }
-      <Route exact path="/recipe/create"/>
-      <Route exact path="/get/recipe" component={GetRecipe}/> 
+      <Route exact path="/recipe/create" />
+      <Route exact path="/get/recipe" component={GetRecipe} />
       <Route exact path="/register" component={RegisterPage} />
       { }
       <Route exact path="/ingredient" component={Ingredients} />
@@ -38,6 +38,7 @@ function App() {
       <Route exact path="/store" />
       <Route exact path="/orders" />
       <Route exact path="/store/update" component={EditStore} />
+      <div id="alert" className="alert" />
     </div>
   );
 }
