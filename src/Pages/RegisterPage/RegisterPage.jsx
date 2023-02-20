@@ -10,11 +10,13 @@ import * as Yup from "yup";
 const RegisterPage = (props) => {
   const dispatch = useDispatch();
 
+  const emailRegex =
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-  const passwordRegExp =
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+  const passwordRegExp = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
 
   const formik = useFormik({
     initialValues: {
@@ -26,13 +28,14 @@ const RegisterPage = (props) => {
       password: "",
       password_question: "",
       password_answer: "",
+      profile_image: "",
     },
 
     validationSchema: Yup.object({
       name: Yup.string().required("El nombre es requerido"),
       last_name: Yup.string().required("El apellido es requerido"),
       email: Yup.string()
-        .email("Correo electronico invalido")
+        .matches(emailRegex, "Correo electronico invalido")
         .required("El email es requerido")
         .max(100, "máximo 100 caracteres"),
       account_name: Yup.string()
@@ -53,6 +56,7 @@ const RegisterPage = (props) => {
         .required("selecciona una pregunta")
         .min(3, "se requiere seleccionar una pregunta"),
       password_answer: Yup.string().required("Se requiere una respuesta"),
+      profile_image: Yup.string(),
     }),
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
@@ -60,10 +64,20 @@ const RegisterPage = (props) => {
     },
   });
 
+  const selectQuestion = (e) => {
+    const value = e.target.value;
+    formik.values.password_question = value;
+  };
+
+  const image = (e) => {
+    const value = e.target.value;
+    formik.values.profile_image = value;
+  };
+
   return (
     <div>
       <NavBar />
-      <Register formik={formik} />
+      <Register formik={formik} selectQuestion={selectQuestion} image={image} />
     </div>
   );
 };

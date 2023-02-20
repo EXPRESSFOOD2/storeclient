@@ -3,13 +3,8 @@ import Title from "../../Shared/Title/Title";
 import img from "./image/image-1.jpg";
 import styles from "./Register.module.css";
 
-const Register = ({ formik }) => {
+const Register = ({ formik, selectQuestion, image }) => {
   const questions = ["messi?", "verano o invierno?", "mayor de edad?"];
-
-  const selectQuestion = (e) => {
-    const value = e.target.value;
-    formik.values.password_question = value;
-  };
 
   return (
     <div className={styles.register}>
@@ -34,6 +29,17 @@ const Register = ({ formik }) => {
             </svg>
           </div>
           <div className={styles.formRight}>
+            <div className={styles.contentfile}>
+              <p> + Agregar imagen</p>
+              <input
+                type="file"
+                className={styles.inputfile}
+                value=""
+                onChange={(e) => {
+                  image(e);
+                }}
+              />
+            </div>
             <div className={styles.inputs}>
               <label htmlFor="name">Nombre</label>
               <input

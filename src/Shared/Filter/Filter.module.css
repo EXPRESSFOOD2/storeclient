@@ -3,4 +3,23 @@
     flex-direction: row;
     gap: 3rem;
     padding-left: 1rem;
+    margin-left: 770px;
+    margin-top: 25px;
+}
+
+
+.filter div select {
+	background-color: #f0ede9;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	width: 150px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15
+    px;
+	color: #1f1f1f;
+}
+
+.filter div label {
+ font-size: 17px;
 }

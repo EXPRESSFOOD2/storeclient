@@ -23,14 +23,19 @@ const NavBar = () => {
             Registros
           </button>
         </Link>
+
         <Link to="/menu">
           <button className={location === "menu" ? styles.currentPag : ""}>
             Menú
           </button>
         </Link>
+
+        <Link to="get/recipe">
         <button className={location === "recipe" ? styles.currentPag : ""}>
           Receta
         </button>
+        </Link>
+
         <Link to="/ingredient">
           <button
             className={location === "ingredient" ? styles.currentPag : ""}
