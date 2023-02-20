@@ -197,6 +197,19 @@
   gap: 1em;
 
   overflow: scroll;
+  overflow-x: hidden;
+}
+
+.table::-webkit-scrollbar {
+  padding: 5px 0;
+  width: 10px;
+  border-radius: 300px;
+}
+.table::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.table::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
 .rowTableTitle {
@@ -208,6 +221,7 @@
   position: sticky;
 
   font-weight: bold;
+  border-bottom: 1px solid black;
 }
 
 .rowTableTitle > span {
