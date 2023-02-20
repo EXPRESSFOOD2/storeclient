@@ -7,9 +7,9 @@ export default function Alert({
   message = "Todo salio bien",
   type = "danger",
 }) {
-  const img = data[type]?.icon | data.success;
+  const img = data[type]?.icon || data.success.icon;
   const [show, setShow] = useState(true);
-
+  console.log(data);
   return (
     <div className={style.container} hidden={!show}>
       <div className={style.box}>
