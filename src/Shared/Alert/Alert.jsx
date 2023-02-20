@@ -8,10 +8,9 @@ export default function Alert({
   type = "danger",
 }) {
   const img = data[type]?.icon || data.success.icon;
-  const [show, setShow] = useState(true);
 
   return (
-    <div className={style.container} hidden={!show}>
+    <div className={style.container} id="alertBox">
       <div className={style.box}>
         <img
           style={{ borderLeft: `5px solid ${data[type].color}` }}
@@ -25,7 +24,7 @@ export default function Alert({
         <div
           className={style.close}
           onClick={() => {
-            setShow(false);
+            document.getElementById("alertBox").remove();
           }}
         >
           X
