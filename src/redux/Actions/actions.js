@@ -9,10 +9,35 @@ import {
   CREATE_MENU,
   UPDATE_MENU,
   GET_INGREDIENT_ID,
+  LOGIN_STATUS
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 
+export const validateLogin = async (values) => {  
+  try {
+    await axios
+      .post("/users/login", {
+        email: values.email,
+        password: values.password,
+      })
+      .then((res) => {
+        if (res.data === "Conected!!! Logged!!") {
+          return async function (dispatch){            
+            dispatch({ type: LOGIN_STATUS, payload: true });
+          }
+        } else {
+          alert(res.data);
+        }
+      })
+      .catch((res) => {
+        console.log(res.response.data.error);
+      });
 
+    // validUser ? alert("correcto") : alert("INcorrecto");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 export const getMenu = () => {
   return async function (dispatch) {
     try {
