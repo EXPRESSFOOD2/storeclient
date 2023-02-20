@@ -1,4 +1,5 @@
 import axios from "axios";
+import ReactDOM from "react-dom";
 
 import {
   GET_MENU,
@@ -9,6 +10,7 @@ import {
   UPDATE_MENU,
   GET_INGREDIENT_ID,
 } from "./types";
+import Alert from "../../Shared/Alert/Alert";
 
 
 export const getMenu = () => {
@@ -58,6 +60,8 @@ export const createMenu = (data) => {
     try {
       const newMenu = await axios.post("/menu/create", data);
       dispatch({ type: CREATE_MENU, payload: newMenu });
+      ReactDOM.render(<Alert title="Success" message="Se ha creado un nuevo menú" type="success" />,
+        document.getElementById('alert'))
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
@@ -69,6 +73,8 @@ export const updateMenu = (data) => {
     try {
       await axios.patch("/menu/update", data)
       dispatch({ type: UPDATE_MENU, payload: data });
+      ReactDOM.render(<Alert title="Success" message="Se ha actualizado un menú" type="success" />,
+        document.getElementById('alert'))
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }

@@ -12,7 +12,6 @@ import Ingredients from "./Pages/Ingredients/Ingredients";
 import GetRecipe from "./Pages/Recipe/Get/GetRecipe"
 
 import UpdateIngredient from "./Pages/UpdateIngredient/UpdateIngredient";
-import Alert from "./Shared/Alert/Alert";
 
 //Se establece la base de axios pensando en el deploy
 axios.defaults.baseURL = "http://localhost:3001/"
@@ -39,7 +38,7 @@ function App() {
       <Route exact path="/store" />
       <Route exact path="/orders" />
       <Route exact path="/store/update" component={EditStore} />
-      <Alert />
+      <div id="alert" className="alert" />
     </div>
   );
 }
