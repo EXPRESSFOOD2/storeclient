@@ -1,11 +1,15 @@
 import axios from "axios";
+
 import {
   GET_MENU,
   ERROR,
   GET_ALL_INGREDIENTS,
-  GET_INGREDIENT_ID,
   FILTER,
+  CREATE_MENU,
+  UPDATE_MENU,
+  GET_INGREDIENT_ID,
 } from "./types";
+
 
 export const getMenu = () => {
   return async function (dispatch) {
@@ -49,29 +53,52 @@ export const updateIngredient = async (data) => {
   console.log(Ingredient);
 };
 
+export const createMenu = (data) => {
+  return async function (dispatch) {
+    try {
+      const newMenu = await axios.post("/menu/create", data);
+      dispatch({ type: CREATE_MENU, payload: newMenu });
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  };
+};
+
+export const updateMenu = (data) => {
+  return async function (dispatch) {
+    try {
+      await axios.patch("/menu/update", data)
+      dispatch({ type: UPDATE_MENU, payload: data });
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  };
+};
+
 export const filter = () => (dispatch) => {
   dispatch({ type: FILTER });
 };
 
-
 export const createUser = async (user) => {
   try {
-    const newUser = await axios.post("/users/create", user);
-    console.log(newUser);
-  } catch (error) {
-    console.error(error);
+    const res = await axios
+      .post("/users/create", user);
+    return console.log(res);
+  } catch (err) {
+    return console.error(err);
   }
+  // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
 
 export const deleteIngredient = async (id) => {
   try {
-    const deleteIngredient = await axios.delete(`/ingredients/delete?id=${id}`);
-    console.log(deleteIngredient);
-  } catch (error) {
-    console.error(error);
+    const res = await axios
+      .delete(`/ingredients/delete?id=${id}`);
+    return console.log(res);
+  } catch (err) {
+    return console.error(err);
   }
-
-
+  // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
 
 export const resetError = () => {

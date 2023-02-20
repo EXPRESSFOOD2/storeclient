@@ -43,7 +43,7 @@ const NavBar = () => {
             Ingredientes
           </button>
         </Link>
-        <Link to="/login">
+        <Link to="/">
           <button>Salir</button>
         </Link>
       </div>
