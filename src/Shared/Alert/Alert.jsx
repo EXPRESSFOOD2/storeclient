@@ -9,7 +9,7 @@ export default function Alert({
 }) {
   const img = data[type]?.icon || data.success.icon;
   const [show, setShow] = useState(true);
-  console.log(data);
+
   return (
     <div className={style.container} hidden={!show}>
       <div className={style.box}>
