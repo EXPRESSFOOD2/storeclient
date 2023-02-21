@@ -79,16 +79,33 @@ export const filter = () => (dispatch) => {
   dispatch({ type: FILTER });
 };
 
-export const createUser = async (user) => {
-  try {
-    const res = await axios
-      .post("/users/create", user);
-    return console.log(res);
-  } catch (err) {
-    return console.error(err);
+export const createUser = (user) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios
+        .post("http://localhost:3001/users/create", user);
+        //! PROVICIONAL
+      alert("Ok, user Creado");
+    } catch (err) {
+      return console.error(err);
+    }
   }
   // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
+
+export const getImageUrl = (imageStr, imageFn) => {
+  return async (dispatch) => {
+      try {
+        let result = await axios.post("http://localhost:3001/processImage/post", {imageStr: imageStr})
+        imageFn(result.data)
+        //! ?! manejar Success && Error
+        return result;
+      } catch(error) {
+        console.error(error)
+      }
+}
+
+}
 
 export const deleteIngredient = async (id) => {
   try {

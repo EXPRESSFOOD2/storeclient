@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState} from "react";
 import Title from "../../Shared/Title/Title";
 import img from "./image/image-1.jpg";
 import styles from "./Register.module.css";
+import { getImageUrl } from "../../redux/Actions/actions";
+import { useDispatch } from "react-redux";
 
-const Register = ({ formik, selectQuestion, image }) => {
+const Register = ({ formik, selectQuestion, imageFn }) => {
+  const dispatch = useDispatch();
   const questions = ["messi?", "verano o invierno?", "mayor de edad?"];
+  const [ imageInputState, setImageInputState ] = useState("");
+  const [ previewSource, setPreviewSource] = useState("");
+
+  const handleImageInputChange = async (e) => {
+    const inputImg = e.target.files[0];
+    prepareImageToShowAndSend(inputImg);
+    dispatch(getImageUrl(previewSource, imageFn));
+  }
+
+  const prepareImageToShowAndSend = (inputImg) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(inputImg);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result)
+    }
+  }
 
   return (
     <div className={styles.register}>
@@ -29,15 +48,21 @@ const Register = ({ formik, selectQuestion, image }) => {
             </svg>
           </div>
           <div className={styles.formRight}>
+            {/* //! TODO */}
+              {/* Hacer que la imagen aparezca una vez se establece
+                Si esa imagen Url existe => "+ Agregar Imagen" cambia por "Modificar Imagen"
+              */}
+              {/* {previewSource && (
+                <img src={previewSource} alt="Profile Pic" />
+              )} */}
             <div className={styles.contentfile}>
               <p> + Agregar imagen</p>
               <input
                 type="file"
+                name="image"
                 className={styles.inputfile}
-                value=""
-                onChange={(e) => {
-                  image(e);
-                }}
+                onChange={handleImageInputChange}
+                value={imageInputState}
               />
             </div>
             <div className={styles.inputs}>
