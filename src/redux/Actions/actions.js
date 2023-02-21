@@ -9,33 +9,30 @@ import {
   CREATE_MENU,
   UPDATE_MENU,
   GET_INGREDIENT_ID,
-  LOGIN_STATUS
+  LOGIN_STATUS,
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 
-export const validateLogin = async (values) => {  
+export const validateLogin = async (values, dispatch) => {
   try {
-    await axios
-      .post("/users/login", {
+    const login = (
+      await axios.post("/users/login", {
         email: values.email,
         password: values.password,
       })
-      .then((res) => {
-        if (res.data === "Conected!!! Logged!!") {
-          return async function (dispatch){            
-            dispatch({ type: LOGIN_STATUS, payload: true });
-          }
-        } else {
-          alert(res.data);
-        }
-      })
-      .catch((res) => {
-        console.log(res.response.data.error);
-      });
+    ).data;
+
+    if (login === "Conected!!! Logged!!") {
+      console.log(login);
+      // No esta haciendo el dispatch no se porque
+      dispatch({ type: LOGIN_STATUS, payload: true });
+    } else {
+      alert(login);
+    }  
 
     // validUser ? alert("correcto") : alert("INcorrecto");
   } catch (error) {
-    console.log(error.message);
+    alert(error.response.data.error);
   }
 };
 export const getMenu = () => {
@@ -85,8 +82,14 @@ export const createMenu = (data) => {
     try {
       const newMenu = await axios.post("/menu/create", data);
       dispatch({ type: CREATE_MENU, payload: newMenu });
-      ReactDOM.render(<Alert title="Success" message="Se ha creado un nuevo menú" type="success" />,
-        document.getElementById('alert'))
+      ReactDOM.render(
+        <Alert
+          title="Success"
+          message="Se ha creado un nuevo menú"
+          type="success"
+        />,
+        document.getElementById("alert")
+      );
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
@@ -96,10 +99,16 @@ export const createMenu = (data) => {
 export const updateMenu = (data) => {
   return async function (dispatch) {
     try {
-      await axios.patch("/menu/update", data)
+      await axios.patch("/menu/update", data);
       dispatch({ type: UPDATE_MENU, payload: data });
-      ReactDOM.render(<Alert title="Success" message="Se ha actualizado un menú" type="success" />,
-        document.getElementById('alert'))
+      ReactDOM.render(
+        <Alert
+          title="Success"
+          message="Se ha actualizado un menú"
+          type="success"
+        />,
+        document.getElementById("alert")
+      );
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
@@ -112,8 +121,7 @@ export const filter = () => (dispatch) => {
 
 export const createUser = async (user) => {
   try {
-    const res = await axios
-      .post("/users/create", user);
+    const res = await axios.post("/users/create", user);
     return console.log(res);
   } catch (err) {
     return console.error(err);
@@ -123,8 +131,7 @@ export const createUser = async (user) => {
 
 export const deleteIngredient = async (id) => {
   try {
-    const res = await axios
-      .delete(`/ingredients/delete?id=${id}`);
+    const res = await axios.delete(`/ingredients/delete?id=${id}`);
     return console.log(res);
   } catch (err) {
     return console.error(err);

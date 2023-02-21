@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     if (!loginStatus) {
-      history.push("/login");
+      history.push("/");
     }
   }, [loginStatus]);
   return (
