@@ -13,12 +13,14 @@ import {
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 
+
 export const changeLoginStatus = ()=>{
   return { type: LOGIN_STATUS, };
   
 }
 
 export const validateLogin =  (values) => async (dispatch)=> {  
+
   try {
     const login = (
       await axios.post("/users/login", {
@@ -26,6 +28,7 @@ export const validateLogin =  (values) => async (dispatch)=> {
         password: values.password,
       })
     ).data;
+
 
     if (login) {
       console.log(login);
@@ -42,11 +45,14 @@ export const validateLogin =  (values) => async (dispatch)=> {
     } else {
       console.log(login);
       
+
     }  
 
     // validUser ? alert("correcto") : alert("INcorrecto");
   } catch (error) {
+
     console.log(error.message)
+
   }
 };
 export const getMenu = () => {

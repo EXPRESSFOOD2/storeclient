@@ -31,10 +31,12 @@ const filterFunction = (status, array) => {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+
     case LOGIN_STATUS:      
       return {
         ...state,
         loginStatus: !state.loginStatus,
+
       };
     case FILTER:
       return {
