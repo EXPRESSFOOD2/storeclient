@@ -69,15 +69,14 @@ const RegisterPage = (props) => {
     formik.values.password_question = value;
   };
 
-  const image = (e) => {
-    const value = e.target.value;
-    formik.values.profile_image = value;
+  const imageFn = (imageUrl) => {
+    formik.values.profile_image = imageUrl;
   };
 
   return (
     <div>
       <NavBar />
-      <Register formik={formik} selectQuestion={selectQuestion} image={image} />
+      <Register formik={formik} selectQuestion={selectQuestion} imageFn={imageFn} />
     </div>
   );
 };

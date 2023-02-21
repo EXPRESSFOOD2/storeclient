@@ -1,29 +1,60 @@
 .cards {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    margin-top: 2rem;
-    gap: 1rem;
-    padding-bottom: 4rem;
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+  */
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 .description {
-    margin-left: 2rem;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    width: 80%;
-    font-family: "Rubik", sans-serif;
-    font-size:medium;
+  margin-left: 2rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 80%;
+  font-family: "Rubik", sans-serif;
+  font-size: medium;
+}
+
+.foto {
+  width: 80px;
+}
+
+.nombre {
+  padding: 0px 40px;
+}
+
+.id {
+  padding: 0px 15px;
+}
+
+.precio {
+  padding: 0px 15px;
+}
+
+.cantidad {
+  padding: 0px 15px;
+}
+
+.accion {
+  padding: 0px 30px;
+
 }
 
 .container {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: #b7b1b1;
-    border-radius: 1rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #b7b1b1;
+  border-radius: 1rem;
 }

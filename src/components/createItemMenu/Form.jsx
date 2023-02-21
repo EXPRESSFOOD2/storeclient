@@ -226,12 +226,18 @@ export default function Form({ path, menu, ingredientes }) {
                   <span>Cantidad</span>
                 </div>
                 {ingredientesArray.map((item, i) => {
+                  console.log(ingredientesArray);
                   ingredientesArray[i].quantity = 0;
                   return (
                     <div className={style.rowTableData} key={i}>
-                      <span>{item.name}</span>
+                      <span>
+                        {item.name + " "}
+                        <span style={{ fontWeight: "bold" }}>
+                          {item.type_measure}
+                        </span>
+                      </span>
                       {path === "update" ? (
-                        <span>{cantidad[i]}</span>
+                        <span>{cantidad[i]} </span>
                       ) : (
                         <input
                           type="text"

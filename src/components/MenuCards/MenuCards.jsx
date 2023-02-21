@@ -10,12 +10,12 @@ const MenuCards = (props) => {
   return (
     <div className={styles.cards}>
       <div className={styles.description}>
-        <span>Foto</span>
-        <span>Id</span>
-        <span>Nombre</span>
-        <span>Precio</span>
-        <span>Cantidad</span>
-        <span>Acción</span>
+        <span className={styles.foto}>Foto</span>
+        <span className={styles.nombre}>Nombre</span>
+        <span className={styles.id}>Id</span>
+        <span className={styles.precio}>Precio</span>
+        <span className={styles.cantidad}>Cantidad</span>
+        <span className={styles.accion}>Acción</span>
       </div>
       <div className={styles.container}>
         {render
