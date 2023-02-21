@@ -2,23 +2,39 @@ import React from "react";
 import Login from "../../components/Login/Login";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { validateLogin } from "../../redux/Actions/actions";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const LoginPage = () => {
+  const loginStatus = useSelector((state) => state.loginStatus);
+  const history = useHistory();
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (loginStatus) {
+      history.push("/menu");
+    }
+  }, [loginStatus]);
+
   const formik = useFormik({
     initialValues: {
-      correo: "",
-      contraseña: "",
+      email: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      correo: Yup.string()
+      email: Yup.string()
         .email("Correo incorrecto")
         .required("Correo requerido"),
 
-      contraseña: Yup.string().required("Contraseña requerida"),
+      password: Yup.string().required("Contraseña requerida"),
     }),
-    onSubmit: (values) => {
-      console.log("formik submite");
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      dispatch(validateLogin(values))
+      
+      // await validateLogin(values);
+      //Falta re linkear a /menu
     },
   });
 
