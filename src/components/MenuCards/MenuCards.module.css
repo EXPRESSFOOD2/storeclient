@@ -1,11 +1,17 @@
 .cards {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   /* justify-content: center; */
-  align-items: center;
+  /* align-items: center;
   margin-top: 2rem;
   gap: 1rem;
-  padding-bottom: 0.5rem;
+  */
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 .description {
@@ -15,6 +21,31 @@
   width: 80%;
   font-family: "Rubik", sans-serif;
   font-size: medium;
+}
+
+.foto {
+  width: 80px;
+}
+
+.nombre {
+  padding: 0px 40px;
+}
+
+.id {
+  padding: 0px 15px;
+}
+
+.precio {
+  padding: 0px 15px;
+}
+
+.cantidad {
+  padding: 0px 15px;
+}
+
+.accion {
+  padding: 0px 30px;
+
 }
 
 .container {

@@ -8,13 +8,13 @@ const CardMenu = (props) => {
       <div className={styles.image}>
         <img src={props.imgURL} alt="hamburguesa" />
       </div>
-      <div className={styles.id}>
-        <span>{props.id}</span>
-        {/* <span>1</span> */}
-      </div>
       <div className={styles.name}>
         <span>{props.name}</span>
         {/* <span>Hamburguesa</span> */}
+      </div>
+      <div className={styles.id}>
+        <span>{props.id}</span>
+        {/* <span>1</span> */}
       </div>
       <div className={styles.price}>
         <span>{props.price}</span>
@@ -25,7 +25,8 @@ const CardMenu = (props) => {
         {/* <span>15</span> */}
       </div>
       <div className={styles.ico}>
-        <Link to={`/menu/update/${props.id}`}>
+        {/* <Link to={`/menu/update/${props.id}`}> */}
+        <Link to={`#`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
