@@ -25,8 +25,7 @@ const CardMenu = (props) => {
         {/* <span>15</span> */}
       </div>
       <div className={styles.ico}>
-        {/* <Link to={`/menu/update/${props.id}`}> */}
-        <Link to={`#`}>
+        <Link to={`/menu/update/${props.id}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
