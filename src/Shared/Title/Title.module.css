@@ -1,6 +1,6 @@
 .title {
   background: #8f1414;
-  width: 10rem;
+  min-width: 10rem;
   height: 4rem;
   border-bottom-left-radius: 5em;
   border-bottom-right-radius: 5em;
