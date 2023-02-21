@@ -11,7 +11,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .description {
@@ -45,7 +44,6 @@
 
 .accion {
   padding: 0px 30px;
-
 }
 
 .container {
