@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from "../../redux/Actions/actions";
 
 import { NavLink } from "react-router-dom";
-import style from "./Menu.module.css";
+import style from "./menu.module.css";
 
 
 const Menu = () => {
