@@ -4,11 +4,23 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { validateLogin } from "../../redux/Actions/actions";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
+
 
 const LoginPage = () => {
   const loginStatus = useSelector((state) => state.loginStatus);
   const history = useHistory();
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (loginStatus) {
+      history.push("/menu");
+    }
+  }, [loginStatus]);
+
 
   const formik = useFormik({
     initialValues: {
@@ -23,7 +35,11 @@ const LoginPage = () => {
       password: Yup.string().required("Contraseña requerida"),
     }),
     onSubmit: async (values) => {
-      await validateLogin(values);
+
+      dispatch(validateLogin(values))
+      
+      // await validateLogin(values);
+
       //Falta re linkear a /menu
     },
   });

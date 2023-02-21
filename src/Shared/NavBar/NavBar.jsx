@@ -3,9 +3,16 @@ import styles from "./NavBar.module.css";
 import img from "./image/logoSARASA.png";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { changeLoginStatus } from "../../redux/Actions/actions";
 
 const NavBar = () => {
   const location = useLocation().pathname.split("/").at(1);
+  const dispatch = useDispatch()
+  
+  function handleResetUserLogin() {
+
+  }
 
   return (
     <div className={styles.navbar}>
@@ -44,7 +51,7 @@ const NavBar = () => {
           </button>
         </Link>
         <Link to="/">
-          <button>Salir</button>
+          <button onClick={()=>dispatch(changeLoginStatus())}>Salir</button>
         </Link>
       </div>
     </div>

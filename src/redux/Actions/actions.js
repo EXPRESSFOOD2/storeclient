@@ -13,7 +13,14 @@ import {
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 
-export const validateLogin = async (values, dispatch) => {
+
+export const changeLoginStatus = ()=>{
+  return { type: LOGIN_STATUS, };
+  
+}
+
+export const validateLogin =  (values) => async (dispatch)=> {  
+
   try {
     const login = (
       await axios.post("/users/login", {
@@ -22,17 +29,30 @@ export const validateLogin = async (values, dispatch) => {
       })
     ).data;
 
-    if (login === "Conected!!! Logged!!") {
+
+    if (login) {
       console.log(login);
       // No esta haciendo el dispatch no se porque
       dispatch({ type: LOGIN_STATUS, payload: true });
+      ReactDOM.render(
+        <Alert
+          title="Success"
+          message={`Bienvenido ${values.email}`}
+          type="success"
+        />,
+        document.getElementById("alert")
+      );
     } else {
-      alert(login);
+      console.log(login);
+      
+
     }  
 
     // validUser ? alert("correcto") : alert("INcorrecto");
   } catch (error) {
-    alert(error.response.data.error);
+
+    console.log(error.message)
+
   }
 };
 export const getMenu = () => {
