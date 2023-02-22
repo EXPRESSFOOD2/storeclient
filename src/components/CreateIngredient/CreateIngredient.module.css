@@ -36,9 +36,8 @@
 }
 .ingredients{
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: .5rem;
+  flex-direction: row;
+  gap: 1rem;
   height: 15rem;
   border-radius: .5rem;
   background-color: rgb(223, 223, 223);
@@ -47,7 +46,13 @@
   overflow: scroll;
   overflow-x: hidden;
 }
+.divInfo{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
 .inputs{
+  width: 27rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background-color: white;
@@ -66,9 +71,12 @@
 }
 .buttonNew{
   width: fit-content;
+  height: fit-content;
   padding: .2rem;
-  margin: auto;
   cursor: pointer;
+  margin: auto;
+  position: sticky;
+  top: 6.7rem;
 }
 .submit{
   width: fit-content;
