@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Title from "../../Shared/Title/Title";
 import img from "./image/image-1.jpg";
 import styles from "./Register.module.css";
@@ -8,26 +8,25 @@ import { useDispatch } from "react-redux";
 const Register = ({ formik, selectQuestion, imageFn }) => {
   const dispatch = useDispatch();
   const questions = ["messi?", "verano o invierno?", "mayor de edad?"];
-  const [ imageInputState, setImageInputState ] = useState("");
-  const [ previewSource, setPreviewSource] = useState("");
+  const [imageInputState, setImageInputState] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
 
   const handleImageInputChange = async (e) => {
     const inputImg = e.target.files[0];
     prepareImageToShowAndSend(inputImg);
     dispatch(getImageUrl(previewSource, imageFn));
-  }
+  };
 
   const prepareImageToShowAndSend = (inputImg) => {
     const reader = new FileReader();
     reader.readAsDataURL(inputImg);
     reader.onloadend = () => {
-      setPreviewSource(reader.result)
-    }
-  }
+      setPreviewSource(reader.result);
+    };
+  };
 
   return (
     <div className={styles.register}>
-      <Title data="Regístrate" />
       <div className={styles.container}>
         <form
           className={styles.formBox}
@@ -49,10 +48,10 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
           </div>
           <div className={styles.formRight}>
             {/* //! TODO */}
-              {/* Hacer que la imagen aparezca una vez se establece
+            {/* Hacer que la imagen aparezca una vez se establece
                 Si esa imagen Url existe => "+ Agregar Imagen" cambia por "Modificar Imagen"
               */}
-              {/* {previewSource && (
+            {/* {previewSource && (
                 <img src={previewSource} alt="Profile Pic" />
               )} */}
             <div className={styles.contentfile}>

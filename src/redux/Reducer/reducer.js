@@ -37,7 +37,7 @@ const rootReducer = (state = initialState, action) => {
     case LOGIN_STATUS:      
       return {
         ...state,
-        loginStatus: !state.loginStatus,
+        loginStatus: action.payload,
 
       };
     case FILTER:

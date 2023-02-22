@@ -6,7 +6,6 @@ import Title from "../../Shared/Title/Title";
 const EditStore = (props) => {
   return (
     <div className={style.editStore}>
-      <Title data="Editar" />
       <div className={style.container}>
         <form action="" className={style.formBox}>
           <div className={style.formLeft}>

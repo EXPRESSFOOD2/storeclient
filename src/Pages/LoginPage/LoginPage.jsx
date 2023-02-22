@@ -10,7 +10,6 @@ import { useEffect } from "react";
 const LoginPage = () => {
   const loginStatus = useSelector((state) => state.loginStatus);
   const history = useHistory();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,10 +32,6 @@ const LoginPage = () => {
     }),
     onSubmit: async (values) => {
       dispatch(validateLogin(values));
-
-      // await validateLogin(values);
-
-      //Falta re linkear a /menu
     },
   });
 

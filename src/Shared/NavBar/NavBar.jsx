@@ -10,7 +10,13 @@ const NavBar = () => {
   const location = useLocation().pathname.split("/").at(1);
   const dispatch = useDispatch()
   
-  function handleResetUserLogin() {
+  function handleResetUserLogin() { 
+    try {
+      window.localStorage.setItem("userLogin", "false");
+    } catch (error) {
+      console.error(error);
+    }  
+    dispatch(changeLoginStatus(false))
 
   }
 
@@ -51,7 +57,7 @@ const NavBar = () => {
           </button>
         </Link>
         <Link to="/">
-          <button onClick={()=>dispatch(changeLoginStatus())}>Salir</button>
+          <button onClick={()=>handleResetUserLogin()}>Salir</button>
         </Link>
       </div>
     </div>

@@ -14,8 +14,47 @@ import {
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 
+
 export const changeLoginStatus = () => {
     return { type: LOGIN_STATUS };
+
+export const changeLoginStatus = (value) => {
+  return { type: LOGIN_STATUS, payload: value };
+};
+
+export const validateLogin = (values) => async (dispatch) => {
+  try {
+    const login = (
+      await axios.post("/users/login", {
+        email: values.email,
+        password: values.password,
+      })
+    ).data;
+
+    if (login) {
+      try {
+        window.localStorage.setItem("userLogin", "true");
+      } catch (error) {
+        console.error(error);
+      }
+      dispatch(changeLoginStatus(true));
+      ReactDOM.render(
+        <Alert
+          title="Success"
+          message={`Bienvenido ${values.email}`}
+          type="success"
+        />,
+        document.getElementById("alert")
+      );
+      return true;
+    } else {
+      alert("Invalid Account & Password or This Account Doesn't exist");
+    }
+    // validUser ? alert("correcto") : alert("INcorrecto");
+  } catch (error) {
+    alert(error.response.data.error);
+  }
+
 };
 
 export const validateLogin = (values) => async (dispatch) => {
@@ -121,6 +160,7 @@ export const filter = () => (dispatch) => {
 };
 
 export const createUser = (user) => {
+
     return async (dispatch) => {
         try {
             const res = await axios.post("http://localhost:3001/users/create", user);
@@ -146,6 +186,7 @@ export const getImageUrl = (imageStr, imageFn) => {
             console.error(error);
         }
     };
+
 };
 
 export const deleteIngredient = async (id) => {
@@ -207,6 +248,8 @@ export const createIngredients = (data) => async (dispatch) => {
 };
 
 export const resetError = () => {
+
     //Funcion para resetear el estado de redux error en false, despues de un error
     return { type: ERROR, payload: false };
+
 };

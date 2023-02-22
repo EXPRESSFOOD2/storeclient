@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import MenuRecipe from "../../../components/MenuRecipe/MenuRecipe";
 import NavBar from "../../../Shared/NavBar/NavBar";
-import Pagination from "../../../Shared/Pagination/Pagination";
-import Filter from "../../../Shared/Filter/Filter"
+import Pagination from "../../../Shared/Pagination/PaginationComponent";
+import Filter from "../../../Shared/Filter/Filter";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from "../../../redux/Actions/actions";
@@ -27,7 +27,7 @@ const GetRecipe = () => {
   return (
     <div>
       <NavBar />
-      <Filter/>
+      <Filter />
       <MenuRecipe pagina={pagina} porPagina={porPagina} render={render} />
       <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
     </div>
@@ -35,9 +35,6 @@ const GetRecipe = () => {
 };
 
 export default GetRecipe;
-  
-
-
 
 /* import GetRecipe from '../../../components/Recipe/Get/GetRecipe.jsx'
 import NavBar from "../../../Shared/NavBar/NavBar.jsx";
