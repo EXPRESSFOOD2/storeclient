@@ -9,7 +9,7 @@ import { getMenu } from "../../redux/Actions/actions";
 
 import { NavLink } from "react-router-dom";
 import style from "./menu.module.css";
-
+const Menu = () => {
   const dispatch = useDispatch();
   const render = useSelector((state) => state.render);
 
