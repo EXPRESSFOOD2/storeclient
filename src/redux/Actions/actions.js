@@ -13,14 +13,11 @@ import {
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 
+export const changeLoginStatus = (value) => {
+  return { type: LOGIN_STATUS, payload: value };
+};
 
-export const changeLoginStatus = ()=>{
-  return { type: LOGIN_STATUS, };
-  
-}
-
-export const validateLogin =  (values) => async (dispatch)=> {  
-
+export const validateLogin = (values) => async (dispatch) => {
   try {
     const login = (
       await axios.post("/users/login", {
@@ -29,11 +26,13 @@ export const validateLogin =  (values) => async (dispatch)=> {
       })
     ).data;
 
-
     if (login) {
-      console.log(login);
-      // No esta haciendo el dispatch no se porque
-      dispatch({ type: LOGIN_STATUS, payload: true });
+      try {
+        window.localStorage.setItem("userLogin", "true");
+      } catch (error) {
+        console.error(error);
+      }
+      dispatch(changeLoginStatus(true));
       ReactDOM.render(
         <Alert
           title="Success"
@@ -42,17 +41,13 @@ export const validateLogin =  (values) => async (dispatch)=> {
         />,
         document.getElementById("alert")
       );
+      return true;
     } else {
-      console.log(login);
-      
-
-    }  
-
+      alert("Invalid Account & Password or This Account Doesn't exist");
+    }
     // validUser ? alert("correcto") : alert("INcorrecto");
   } catch (error) {
-
-    console.log(error.message)
-
+    alert(error.response.data.error);
   }
 };
 export const getMenu = () => {
@@ -139,35 +134,33 @@ export const filter = () => (dispatch) => {
   dispatch({ type: FILTER });
 };
 
-
 export const createUser = (user) => {
   return async (dispatch) => {
     try {
-      const res = await axios
-        .post("http://localhost:3001/users/create", user);
-        //! PROVICIONAL
+      const res = await axios.post("http://localhost:3001/users/create", user);
+      //! PROVICIONAL
       alert("Ok, user Creado");
     } catch (err) {
       return console.error(err);
     }
-
-  }
+  };
   // después veré que hacer con la respuesta o el error por el momento la consologeo
 };
 
 export const getImageUrl = (imageStr, imageFn) => {
   return async (dispatch) => {
-      try {
-        let result = await axios.post("http://localhost:3001/processImage/post", {imageStr: imageStr})
-        imageFn(result.data)
-        //! ?! manejar Success && Error
-        return result;
-      } catch(error) {
-        console.error(error)
-      }
-}
-
-}
+    try {
+      let result = await axios.post("http://localhost:3001/processImage/post", {
+        imageStr: imageStr,
+      });
+      imageFn(result.data);
+      //! ?! manejar Success && Error
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
 
 export const deleteIngredient = async (id) => {
   try {

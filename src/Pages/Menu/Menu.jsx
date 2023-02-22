@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from "../../redux/Actions/actions";
 
 import { NavLink } from "react-router-dom";
-import style from "./menu.module.css";
-
+import style from "./Menu.module.css";
 
 const Menu = () => {
+  
   const [pagina, setPagina] = useState(1);
   const [porPagina] = useState(10);
 
