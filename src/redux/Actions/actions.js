@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createRoot } from "react-dom/client";
+import ReactDOM from 'react-dom';
 
 import {
     GET_MENU,
@@ -15,8 +16,7 @@ import {
 import Alert from "../../Shared/Alert/Alert";
 
 
-export const changeLoginStatus = () => {
-    return { type: LOGIN_STATUS };
+
 
 export const changeLoginStatus = (value) => {
   return { type: LOGIN_STATUS, payload: value };
@@ -57,32 +57,7 @@ export const validateLogin = (values) => async (dispatch) => {
 
 };
 
-export const validateLogin = (values) => async (dispatch) => {
-    try {
-        const login = (
-            await axios.post("/users/login", {
-                email: values.email,
-                password: values.password,
-            })
-        ).data;
 
-        if (login) {
-            console.log(login);
-            // No esta haciendo el dispatch no se porque
-            dispatch({ type: LOGIN_STATUS, payload: true });
-            const root = createRoot(document.getElementById("alert"));
-            root.render(
-                <Alert title="Success" message={`Bienvenido ${values.email}`} type="success" />
-            );
-        } else {
-            console.log(login);
-        }
-
-        // validUser ? alert("correcto") : alert("INcorrecto");
-    } catch (error) {
-        console.log(error.message);
-    }
-};
 export const getMenu = () => {
     return async function (dispatch) {
         try {
