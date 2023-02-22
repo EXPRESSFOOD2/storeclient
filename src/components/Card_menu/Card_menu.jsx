@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Card_menu.module.css";
 import { Link } from "react-router-dom";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 
 const CardMenu = (props) => {
   return (
@@ -12,8 +14,13 @@ const CardMenu = (props) => {
         <span>{props.name}</span>
         {/* <span>Hamburguesa</span> */}
       </div>
-      <div className={styles.col}>
-        <span>{props.id}</span>
+      <div className={styles.colIcon}>
+        {props.active ? (
+          <CheckBoxIcon fontSize="large" color="success" />
+        ) : (
+          <DisabledByDefaultIcon fontSize="large" color="error" />
+        )}
+
         {/* <span>1</span> */}
       </div>
       <div className={styles.col}>

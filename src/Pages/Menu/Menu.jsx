@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MenuCards from "../../components/MenuCards/MenuCards";
 import NavBar from "../../Shared/NavBar/NavBar";
-import Pagination from "../../Shared/Pagination/Pagination";
+import Pagination from "../../Shared/Pagination/PaginationComponent";
 import Filter from "../../Shared/Filter/Filter";
 
 import { useDispatch, useSelector } from "react-redux";

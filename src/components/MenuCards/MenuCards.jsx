@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CardMenu from "../Card_menu/Card_menu";
 import styles from "./MenuCards.module.css";
-import Pagination from "../../Shared/Pagination/Pagination";
+import Pagination from "../../Shared/Pagination/PaginationComponent";
 
 const MenuCards = (props) => {
   // TODO Este será el estado global que contiene todos los menus
@@ -20,7 +20,7 @@ const MenuCards = (props) => {
         <div className={styles.description}>
           <span className={styles.foto}>Foto</span>
           <span className={styles.nombre}>Nombre</span>
-          <span className={styles.id}>Id</span>
+          <span className={styles.id}>Active</span>
           <span className={styles.precio}>Precio</span>
           <span className={styles.cantidad}>Cantidad</span>
           <span className={styles.accion}>Acción</span>
@@ -39,6 +39,7 @@ const MenuCards = (props) => {
                 key={index}
                 imgURL={element.url_image}
                 price={element.price}
+                active={element.is_active}
               />
             ))}
         </div>
