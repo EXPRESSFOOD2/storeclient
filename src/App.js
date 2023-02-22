@@ -9,8 +9,6 @@ import Menu from "./Pages/Menu/Menu";
 import Ingredients from "./Pages/Ingredients/Ingredients";
 
 import GetRecipe from "./Pages/Recipe/Get/GetRecipe"
-
-import UpdateIngredient from "./Pages/UpdateIngredient/UpdateIngredient";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 

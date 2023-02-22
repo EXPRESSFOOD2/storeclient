@@ -8,8 +8,10 @@ import {
   UPDATE_MENU,
   GET_INGREDIENT_ID,
   LOGIN_STATUS,
+  CREATE_INGREDIENTS,
 } from "../Actions/types";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+
 
 const initialState = {
   loginStatus: false,
@@ -59,12 +61,11 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, ingredients: action.payload };
     case GET_INGREDIENT_ID:
       return { ...state, ingredientDetail: action.payload };
-
+    case CREATE_INGREDIENTS:
+      return { ... state, ingredients:[...state.ingredients, ...action.payload]}
     case ERROR:
-      ReactDOM.render(
-        <Alert title="Error" message={action.payload} type="danger" />,
-        document.getElementById("alert")
-      );
+      const root = createRoot(document.getElementById("alert"));
+      root.render(<Alert title="Error" message={action.payload} type="danger" />);
       return { ...state, errors: action.payload };
     default:
       return { ...state };
