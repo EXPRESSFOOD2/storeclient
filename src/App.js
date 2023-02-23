@@ -15,6 +15,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { changeLoginStatus } from "./redux/Actions/actions";
 
+
+
+//! sockets
+import io from 'socket.io-client'
+export const socket = io('http://localhost:3001/')
+
+
 //Se establece la base de axios pensando en el deploy
 axios.defaults.baseURL = "http://localhost:3001/";
 
@@ -33,6 +40,10 @@ function App() {
   //Se cambio la verificacion del login a estadoLocal.
 
   useEffect(() => {
+    socket.emit('prueba',{data:'bienvendo a socket io'},()=>{
+      console.log('conexion exitosa');
+    })
+
     if (userLogin === "false" || !userLogin) {
       history.push("/");
     } else {
