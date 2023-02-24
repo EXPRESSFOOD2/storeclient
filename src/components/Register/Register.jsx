@@ -1,29 +1,33 @@
-import React, { useState } from "react";
-import Title from "../../Shared/Title/Title";
-import img from "./image/image-1.jpg";
-import styles from "./Register.module.css";
-import { getImageUrl } from "../../redux/Actions/actions";
-import { useDispatch } from "react-redux";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react'
+import Title from '../../Shared/Title/Title'
+import img from './image/image-1.jpg'
+import styles from './Register.module.css'
+import { getImageUrl } from '../../redux/Actions/actions'
+import { useDispatch } from 'react-redux'
 
 const Register = ({ formik, selectQuestion, imageFn }) => {
+
   const dispatch = useDispatch();
   const roles = ["cocinero", "cajero"];
   const [imageInputState, setImageInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");
 
+
   const handleImageInputChange = async (e) => {
-    const inputImg = e.target.files[0];
-    prepareImageToShowAndSend(inputImg);
-    dispatch(getImageUrl(previewSource, imageFn));
-  };
+    const inputImg = e.target.files[0]
+    prepareImageToShowAndSend(inputImg)
+    dispatch(getImageUrl(previewSource, imageFn))
+  }
 
   const prepareImageToShowAndSend = (inputImg) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(inputImg);
+    const reader = new FileReader()
+    reader.readAsDataURL(inputImg)
     reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
+      setPreviewSource(reader.result)
+    }
+  }
 
   return (
     <div className={styles.register}>
@@ -69,94 +73,106 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
               <input
                 type="text"
                 placeholder="nombre"
-                className={formik.errors.name ? styles.errorInput : ""}
+                className={formik.errors.name ? styles.errorInput : ''}
                 id="name"
                 name="name"
-                {...formik.getFieldProps("name")}
+                {...formik.getFieldProps('name')}
               />
-              {formik.touched.name && formik.errors.name ? (
+              {formik.touched.name && formik.errors.name
+                ? (
                 <label className={styles.errorText}>{formik.errors.name}</label>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className={styles.inputs}>
               <label htmlFor="last_name">Apellido</label>
               <input
                 type="text"
                 placeholder="apellido"
-                className={formik.errors.last_name ? styles.errorInput : ""}
+                className={formik.errors.last_name ? styles.errorInput : ''}
                 id="last_name"
                 name="last_name"
-                {...formik.getFieldProps("last_name")}
+                {...formik.getFieldProps('last_name')}
               />
-              {formik.touched.last_name && formik.errors.last_name ? (
+              {formik.touched.last_name && formik.errors.last_name
+                ? (
                 <label className={styles.errorText}>
                   {formik.errors.last_name}
                 </label>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className={styles.inputs}>
               <label htmlFor="account_name">Nombre de usuario</label>
               <input
                 type="text"
                 placeholder="nombre de usuario"
-                className={formik.errors.account_name ? styles.errorInput : ""}
+                className={formik.errors.account_name ? styles.errorInput : ''}
                 id="account_name"
                 name="account_name"
-                {...formik.getFieldProps("account_name")}
+                {...formik.getFieldProps('account_name')}
               />
-              {formik.touched.account_name && formik.errors.account_name ? (
+              {formik.touched.account_name && formik.errors.account_name
+                ? (
                 <label className={styles.errorText}>
                   {formik.errors.account_name}
                 </label>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className={styles.inputs}>
               <label htmlFor="phone">Telefono</label>
               <input
                 type="text"
                 placeholder="telefono"
-                className={formik.errors.phone ? styles.errorInput : ""}
+                className={formik.errors.phone ? styles.errorInput : ''}
                 id="phone"
                 name="phone"
-                {...formik.getFieldProps("phone")}
+                {...formik.getFieldProps('phone')}
               />
-              {formik.touched.phone && formik.errors.phone ? (
+              {formik.touched.phone && formik.errors.phone
+                ? (
                 <label className={styles.errorText}>
                   {formik.errors.phone}
                 </label>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className={styles.inputs}>
               <label htmlFor="email">Email</label>
               <input
                 type="text"
                 placeholder="correo"
-                className={formik.errors.email ? styles.errorInput : ""}
+                className={formik.errors.email ? styles.errorInput : ''}
                 id="email"
                 name="email"
-                {...formik.getFieldProps("email")}
+                {...formik.getFieldProps('email')}
               />
-              {formik.touched.email && formik.errors.email ? (
+              {formik.touched.email && formik.errors.email
+                ? (
                 <label className={styles.errorText}>
                   {formik.errors.email}
                 </label>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className={styles.inputs}>
               <label htmlFor="password">Contraseña</label>
               <input
                 type="password"
                 placeholder="contraseña"
-                className={formik.errors.password ? styles.errorInput : ""}
+                className={formik.errors.password ? styles.errorInput : ''}
                 id="password"
                 name="password"
-                {...formik.getFieldProps("password")}
+                {...formik.getFieldProps('password')}
               />
-              {formik.touched.password && formik.errors.password ? (
+              {formik.touched.password && formik.errors.password
+                ? (
                 <label className={styles.errorText}>
                   {formik.errors.password}
                 </label>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className={styles.inputs}>
               <label htmlFor="">Rol</label>
@@ -201,15 +217,18 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
                 placeholder="contraseña"
                 id="password_answer"
                 name="password_answer"
-                {...formik.getFieldProps("password_answer")}
+                {...formik.getFieldProps('password_answer')}
               />
               {formik.touched.password_answer &&
-              formik.errors.password_answer ? (
+              formik.errors.password_answer
+                ? (
                 <label className={styles.errorText}>
                   {formik.errors.password_answer}
                 </label>
+
               ) : null}
             </div> */}
+
             <div className={styles.inputs}>
               <button type="submit">Registrar</button>
             </div>
@@ -217,7 +236,7 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

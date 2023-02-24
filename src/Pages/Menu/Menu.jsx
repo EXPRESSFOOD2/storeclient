@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import MenuCards from "../../components/MenuCards/MenuCards";
-import NavBar from "../../Shared/NavBar/NavBar";
-import Pagination from "../../Shared/Pagination/PaginationComponent";
-import Filter from "../../Shared/Filter/Filter";
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react'
+import MenuCards from '../../components/MenuCards/MenuCards'
+import NavBar from '../../Shared/NavBar/NavBar'
+import Filter from '../../Shared/Filter/Filter'
 
-import { useDispatch, useSelector } from "react-redux";
-import { getMenu } from "../../redux/Actions/actions";
+import { useDispatch, useSelector } from 'react-redux'
+import { getMenu } from '../../redux/Actions/actions'
 
-import { NavLink } from "react-router-dom";
-import style from "./menu.module.css";
+import { NavLink } from 'react-router-dom'
+import style from './menu.module.css'
 const Menu = () => {
-  const dispatch = useDispatch();
-  const render = useSelector((state) => state.render);
+  const dispatch = useDispatch()
+  const render = useSelector((state) => state.render)
 
   // Dispatch
 
   useEffect(() => {
     if (!render.length) {
-      dispatch(getMenu());
+      dispatch(getMenu())
     }
-  }, [render, dispatch]);
+  }, [render, dispatch])
 
   return (
     <div className={style.container}>
@@ -35,7 +35,7 @@ const Menu = () => {
         <MenuCards render={render} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

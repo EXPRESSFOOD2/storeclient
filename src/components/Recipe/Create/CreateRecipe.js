@@ -1,30 +1,31 @@
-import React, {useState} from 'react';
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-tabs */
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react'
 import './CreateRecipe.css'
 
 const CreateRecipe = () => {
-	const [inputNombre, cambiarInputNombre] = useState('');
-	const [inputDetalle, cambiarInputDetalle] = useState('');
-	const [inputMedida, cambiarInputMedida] = useState('');
-  	const [inputCantidad, cambiarInputCantidad] = useState('');
+  const [inputNombre, cambiarInputNombre] = useState('')
+  const [inputDetalle, cambiarInputDetalle] = useState('')
+  const [inputMedida, cambiarInputMedida] = useState('')
+  const [inputCantidad, cambiarInputCantidad] = useState('')
 
-	// Funcion que se encargara de validar los datos y enviar el formulario
-	const handleSubmit = (e) => {
-		e.preventDefault();
-	}
+  // Funcion que se encargara de validar los datos y enviar el formulario
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
 
-	// Funcion que se encarga de cambiar el estado del inputNombre
-	const handleInputNombre = (e) => {
+  // Funcion que se encarga de cambiar el estado del inputNombre
+  const handleInputNombre = (e) => {
+    cambiarInputNombre(e.target.value)
+  }
 
+  // Funcion que se encarga de cambiar el estado del inputCantidad
+  const handleInputCantidad = (e) => {
+    cambiarInputCantidad(e.target.value)
+  }
 
-		cambiarInputNombre(e.target.value);
-	}
-
-	// Funcion que se encarga de cambiar el estado del inputCantidad
-	const handleInputCantidad = (e) => {
-		cambiarInputCantidad(e.target.value);
-	}
-
-	return (
+  return (
 	  <div>
 
 		<div className='contenedor'>
@@ -32,15 +33,15 @@ const CreateRecipe = () => {
 		  <div className='receta'>Crear Receta</div>
 
 			<form action="" onSubmit={handleSubmit} className="formulario">
-			 
+
 			  <div className='seccion_1'>
-				<div > 
+				<div >
 				<a >
                   <img className='logo' src="https://media.istockphoto.com/id/467416670/es/foto/bisonte-pasto-hamburguesa.jpg?s=1024x1024&w=is&k=20&c=oqFXPuZFw0iixJbmYW8xRk1S45HHP8gB0vn9WdFshdU="/>
                 </a>
 				</div>
-				
-			      <div className = "seccion_2"> 
+
+			      <div className = "seccion_2">
 				    <div>
 					  <label htmlFor="nombre">Nombres*</label>
 					  <input className='nombre'
@@ -59,10 +60,10 @@ const CreateRecipe = () => {
 						name="detalle"
 						id="detalle"
 						 />
-					 
+
 				    </div>
 
-					<div className='seccion_3'>	
+					<div className='seccion_3'>
 
 					  <div>
 						<label htmlFor="cantidad">Cantidad Prod.</label>
@@ -87,7 +88,7 @@ const CreateRecipe = () => {
 					    </select>
 					  </div>
 					</div>
-				  </div> 
+				  </div>
 			  </div>
 
         		<div className='seccion_4'>
@@ -128,7 +129,7 @@ const CreateRecipe = () => {
 						<option value="litro">*-- Kilos --*</option>
 						<option value="litro">*-- Libras --*</option>
 						<option value="gr">*-- Gramos --*</option>
-					  </select>		
+					  </select>
 				  </div>
 
 				  <div>
@@ -180,7 +181,7 @@ const CreateRecipe = () => {
 							<option value="litro">*-- Kilos --*</option>
 							<option value="litro">*-- Libras --*</option>
 							<option value="gr">*-- Gramos --*</option>
-							</select>		
+							</select>
 						</div>
 
 						<div>
@@ -205,52 +206,17 @@ const CreateRecipe = () => {
 						id="detalle"
 						/>
 				    </div>
-					
+
 				  <button type="submit">Enviar</button>
 			</form>
          </div>
 	  </div>
-	);
+  )
 }
- 
-export default CreateRecipe;
 
+export default CreateRecipe
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*import React from 'react';
+/* import React from 'react';
 import './Form.css'
 
 export default function  Form() {
@@ -266,61 +232,61 @@ export default function  Form() {
     }
 
   return (
-    
-    //onSubmit={(e) => { e.preventDefault() } }  
+
+    //onSubmit={(e) => { e.preventDefault() } }
 
     <form>
-      <div className = 'container_1'> 
+      <div className = 'container_1'>
 
         <div className='crear_receta'>
           <h3>Crear Receta</h3>
         </div>
 
-        <div className = "container_2">  
+        <div className = "container_2">
           <div>
-            
+
           </div>
           <div className='logo'>
             <h5>logo</h5>
           </div>
-          
+
           <label><b>Nombre* : </b></label>
-          <input type="text" name="name" placeholder ="Nombre" value = {username} 
+          <input type="text" name="name" placeholder ="Nombre" value = {username}
           onChange={(e) => handleChangeName(e)} />
 
           <div>
             <label><b>Tipo Medida* : </b></label>
-            <input type="text" name="medida" placeholder = "Opciones" value = {password} 
+            <input type="text" name="medida" placeholder = "Opciones" value = {password}
             onChange={(evento) => handleChange(evento)} />
           </div>
 
           <div>
             <label><b>Cantidad* : </b></label>
-            <input type="text" name="cantidad" value = {password} 
+            <input type="text" name="cantidad" value = {password}
             onChange={(evento) => handleChange(evento)} />
           </div>
 
           <div>
             <label><b>Agregar Ingredientes : </b></label>
-            <input type="text" name="ingrediente" placeholder = "Agregar Ingredientes..." value = {password} 
+            <input type="text" name="ingrediente" placeholder = "Agregar Ingredientes..." value = {password}
             onChange={(evento) => handleChange(evento)} />
           </div>
 
           <div>
             <label><b>Tabla de Ingredientes : </b></label>
-            <input type="text" name="Tabla_ingrediente" placeholder ="Tabla de Ingredientes " value = {password} 
+            <input type="text" name="Tabla_ingrediente" placeholder ="Tabla de Ingredientes " value = {password}
             onChange={(evento) => handleChange(evento)} />
           </div>
 
           <div>
             <label><b>Detalle : </b></label>
-            <input type="text" name="detalle" placeholder = "detalle" value = {password} 
+            <input type="text" name="detalle" placeholder = "detalle" value = {password}
             onChange={(evento) => handleChange(evento)} />
           </div>
 
           </div>
-          
+
       </div>
       </form>
     )
-}*/
+} */

@@ -1,11 +1,11 @@
-import React from "react";
-import CardIngredient from "../Card_Ingredient/Card_Ingredient";
-import { useSelector } from "react-redux";
-import styles from "./IngredientsCards.module.css";
+import React from 'react'
+import CardIngredient from '../Card_Ingredient/Card_Ingredient'
+import { useSelector } from 'react-redux'
+import styles from './IngredientsCards.module.css'
 
 const IngredientsCards = () => {
-    const ingredients = useSelector((state) => state.ingredients);
-    return (
+  const ingredients = useSelector((state) => state.ingredients)
+  return (
         <div className={styles.cards}>
             <div className={styles.description}>
                 <div>
@@ -30,7 +30,7 @@ const IngredientsCards = () => {
                 ))}
             </div>
         </div>
-    );
-};
+  )
+}
 
-export default IngredientsCards;
+export default IngredientsCards
