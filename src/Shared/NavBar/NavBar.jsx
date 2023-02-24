@@ -7,15 +7,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { changeLoginStatus } from '../../redux/Actions/actions'
 
-import React from "react";
-import styles from "./NavBar.module.css";
-import img from "./image/logoFinal.jpg";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { changeLoginStatus } from "../../redux/Actions/actions";
-
-
 const NavBar = () => {
   const location = useLocation().pathname.split('/').at(1)
   const dispatch = useDispatch()
