@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { createRoot } from "react-dom/client";
 import ReactDOM from "react-dom";
@@ -144,7 +145,7 @@ export const filter = () => (dispatch) => {
 export const createUser = (user) => {
   return async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:3001/users/create", user);
+      const res = await axios.post("/users/create", user);
       //! PROVICIONAL
       alert("Ok, user Creado");
     } catch (err) {
@@ -157,7 +158,7 @@ export const createUser = (user) => {
 export const getImageUrl = (imageStr, imageFn) => {
   return async (dispatch) => {
     try {
-      let result = await axios.post("http://localhost:3001/processImage/post", {
+      let result = await axios.post("/processImage/post", {
         imageStr: imageStr,
       });
       imageFn(result.data);
