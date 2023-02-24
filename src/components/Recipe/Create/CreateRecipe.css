@@ -1,0 +1,246 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');*/
+
+.contenedor {
+	border-radius: 15px;
+	background-color: #f0eee9;
+	border: 2px solid #e0d4d4;
+	width: 150vh;
+	height: 97vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	margin-left: 18vh;
+}
+
+.receta{
+	text-align: center;
+	width: 30%;
+	height: 5%;
+	color: #fff;
+	font-size: 26px;
+	font-weight: 800;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #e24b4b;
+	margin-left: 70px;
+	border-radius: 15px;
+	margin-bottom: 15px;
+	margin-top:45px;
+}
+
+.formulario {
+	border: 1px solid #e0d4d4;
+	width: 900px;
+	background: #fff;
+	border-radius: 15px;
+	padding: 10px 60px 40px 80px;
+}
+
+.logo {
+	background-color: #f0eee9;
+	border: 2px solid #de1d1d;
+	border-radius: 35px;
+	height: 280px;
+	width: 460px;
+}
+
+.seccion_1{
+	margin-top:30px;
+	display: inline-flex;
+}
+
+ .seccion_2  {
+	width: 40vh;
+	height: 20vh;
+	flex-direction:column; 
+	margin-left:50px;
+ }
+
+ .seccion_3{
+	display: inline-flex;
+ }
+
+ .seccion_4{
+	display: inline-flex;
+ }
+
+.formulario div {
+	margin-bottom: 12px;
+}
+
+.formulario, label {
+	font-family: 'Open Sans', sans-serif;
+	display: block;
+	font-weight: 600;
+	font-size: 15px;
+	margin-bottom: 6px;
+	color: #1f1f1f;
+}
+
+.nombre {
+	background-color: #f0eee9;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	width: 350px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	padding: 15px;
+	margin-bottom: 5px;
+	color: #1f1f1f;
+}
+
+.detalle {
+	background-color: #f0eee9;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	width: 350px;
+	height: 30px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	padding: 18px;
+	padding-right: 8px;
+	margin-bottom: 5px;
+	color: #1f1f1f;
+}
+
+.cantidad_producida {
+	background-color: #f0eee9;
+	cursor: pointer;
+	width: 85px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	padding: 10px;
+	margin-right: 35px;
+	color: #1f1f1f;
+}
+
+.formulario div select {
+	background-color: #f0ede9;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	width: 230px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	padding: 10px;
+	margin-right: 20px;
+	color: #1f1f1f;
+}
+
+.formulario div nav select {
+	background-color: #f0ede9;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	width: 320px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	margin-right: 20px;
+	color: #1f1f1f;
+}
+
+.cantidad_ingrediente{
+	background-color: #f0eee9;
+	cursor: pointer;
+	width: 75px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	padding: 10px;
+	color: #1f1f1f;
+	margin-right: 20px;
+}
+
+.t_desperdicio {
+	background-color: #f0eee9;
+	cursor: pointer;
+	width: 60px;
+	height: 17px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	padding: 10px;
+	color: #1f1f1f;
+
+}
+
+.añadidos {
+	background-color: #f0eee9;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	width: 878px;
+	height: 60px;
+	border-radius: 5px;
+	border: 3px solid #e2e2e2;
+	font-size: 15px;
+	color: #1f1f1f;
+}
+
+.formulario input:focus {
+	outline: none;
+	border: 2px solid black;
+}
+
+.formulario .error {
+	color: #e92b2d;
+	font-weight: 600;
+	font-size: 12px;
+}
+
+.formulario nav button[type="submit"] {
+	
+	font-size: 17px;
+	background-color: #67ae549d;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	cursor: pointer;
+	width: 73px;
+	height: 60px;
+	border-radius: 5px;
+	color: black;
+	margin-top:6px;
+	margin-left: 20px;
+	text-align: center;
+}
+
+.formulario button[type="submit"] {
+	font-size: 20px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #d87f7f;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 30%;
+	padding: 10px;
+	border-radius: 15px;
+	color: #fff;
+	transition: .2s ease all;
+	margin-left: 340px;
+}
+
+.formulario button[type="submit"]:hover {
+	background: #f10820;
+}
+
+.formulario .exito {
+	text-align: center;
+	font-size: 14px;
+	padding-top: 20px;
+	color: #02a802;
+}
+
+.formulario input[type="radio"] {
+	width: auto;
+}
+
+
+
+
+
+
+

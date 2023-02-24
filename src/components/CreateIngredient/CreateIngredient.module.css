@@ -1,0 +1,86 @@
+.createIngredient {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 1, 0.411);
+    display: grid;
+    place-items: center;
+    z-index: 5000;
+}
+.container{
+  width: 37rem;
+  min-height: 20rem;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem 2rem 3rem 2rem;
+}
+.container img{
+  width: 1rem;
+  height: 1rem;
+  position: sticky;
+  margin-right: -35rem;
+  cursor: pointer;
+}
+.container h1{
+  margin-top: -.5rem;
+}
+.container form{
+  min-height: 18rem;
+  /* border: 1px solid green; */
+}
+.description{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.ingredients{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 15rem;
+  border-radius: .5rem;
+  background-color: rgb(223, 223, 223);
+  border: 2px solid rgb(223, 223, 223);
+  padding: 1rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.divInfo{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.inputs{
+  width: 27rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: white;
+  border-radius: .5rem;
+  padding: .5rem;
+}
+.inputs input{
+  border-radius: .3rem;
+  height: 1.5rem;
+}
+
+.inputs select{
+  width: 7rem;
+  margin: auto;
+  height: 1.5rem;
+}
+.buttonNew{
+  width: fit-content;
+  height: fit-content;
+  padding: .2rem;
+  cursor: pointer;
+  margin: auto;
+  position: sticky;
+  top: 6.7rem;
+}
+.submit{
+  width: fit-content;
+  padding: .2rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
