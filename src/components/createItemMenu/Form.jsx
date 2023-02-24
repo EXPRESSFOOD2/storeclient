@@ -1,75 +1,77 @@
-import React, { useState } from "react";
-import style from "./form.module.css";
-import img from "./image/leftImgBG.jpg";
-import Title from "../../Shared/Title/Title";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import { createMenu, updateMenu } from "../../redux/Actions/actions";
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react'
+import style from './form.module.css'
+import img from './image/leftImgBG.jpg'
+import Title from '../../Shared/Title/Title'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { useDispatch } from 'react-redux'
+import { createMenu, updateMenu } from '../../redux/Actions/actions'
 
-export default function Form({ path, menu, ingredientes }) {
+export default function Form ({ path, menu, ingredientes }) {
   const [ingredientesArray, setIngredientesArray] = useState(
     menu?.Ingredients || []
-  );
+  )
 
-  const [showImg, setShowImg] = useState(false);
+  const [showImg, setShowImg] = useState(false)
   const [cantidad, setCantidad] = useState(
     menu?.Ingredients.map((item) => item.IngredientsMenuItems.quantity) || []
-  );
-  const [urlImage, setUrlImage] = useState("");
+  )
+  const [urlImage, setUrlImage] = useState('')
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   // change ingredient quantity by type
   const onIngredeintFormChangeHandler = (e) => {
-    const ingre = ingredientes.find((item) => e.target.value === item.name);
+    const ingre = ingredientes.find((item) => e.target.value === item.name)
     if (ingre) {
       if (!ingredientesArray.includes(ingre)) {
-        setIngredientesArray([...new Set([...ingredientesArray, ingre])]);
-        setCantidad([...cantidad, 0]);
-        e.target.value = "";
+        setIngredientesArray([...new Set([...ingredientesArray, ingre])])
+        setCantidad([...cantidad, 0])
+        e.target.value = ''
       }
     }
-  };
+  }
 
   // Manejador imagen
   const imageHandleChange = (event) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(event.target.files[0]);
+    const fileReader = new FileReader()
+    fileReader.readAsDataURL(event.target.files[0])
     fileReader.onload = () => {
-      setUrlImage(fileReader.result);
-    };
-  };
+      setUrlImage(fileReader.result)
+    }
+  }
 
   const imgDefault =
-    "https://c8.alamy.com/compes/her4w9/comida-tradicional-mexicana-de-fondo-con-el-burrito-croquis-dibujados-a-mano-ilustracion-vectorial-mexico-cocina-vintage-banner-her4w9.jpg";
+    'https://c8.alamy.com/compes/her4w9/comida-tradicional-mexicana-de-fondo-con-el-burrito-croquis-dibujados-a-mano-ilustracion-vectorial-mexico-cocina-vintage-banner-her4w9.jpg'
 
   const formik = useFormik({
     initialValues: {
-      name: menu?.name || "",
-      description: menu?.description || "",
-      price: menu?.price || "",
+      name: menu?.name || '',
+      description: menu?.description || '',
+      price: menu?.price || '',
       stock: menu?.stock || 0,
-      recomendado: menu?.recomend_first || "",
+      recomendado: menu?.recomend_first || ''
     },
 
     validationSchema: Yup.object({
-      name: Yup.string().required("Nombre requerido"),
-      description: Yup.string().required("Descripción requerida"),
-      price: Yup.number("Debe se ser un numero")
-        .min(1, "El precio debe ser minimo 1")
-        .required("Precio requerido"),
-      stock: Yup.number("Debe se ser un numero")
-        .min(0, "El stock debe ser minimo 0")
-        .required("Stock requerido"),
+      name: Yup.string().required('Nombre requerido'),
+      description: Yup.string().required('Descripción requerida'),
+      price: Yup.number('Debe se ser un numero')
+        .min(1, 'El precio debe ser minimo 1')
+        .required('Precio requerido'),
+      stock: Yup.number('Debe se ser un numero')
+        .min(0, 'El stock debe ser minimo 0')
+        .required('Stock requerido')
     }),
 
     onSubmit: (values) => {
       const ingredientesMap = ingredientesArray.map((item, i) => {
-        return { id: item.id, quantity: cantidad[i] };
-      });
+        return { id: item.id, quantity: cantidad[i] }
+      })
       const menuMapData = {
-        id: menu?.id || "",
+        id: menu?.id || '',
         ...values,
         ingredArray: ingredientesMap,
         is_active: true,
@@ -78,24 +80,24 @@ export default function Form({ path, menu, ingredientes }) {
         Ingredients: cantidad.map((a) => {
           return {
             IngredientsMenuItems: {
-              quantity: a,
-            },
-          };
-        }),
-      };
-
-      if (path === "update") {
-        dispatch(updateMenu({ ...menuMapData, id: menu.id }));
-      } else {
-        dispatch(createMenu(menuMapData));
-        console.log(menuMapData);
+              quantity: a
+            }
+          }
+        })
       }
-    },
-  });
+
+      if (path === 'update') {
+        dispatch(updateMenu({ ...menuMapData, id: menu.id }))
+      } else {
+        dispatch(createMenu(menuMapData))
+        console.log(menuMapData)
+      }
+    }
+  })
 
   return (
     <div className={style.menuItem}>
-      <Title data={path === "create" ? "Crear menú" : "Actualizar Menú"} />
+      <Title data={path === 'create' ? 'Crear menú' : 'Actualizar Menú'} />
       <div className={style.container}>
         <form
           action=""
@@ -118,11 +120,9 @@ export default function Form({ path, menu, ingredientes }) {
           <div className={showImg ? style.show : style.image}>
             <img
               src={
-                path === "update"
+                path === 'update'
                   ? menu.url_image
-                  : urlImage
-                  ? urlImage
-                  : imgDefault
+                  : urlImage || imgDefault
               }
               alt=""
             />
@@ -134,7 +134,7 @@ export default function Form({ path, menu, ingredientes }) {
                 type="text"
                 placeholder="Nombre"
                 name="name"
-                className={formik.errors.name ? style.errorInput : ""}
+                className={formik.errors.name ? style.errorInput : ''}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
@@ -149,7 +149,7 @@ export default function Form({ path, menu, ingredientes }) {
                 type="text"
                 name="description"
                 placeholder="Descripción"
-                className={formik.errors.description ? style.errorInput : ""}
+                className={formik.errors.description ? style.errorInput : ''}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.description}
@@ -166,7 +166,7 @@ export default function Form({ path, menu, ingredientes }) {
                 type="number"
                 placeholder="Precio"
                 name="price"
-                className={formik.errors.price ? style.errorInput : ""}
+                className={formik.errors.price ? style.errorInput : ''}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.price}
@@ -178,7 +178,7 @@ export default function Form({ path, menu, ingredientes }) {
             <div className={style.col}>
               <label>Stock</label>
               <input
-                className={formik.errors.stock ? style.errorInput : ""}
+                className={formik.errors.stock ? style.errorInput : ''}
                 type="number"
                 placeholder="Stock"
                 name="stock"
@@ -193,15 +193,15 @@ export default function Form({ path, menu, ingredientes }) {
             <div
               className={style.col}
               onMouseEnter={() => {
-                setShowImg(true);
+                setShowImg(true)
               }}
               onMouseLeave={() => {
-                setShowImg(false);
+                setShowImg(false)
               }}
             >
               <label>Imagen</label>
               <input
-                hidden={path === "update"}
+                hidden={path === 'update'}
                 type="file"
                 name="Imagen"
                 accept="image/*"
@@ -211,7 +211,7 @@ export default function Form({ path, menu, ingredientes }) {
             <div className={style.col}>
               <label>Ingredientes</label>
               <input
-                hidden={path === "update"}
+                hidden={path === 'update'}
                 type="text"
                 name="ingredientes"
                 list="ingredientes"
@@ -226,35 +226,37 @@ export default function Form({ path, menu, ingredientes }) {
                   <span>Cantidad</span>
                 </div>
                 {ingredientesArray.map((item, i) => {
-                  console.log(ingredientesArray);
-                  ingredientesArray[i].quantity = 0;
+                  console.log(ingredientesArray)
+                  ingredientesArray[i].quantity = 0
                   return (
                     <div className={style.rowTableData} key={i}>
                       <span>
-                        {item.name + " "}
-                        <span style={{ fontWeight: "bold" }}>
+                        {item.name + ' '}
+                        <span style={{ fontWeight: 'bold' }}>
                           {item.type_measure}
                         </span>
                       </span>
-                      {path === "update" ? (
+                      {path === 'update'
+                        ? (
                         <span>{cantidad[i]} </span>
-                      ) : (
+                          )
+                        : (
                         <input
                           type="text"
                           placeholder="Cantidad"
                           value={cantidad[i]}
                           onChange={(e) => {
-                            cantidad[i] = e.target.value;
-                            setCantidad([...cantidad]);
+                            cantidad[i] = e.target.value
+                            setCantidad([...cantidad])
                           }}
                         />
-                      )}
+                          )}
                     </div>
-                  );
+                  )
                 })}
                 <datalist id="ingredientes">
                   {ingredientes.map((ingrediente) => {
-                    return <option value={ingrediente.name}></option>;
+                    return <option value={ingrediente.name}></option>
                   })}
                 </datalist>
               </div>
@@ -278,12 +280,12 @@ export default function Form({ path, menu, ingredientes }) {
                 }
                 type="submit"
               >
-                {path === "create" ? "Crear" : "Actualizar"}
+                {path === 'create' ? 'Crear' : 'Actualizar'}
               </button>
             </div>
           </div>
         </form>
       </div>
     </div>
-  );
+  )
 }

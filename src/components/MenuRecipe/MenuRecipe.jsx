@@ -1,14 +1,15 @@
-import React from "react";
-import CardRecipe from "../CardRecipe/CardRecipe";
-import styles from "./MenuRecipe.module.css";
+/* eslint-disable react/prop-types */
+import React from 'react'
+import CardRecipe from '../CardRecipe/CardRecipe'
+import styles from './MenuRecipe.module.css'
 
 const MenuRecipe = (props) => {
   // TODO Este será el estado global que contiene todos los menus
-  const { render } = props;
+  const { render } = props
   // * Debe recibir por props el numer de la página en que se encuentra y la cantidad de cards que mostrará en cada página;
 
   return (
-    
+
       <div className={styles.container}>
 
 <div className={styles.cards}>
@@ -27,7 +28,7 @@ const MenuRecipe = (props) => {
           )
           .map((element, index) => (
             <CardRecipe
-              //id={element.id}
+              // id={element.id}
               name={element.name}
               cuantity={element.stock}
               key={index}
@@ -37,7 +38,7 @@ const MenuRecipe = (props) => {
           ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MenuRecipe;
+export default MenuRecipe

@@ -1,7 +1,6 @@
-import React from "react";
-import style from "./CreateEditStore.module.css";
-import img from "./image/burger.jpeg";
-import Title from "../../Shared/Title/Title";
+import React from 'react'
+import style from './CreateEditStore.module.css'
+import img from './image/burger.jpeg'
 // viendo
 const EditStore = (props) => {
   return (
@@ -42,7 +41,7 @@ const EditStore = (props) => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EditStore;
+export default EditStore

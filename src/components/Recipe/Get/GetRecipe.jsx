@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import './GetRecipe.css'
 
 const GetRecipe = () => {
-    return ( 
+  return (
         <div>
             <h1>Hola aqui estoy Pues !!!</h1>
         </div>
-     );
+  )
 }
- 
-export default GetRecipe;
+
+export default GetRecipe

@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import CardMenu from "../Card_menu/Card_menu";
-import styles from "./MenuCards.module.css";
-import Pagination from "../../Shared/Pagination/PaginationComponent";
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react'
+import CardMenu from '../Card_menu/Card_menu'
+import styles from './MenuCards.module.css'
+import Pagination from '../../Shared/Pagination/PaginationComponent'
 
 const MenuCards = (props) => {
   // TODO Este será el estado global que contiene todos los menus
-  const { render } = props;
+  const { render } = props
 
-  const [pagina, setPagina] = useState(1);
-  const [porPagina] = useState(10);
+  const [pagina, setPagina] = useState(1)
+  const [porPagina] = useState(10)
 
-  let maximo = Math.ceil(render.length / porPagina);
+  const maximo = Math.ceil(render.length / porPagina)
   // * Debe recibir por props el numer de la página en que se encuentra y la cantidad de cards que mostrará en cada página;
 
   return (
@@ -45,7 +46,7 @@ const MenuCards = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MenuCards;
+export default MenuCards
