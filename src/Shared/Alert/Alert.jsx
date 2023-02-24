@@ -15,8 +15,6 @@ export default function Alert ({
   setTimeout(() => remove(), 5000)
 
   const remove = () => {
-    const ref = document.getElementById('alertBox')
-
     ReactDOM.unmountComponentAtNode(document.getElementById('alert'))
   }
 
