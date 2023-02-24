@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+// import Title from '../../Shared/Title/Title'
 import React, { useState } from 'react'
-import Title from '../../Shared/Title/Title'
 import img from './image/image-1.jpg'
-import styles from './Register.module.css'
 import { getImageUrl } from '../../redux/Actions/actions'
 import { useDispatch } from 'react-redux'
 
-const Register = ({ formik, selectQuestion, imageFn }) => {
+import styles from './Register.module.css'
+
+const Register = ({ formik, selectQuestion, imageFn, roles }) => {
   const dispatch = useDispatch()
-  const roles = ['cocinero', 'cajero']
   const [imageInputState, setImageInputState] = useState('')
   const [previewSource, setPreviewSource] = useState('')
 
@@ -175,20 +175,29 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
             <div className={styles.inputs}>
               <label htmlFor="">Rol</label>
               <select
-                name="rol"
-                id="rol"
-                className={styles.select}
+                name="role_id"
+                id="rol_id"
+                value=""
+                className={formik.errors.role_id ? styles.errorSelect : styles.select}
                 onChange={(e) => selectQuestion(e)}
+                {...formik.getFieldProps('role_id')}
               >
-                <option className={styles.options} value="1">
+                <option className={styles.options} value="">
                   opciones
                 </option>
                 {roles.map((quest) => (
-                  <option key={quest} className={styles.options}>
-                    {quest}
+                  <option key={quest.id} value={quest.id} className={styles.options}>
+                    {quest.name}
                   </option>
                 ))}
               </select>
+              {/* {formik.touched.role_id && formik.errors.role_id
+                ? (
+                <label className={styles.errorText}>
+                  {formik.errors.role_id}
+                </label>
+                  )
+                : null} */}
             </div>
             {/* <div className={styles.inputs}>
               <label htmlFor="">Pregunta Secreta</label>
