@@ -1,7 +1,7 @@
 
 import React from 'react'
 import styles from './NavBar.module.css'
-import img from './image/logoSARASA.png'
+import img from './image/logoFinal.jpg'
 import { Link, useLocation } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
