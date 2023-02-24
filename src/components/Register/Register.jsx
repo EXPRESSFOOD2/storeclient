@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 const Register = ({ formik, selectQuestion, imageFn }) => {
   const dispatch = useDispatch();
-  const questions = ["messi?", "verano o invierno?", "mayor de edad?"];
+  const roles = ["cocinero", "cajero"];
   const [imageInputState, setImageInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");
 
@@ -159,6 +159,24 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
               ) : null}
             </div>
             <div className={styles.inputs}>
+              <label htmlFor="">Rol</label>
+              <select
+                name="rol"
+                id="rol"
+                className={styles.select}
+                onChange={(e) => selectQuestion(e)}
+              >
+                <option className={styles.options} value="1">
+                  opciones
+                </option>
+                {roles.map((quest) => (
+                  <option key={quest} className={styles.options}>
+                    {quest}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* <div className={styles.inputs}>
               <label htmlFor="">Pregunta Secreta</label>
               <select
                 name="password_question"
@@ -175,8 +193,8 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
                   </option>
                 ))}
               </select>
-            </div>
-            <div className={styles.inputs}>
+            </div> */}
+            {/* <div className={styles.inputs}>
               <label htmlFor="">Respuesta Secreta</label>
               <input
                 type="text"
@@ -191,7 +209,7 @@ const Register = ({ formik, selectQuestion, imageFn }) => {
                   {formik.errors.password_answer}
                 </label>
               ) : null}
-            </div>
+            </div> */}
             <div className={styles.inputs}>
               <button type="submit">Registrar</button>
             </div>

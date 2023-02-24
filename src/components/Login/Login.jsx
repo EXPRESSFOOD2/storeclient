@@ -48,10 +48,10 @@ const Login = ({ formik }) => {
             <label htmlFor="">Recuerdame</label>
           </div>
         </form>
-        <div className={style.question}>
-          <p>¿primera vez en SARASASASA? </p>{" "}
+        {/* <div className={style.question}>
+          <p>¿primera vez en Space Food? </p>{" "}
           <a href="/register"> ¡Registrate! </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
