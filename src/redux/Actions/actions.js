@@ -51,11 +51,25 @@ export const validateLogin = (values) => async (dispatch) => {
       )
       return true
     } else {
-      alert("Invalid Account & Password or This Account Doesn't exist")
+      ReactDOM.render(
+        <Alert
+          title="Error"
+          message={'Invalid Account & Password or This Account Doesn\'t exist'}
+          type="danger"
+        />,
+        document.getElementById('alert')
+      )
     }
     // validUser ? alert("correcto") : alert("INcorrecto");
   } catch (error) {
-    alert(error.response.data.error)
+    ReactDOM.render(
+        <Alert
+          title="Error"
+          message={error}
+          type="danger"
+        />,
+        document.getElementById(alert)
+    )
   }
 }
 
