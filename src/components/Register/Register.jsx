@@ -8,12 +8,10 @@ import { getImageUrl } from '../../redux/Actions/actions'
 import { useDispatch } from 'react-redux'
 
 const Register = ({ formik, selectQuestion, imageFn }) => {
-
-  const dispatch = useDispatch();
-  const roles = ["cocinero", "cajero"];
-  const [imageInputState, setImageInputState] = useState("");
-  const [previewSource, setPreviewSource] = useState("");
-
+  const dispatch = useDispatch()
+  const roles = ['cocinero', 'cajero']
+  const [imageInputState, setImageInputState] = useState('')
+  const [previewSource, setPreviewSource] = useState('')
 
   const handleImageInputChange = async (e) => {
     const inputImg = e.target.files[0]
