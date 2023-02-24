@@ -44,3 +44,21 @@
   font-size: 20px;
   transition: 0.3s;
 }
+
+/* Te copie este css, Gracias pedro */
+.userContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 30%;
+  height: 30%;
+  gap: 2em;
+
+  color: white;
+  padding: 0 30px;
+}
+.userContainer > img {
+  border-radius: 360px;
+  width: 40px;
+  height: 40px;
+}

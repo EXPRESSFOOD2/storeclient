@@ -1,10 +1,10 @@
-import React from "react";
-import style from "./UpdateIngredients.module.css";
-import img from "./image/vegetables.jpg";
-import Title from "../../Shared/Title/Title";
+import React from 'react'
+import style from './UpdateIngredients.module.css'
+import img from './image/vegetables.jpg'
+import Title from '../../Shared/Title/Title'
 
 const UpdateIngredients = (props) => {
-    return (
+  return (
         <div className={style.updateIngredient}>
             <Title data="Editar Ingrediente" />
             <div className={style.contentForm}>
@@ -52,7 +52,7 @@ const UpdateIngredients = (props) => {
                 </form>
             </div>
         </div>
-    );
-};
+  )
+}
 
-export default UpdateIngredients;
+export default UpdateIngredients

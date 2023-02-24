@@ -1,46 +1,40 @@
-import React from "react";
-import Login from "../../components/Login/Login";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { validateLogin } from "../../redux/Actions/actions";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import React, { useEffect } from 'react'
+import Login from '../../components/Login/Login'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { validateLogin } from '../../redux/Actions/actions'
+import { useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 const LoginPage = () => {
-  const loginStatus = useSelector((state) => state.loginStatus);
-  const history = useHistory();
-
-  const dispatch = useDispatch();
+  const loginStatus = useSelector((state) => state.loginStatus)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (loginStatus) {
-      history.push("/menu");
+      history.push('/menu')
     }
-  }, [loginStatus]);
+  }, [loginStatus])
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: ''
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Correo incorrecto")
-        .required("Correo requerido"),
+        .email('Correo incorrecto')
+        .required('Correo requerido'),
 
-      password: Yup.string().required("Contraseña requerida"),
+      password: Yup.string().required('Contraseña requerida')
     }),
     onSubmit: async (values) => {
-      dispatch(validateLogin(values));
+      dispatch(validateLogin(values))
+    }
+  })
 
-      // await validateLogin(values);
+  return <Login formik={formik} />
+}
 
-      //Falta re linkear a /menu
-    },
-  });
-
-  return <Login formik={formik} />;
-};
-
-export default LoginPage;
+export default LoginPage

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import style from "./alert.module.css";
-import data from "./styleType.json";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react'
+import style from './alert.module.css'
+import data from './styleType.json'
 
-export default function Alert({
-  title = "Correcto",
-  message = "Todo salio bien",
-  type = "danger",
+export default function Alert ({
+  title = 'Correcto',
+  message = 'Todo salio bien',
+  type = 'danger'
 }) {
-  const img = data[type]?.icon || data.success.icon;
+  const img = data[type]?.icon || data.success.icon
 
   return (
     <div className={style.container} id="alertBox">
@@ -24,12 +26,12 @@ export default function Alert({
         <div
           className={style.close}
           onClick={() => {
-            document.getElementById("alertBox").remove();
+            document.getElementById('alertBox').remove()
           }}
         >
           X
         </div>
       </div>
     </div>
-  );
+  )
 }

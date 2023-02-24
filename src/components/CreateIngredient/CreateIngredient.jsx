@@ -1,16 +1,44 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import style from "./CreateIngredient.module.css";
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import style from './CreateIngredient.module.css'
+import { useDispatch } from 'react-redux'
+import { createIngredients } from '../../redux/Actions/actions'
 
 const CreateIngredientForm = (props) => {
-    const [numForm, setNumForm] = useState([1]);
+  const [numForm, setNumForm] = useState([1])
+  const [values, setValues] = useState([
+    { name: '', type_measure: 'un', layer: 0, ingredients_all: [] }
+  ])
 
-    const handleNumForm = (event) => {
-        event.preventDefault();
-        setNumForm([...numForm, 1]);
-    };
+  const dispatch = useDispatch()
 
-    return (
+  const handleNumForm = (event) => {
+    event.preventDefault()
+    setNumForm([...numForm, 1])
+    setValues([
+      ...values,
+      { name: '', type_measure: 'un', layer: 0, ingredients_all: [] }
+    ])
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const filtered = values.filter(e => e.name.trim() !== '')
+    dispatch(createIngredients(filtered))
+    setValues([{ name: '', type_measure: 'un', layer: 0, ingredients_all: [] }])
+    setNumForm([1])
+  }
+
+  const handleChange = (event, index) => {
+    const { value } = event.target
+    const { name } = event.target
+    const newArray = [...values]
+    newArray[index][name] = value
+    // const otroArray = newArray
+    setValues([...newArray])
+  }
+
+  return (
         <div className={style.createIngredient}>
             <div className={style.container}>
                 <Link to="/ingredient">
@@ -26,26 +54,41 @@ const CreateIngredientForm = (props) => {
                         <span>Unidad de medida</span>
                     </div>
                     <div className={style.ingredients}>
-                        {numForm.map((element, index) => (
-                            <div className={style.inputs} key={index}>
-                            <input type="text" name={`name${index}`} />
-                                <select name={`value${index}`} id="">
-                                    <option value="">un</option>
-                                    <option value="">gr</option>
-                                    <option value="">ml</option>
-                                    <option value="">oz</option>
-                                </select>
-                            </div>
-                        ))}
+                        <div className={style.divInfo}>
+                            {numForm.map((element, index) => (
+                                <div className={style.inputs} key={index}>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        // value={values[index].name}
+                                        onChange={(e) => handleChange(e, index)}
+                                        value={values[index].name}
+                                    />
+                                    <select
+                                        name="type_measure"
+                                        id=""
+                                        // value={values[index].type}
+                                        onChange={(e) => handleChange(e, index)}
+                                        value={values[index].type_measure}>
+                                        <option value="un">un</option>
+                                        <option value="gr">gr</option>
+                                        <option value="ml">ml</option>
+                                        <option value="oz">oz</option>
+                                    </select>
+                                </div>
+                            ))}
+                        </div>
                         <button onClick={handleNumForm} className={style.buttonNew}>
                             Nuevo
                         </button>
                     </div>
-                    <button className={style.submit}>Crear ingredientes</button>
+                    <button className={style.submit} onClick={handleSubmit}>
+                        Crear ingredientes
+                    </button>
                 </form>
             </div>
         </div>
-    );
-};
+  )
+}
 
-export default CreateIngredientForm;
+export default CreateIngredientForm

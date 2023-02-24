@@ -1,27 +1,27 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { filter } from "../../redux/Actions/actions";
-import styles from "./Filter.module.css";
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { filter } from '../../redux/Actions/actions'
+import styles from './Filter.module.css'
 
 const Filter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleChangeFilter = () => {
-    dispatch(filter());
-  };
+    dispatch(filter())
+  }
 
   return (
-    <div className={styles.filter}>
-      <div className={styles.col1}>
-        <label htmlFor="">Ordenar: </label>
+    <div className={styles.container}>
+      <div className={styles.col}>
+        <label htmlFor="">Ordenar </label>
         <select name="" id="" className={styles.select}>
           <option value="menor">Menor Precio</option>
           <option value="mayor">Mayor Precio</option>
         </select>
       </div>
 
-      <div className={styles.col2}>
-        <label htmlFor="">Filtrar: </label>
+      <div className={styles.col}>
+        <label htmlFor="">Filtrar </label>
         <select
           name=""
           id=""
@@ -33,7 +33,7 @@ const Filter = () => {
         </select>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filter;
+export default Filter

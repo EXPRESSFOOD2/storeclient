@@ -1,15 +1,19 @@
+.containerBig {
+  max-width: 70vw;
+  min-width: 70vw;
+}
+
 .cards {
-  /* display: flex;
-  flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center;
-  margin-top: 2rem;
-  gap: 1rem;
-  */
-  padding-bottom: 4rem;
+  max-width: 70vw;
+  width: 100%;
+
+  box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.27);
+  padding: 10px;
+  border-radius: 5px;
+}
+.description {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -55,4 +59,13 @@
   padding: 1rem;
   background-color: #b7b1b1;
   border-radius: 1rem;
+}
+
+.description > span {
+  width: 15%;
+  font-weight: bold;
+  font-family: "Rubik", sans-serif;
+  padding: 15px 0;
+
+  border-bottom: 2px solid grey;
 }

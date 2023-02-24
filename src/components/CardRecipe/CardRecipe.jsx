@@ -1,6 +1,7 @@
-import React from "react";
-import styles from "./CardRecipe.module.css";
-import { Link } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import React from 'react'
+import styles from './CardRecipe.module.css'
+import { Link } from 'react-router-dom'
 
 const CardRecipe = (props) => {
   return (
@@ -38,7 +39,7 @@ const CardRecipe = (props) => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CardRecipe;
+export default CardRecipe

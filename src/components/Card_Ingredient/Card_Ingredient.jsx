@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
-import styles from './Card_Ingredients.module.css';
+import styles from './Card_Ingredients.module.css'
 
-const CardIngredient = ({id, name, medida}) => {
+const CardIngredient = ({ id, name, medida }) => {
   return (
       <div className={styles.ingredient}>
           <div className={styles.id}>
@@ -17,4 +18,4 @@ const CardIngredient = ({id, name, medida}) => {
   )
 }
 
-export default CardIngredient;
+export default CardIngredient
