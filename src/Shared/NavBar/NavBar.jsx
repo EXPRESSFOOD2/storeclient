@@ -1,3 +1,4 @@
+
 import React from 'react'
 import styles from './NavBar.module.css'
 import img from './image/logoSARASA.png'
@@ -5,6 +6,15 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
 import { changeLoginStatus } from '../../redux/Actions/actions'
+
+import React from "react";
+import styles from "./NavBar.module.css";
+import img from "./image/logoFinal.jpg";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { changeLoginStatus } from "../../redux/Actions/actions";
+
 
 const NavBar = () => {
   const location = useLocation().pathname.split('/').at(1)
@@ -31,11 +41,10 @@ const NavBar = () => {
         {userData.name && <span>{userData.name}</span>}
       </div>
       <div className={styles.buttons}>
-        <Link to="/store/update">
-          <button className={location === 'store' ? styles.currentPag : ''}>
+          {/* <Link to="/store/update">
             Editar
           </button>
-        </Link>
+        </Link> */}
         <Link to="/register">
           <button className={location === 'register' ? styles.currentPag : ''}>
             Registros
