@@ -50,16 +50,22 @@ const CreateIngredientForm = () => {
                 <h1>Crear Ingredientes</h1>
                 <form>
                     <div className={style.description}>
-                        <span>Nombre</span>
+                        <span className={style.name}>Nombre</span>
                         <span>Unidad de medida</span>
                     </div>
                     <div className={style.ingredients}>
                         <div className={style.divInfo}>
+                        <div className={style.divButton}>
+                        <button onClick={handleNumForm} className={style.buttonNew}>
+                            Nuevo
+                        </button>
+                        </div>
                             {numForm.map((element, index) => (
                                 <div className={style.inputs} key={index}>
                                     <input
                                         type="text"
                                         name="name"
+                                        placeholder=' Nombre'
                                         // value={values[index].name}
                                         onChange={(e) => handleChange(e, index)}
                                         value={values[index].name}
@@ -78,12 +84,10 @@ const CreateIngredientForm = () => {
                                 </div>
                             ))}
                         </div>
-                        <button onClick={handleNumForm} className={style.buttonNew}>
-                            Nuevo
-                        </button>
+                    
                     </div>
                     <button className={style.submit} onClick={handleSubmit}>
-                        Crear ingredientes
+                        Crear
                     </button>
                 </form>
             </div>
