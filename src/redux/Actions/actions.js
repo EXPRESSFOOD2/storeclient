@@ -13,7 +13,8 @@ import {
   UPDATE_MENU,
   GET_INGREDIENT_ID,
   LOGIN_STATUS,
-  CREATE_INGREDIENTS
+  CREATE_INGREDIENTS,
+  GET_ROLES
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -251,6 +252,17 @@ export const createIngredients = (data) => async (dispatch) => {
     // return dispatch({type:CREATE_INGREDIENTS, payload:results})
   } catch (error) {
     console.error(error.response?.data.error)
+  }
+}
+
+export const getRoles = () => {
+  return async function (dispatch) {
+    try {
+      const roles = (await axios.get('http://localhost:3001/roles/get')).data
+      dispatch({ type: GET_ROLES, payload: roles })
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error })
+    }
   }
 }
 

@@ -61,7 +61,7 @@ function App () {
       <Route exact path="/menu/update/:id" component={CreateItemMenu} />
       {}
       <Route exact path="/recipe/create" />
-      <Route exact path="/get/recipe" component={GetRecipe} />
+      <Route exact path="/recipe" component={GetRecipe} />
       <Route exact path="/register" component={RegisterPage} />
       {}
       <Route exact path="/ingredient" component={Ingredients} />
