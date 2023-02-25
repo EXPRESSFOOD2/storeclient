@@ -3,7 +3,7 @@ import style from './UpdateIngredients.module.css'
 import img from './image/vegetables.jpg'
 import Title from '../../Shared/Title/Title'
 
-const UpdateIngredients = (props) => {
+const UpdateIngredients = () => {
   return (
         <div className={style.updateIngredient}>
             <Title data="Editar Ingrediente" />

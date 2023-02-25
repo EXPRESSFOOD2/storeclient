@@ -7,7 +7,7 @@ import { createUser, getRoles } from '../../redux/Actions/actions'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
   const dispatch = useDispatch()
   const roles = useSelector(state => state.roles)
 

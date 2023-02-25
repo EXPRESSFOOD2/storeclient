@@ -4,7 +4,7 @@ import style from './CreateIngredient.module.css'
 import { useDispatch } from 'react-redux'
 import { createIngredients } from '../../redux/Actions/actions'
 
-const CreateIngredientForm = (props) => {
+const CreateIngredientForm = () => {
   const [numForm, setNumForm] = useState([1])
   const [values, setValues] = useState([
     { name: '', type_measure: 'un', layer: 0, ingredients_all: [] }

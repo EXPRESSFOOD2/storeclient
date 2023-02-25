@@ -2,7 +2,7 @@ import React from 'react'
 import style from './CreateEditStore.module.css'
 import img from './image/burger.jpeg'
 // viendo
-const EditStore = (props) => {
+const EditStore = () => {
   return (
     <div className={style.editStore}>
       <div className={style.container}>
