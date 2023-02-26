@@ -9,13 +9,18 @@ const IngredientsCards = () => {
         <div className={styles.cards}>
             <div className={styles.description}>
                 <div>
-                    <span className={styles.id}>Id</span>
-                    <span>Nombre</span>
+                    {/* <span className={styles.id}>Id</span> */}
+                    <span className={styles.name}>Nombre</span>
                     <span className={styles.medida}>Medida</span>
                 </div>
                 <div>
-                    <span className={styles.id}>Id</span>
-                    <span>Nombre</span>
+                    {/* <span className={styles.id}>Id</span> */}
+                    <span className={styles.name}>Nombre</span>
+                    <span className={styles.medida}>Medida</span>
+                </div>
+                <div>
+                    {/* <span className={styles.id}>Id</span> */}
+                    <span className={styles.name}>Nombre</span>
                     <span className={styles.medida}>Medida</span>
                 </div>
             </div>
