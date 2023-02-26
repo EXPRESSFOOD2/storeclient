@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals'
 import { createRoot } from 'react-dom/client'
 import axios from 'axios'
 
-axios.defaults.baseURL = process.env.REACT_APP_APIURL || process.env.REACT_APP_URL_DEPLOY ;
+axios.defaults.baseURL = process.env.REACT_APP_URL_DEPLOY || "http://localhost:3002/";
 
 const root = createRoot(document.getElementById('root'))
 root.render(
