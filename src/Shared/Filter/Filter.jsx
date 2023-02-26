@@ -19,6 +19,7 @@ const Filter = () => {
                     <option value="menor">Menor Precio</option>
                     <option value="mayor">Mayor Precio</option>
                 </select>
+                
             </div>
 
             <div>
@@ -27,7 +28,9 @@ const Filter = () => {
                     <option value="false">Todos los Menús</option>
                     <option value="true">Recomendados</option>
                 </select>
+
             </div>
+
         </div>
     );
 };

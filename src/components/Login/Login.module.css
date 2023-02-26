@@ -1,146 +1,80 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
 
-.superDiv {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+.login {
+  display: flex;
+  flex-direction: column;
+  height: 41rem;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("./image/background.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-
-  top: 100px;
-  width: 100%;
-  height: 650px;
-  left: 0px;
 }
 
-.createLogin {
-  position: absolute;
-  width: 550px;
-  height: 550px;
-  left: 400px;
-  top: 50px;
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 14rem;
+  gap: 1.5rem;
 
+  position: relative;
+  width: 36.3rem;
+  height: 22.5rem;
   background: rgba(16, 16, 16, 0.8);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-.prev {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+.data button {
+  color: white;
+  width: 20rem;
+  height: 2rem;
+  background: #8f1414;
+  font-weight: bolder;
+  font-size: medium;
+  border: none;
 }
 
-.prev > p {
-  color: #f5f5f5;
-  font-weight: 600;
-  font-size: 24px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  margin: 5px;
+.data span {
+  color: blue;
+  margin-top: -1.5rem;
+  margin-left: -12rem;
+  font-size: small;
 }
-
-.prev .image {
-  width: 100.73px;
-  height: 100.73px;
-  left: 214px;
-  top: 71.29px;
-  transform: rotate(-14.54deg);
-}
-
-.form {
-  /* background-color: aqua; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .col {
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  margin: 10px;
-}
 
-.col > label {
-  color: #f5f5f5;
-  font-size: 15px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: auto;
+  height: auto;
 }
-
-.col .errorText {
-  max-width: 329px;
-  color: rgb(247, 116, 116);
-  font-size: 13px;
-}
-
 .col > input {
-  border: 1px solid #f5f5f5;
-  border-radius: 5px;
-  background-color: transparent;
-  width: 329px;
-  height: 37px;
-  margin-top: 5px;
-  color: #f5f5f5;
-}
-
-.errorInput {
-  border: 2px rgb(247, 116, 116) solid !important;
-}
-
-.col > a {
-  color: #f5f5f5;
-  font-size: 13px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.logins > button {
-  width: 335px;
-  height: 40px;
-
-  background: #8f1414;
-  border-radius: 5px;
-  border: 0px;
-  font-weight: 300;
-  font-size: 20px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #f5f5f5;
-  margin-top: 5px;
+  width: 20.5rem;
+  height: 2.3rem;
+  background: #d9d9d9;
+  opacity: 0.5;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  font-weight: bolder;
+  font-family: inherit;
 }
 
 .checkbox {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-right: 230px;
+  margin-left: -13rem;
+  margin-top: -1rem;
+  color: #ffffff;
+  font-size: small;
 }
-
-.checkbox > label {
-  color: #f5f5f5;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+.errorInput {
+  border: 2px rgb(240, 52, 52) solid !important;  
 }
-
-.question {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  margin: 10px;
-}
-
-.question > p {
-  color: #b7b5b5;
-  margin: 0%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.question > a {
-  text-decoration: none;
-  color: #f5f5f5;
-  margin-left: 5px;
+.errorText {
+  font-family: inherit;
+  max-width: 329px;
+  color: rgb(251, 133, 133);
 }

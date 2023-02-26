@@ -3,6 +3,7 @@ import styles from "./Card_menu.module.css";
 import { Link } from "react-router-dom";
 
 const CardMenu = (props) => {
+  //console.log(props)
   return (
     <div className={styles.card}>
       <div className={styles.image}>

@@ -30,7 +30,7 @@ const NavBar = () => {
           </button>
         </Link>
 
-        <Link to="get/recipe">
+        <Link to="/recipe">
         <button className={location === "recipe" ? styles.currentPag : ""}>
           Receta
         </button>
@@ -43,7 +43,7 @@ const NavBar = () => {
             Ingredientes
           </button>
         </Link>
-        <Link to="/">
+        <Link to="/login">
           <button>Salir</button>
         </Link>
       </div>

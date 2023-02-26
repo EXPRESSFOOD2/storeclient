@@ -8,12 +8,7 @@
     align-items: center;
     margin-left: 6.5rem;
     font-weight: 500;
-    cursor: pointer;
 }
-.ingredient :hover{
-    transform: scale(1.1);
-}
-
 .ingredient div {
     height: 2.7rem;
     border-radius: 0.5rem;

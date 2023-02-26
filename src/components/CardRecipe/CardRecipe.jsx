@@ -3,29 +3,21 @@ import styles from "./CardRecipe.module.css";
 import { Link } from "react-router-dom";
 
 const CardRecipe = (props) => {
+  //console.log(props)
+  
   return (
     <div className={styles.card}>
-      <div className={styles.image}>
-        <img src={props.imgURL} alt="hamburguesa" />
+      <div className={styles.active}>
+        <h5>{props.active}</h5>
       </div>
-      <div className={styles.activo}>
-        <span>{props.id}</span>
-        {/* <span>1</span> */}
-      </div>
+     
       <div className={styles.name}>
         <h5>{props.name}</h5>
         {/* <span>Hamburguesa</span> */}
       </div>
-      <div className={styles.price}>
-        <h5>{props.price}</h5>
-        {/* <span>Hamburguesa</span> */}
-      </div>
-      <div className={styles.cuantity}>
-        <h5>{props.cuantity}</h5>
-        {/* <span>15</span> */}
-      </div>
+
       <div className={styles.ico}>
-      <Link to={`/menu/update/${props.id}`}>
+      <Link to={`/recipe/update/${props.id}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="34"

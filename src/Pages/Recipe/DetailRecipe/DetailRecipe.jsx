@@ -1,38 +1,37 @@
 import { useLocation, useParams } from "react-router-dom";
-import Form from "../../../components/createItemMenu/Form";
+import RecipeDetail from "../../../components/Recipe/DetailRecipe/RecipeDetail.jsx";
 import NavBar from "../../../Shared/NavBar/NavBar";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getMenu } from "../../../redux/Actions/actions";
+import { getReceta } from "../../../redux/Actions/actions";
 import { useEffect } from "react";
 
-export default function CreateItemMenu() {
+export default function DetailRecipe() {
   // get Route [create | update]
   const route = useLocation().pathname.split("/").at(2);
   // se puede mejorar, si es create aun asi busca menus y eso esta mal
-  const menus = useSelector((state) => state.menus);
+  const recetas = useSelector((state) => state.recetas);
   const { id } = useParams();
   
-  const itemMenu = menus.find((item) => item.id === parseInt(id));
+  const itemReceta = recetas.find((item) => item.id === parseInt(id));
   const dispatch = useDispatch();
-  
-  useEffect(() => {
-    if (route === "update" && !menus.length) {
-      dispatch(getMenu());
-    }
-  }, [menus, dispatch, route]);
 
+  useEffect(() => {
+    if (route === "update" && !recetas.length) {
+      dispatch(getReceta());
+    }
+  }, [recetas, dispatch, route]);
   return (
     <div>
       <NavBar />
       {route === "update" ? (
-        menus.length ? (
-          <Form path={route} menu={itemMenu} />
+        recetas.length ? (
+          <RecipeDetail path={route} receta={itemReceta} />
         ) : (
           "Loading"
         )
       ) : (
-        <Form path={route} />
+        <RecipeDetail path={route} />
       )}
     </div>
   );

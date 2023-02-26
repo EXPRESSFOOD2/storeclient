@@ -1,7 +1,7 @@
 .menuItem {
   display: flex;
   flex-direction: column;
-  height: 1121px;
+  height: 57rem;
   overflow: hidden;
   position: relative;
   align-items: center;
@@ -12,18 +12,17 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 1021px;
+  height: 621px;
   margin-top: 175px;
 }
 
 .formBox {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 1021px;
-  height: 821px;
+  height: 621px;
   border-radius: 10px;
 
   box-shadow: 5px 5px 30px rgba(163, 163, 163, 0.23),
@@ -100,7 +99,6 @@
   gap: 1.5em;
   width: 65%;
   height: auto;
-  margin-left: -2rem;
 }
 
 .formLeft {
@@ -174,100 +172,10 @@
   height: 70px;
   fill: white;
   color: white;
-  z-index: 200;
+  z-index: 2000;
 }
 
 .errorText {
-  position: absolute;
   max-width: 329px;
   color: rgb(251, 133, 133);
-}
-
-.table {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 329px;
-
-  max-height: 140px;
-  border-radius: 10px;
-
-  background-color: rgba(183, 177, 177, 0.5);
-  padding: 10px;
-  gap: 1em;
-
-  overflow: scroll;
-}
-
-.rowTableTitle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  position: sticky;
-
-  font-weight: bold;
-}
-
-.rowTableTitle > span {
-  width: 50%;
-}
-
-.rowTableData {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.rowTableData > span {
-  width: 50%;
-}
-
-.rowTableData > input {
-  width: 50%;
-  text-align: center;
-  height: auto;
-  border: none;
-  background-color: rgba(225, 225, 225, 0.5);
-}
-
-.image {
-  position: absolute;
-  background-color: #999999;
-  width: auto;
-  height: auto;
-  filter: opacity(0);
-  z-index: -10;
-  transition: 0.5s;
-}
-
-.image > img {
-  right: 20px;
-  position: absolute;
-  width: 18rem;
-  height: 18rem;
-  border-radius: 0.5rem;
-}
-
-.image:hover {
-  z-index: 10;
-}
-
-.show {
-  position: absolute;
-  background-color: #999999;
-  width: auto;
-  height: auto;
-  z-index: 10;
-  transition: 0.5;
-}
-
-.show > img {
-  right: 20px;
-  position: absolute;
-  width: 18rem;
-  height: 18rem;
-  border-radius: 0.5rem;
 }

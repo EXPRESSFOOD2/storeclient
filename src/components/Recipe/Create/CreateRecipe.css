@@ -5,7 +5,7 @@
 	background-color: #f0eee9;
 	border: 2px solid #e0d4d4;
 	width: 150vh;
-	height: 97vh;
+	height: 87vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -15,46 +15,49 @@
 
 .receta{
 	text-align: center;
-	width: 30%;
-	height: 5%;
+	width: 20%;
+	height: 15%;
 	color: #fff;
-	font-size: 26px;
+	font-size: 17px;
 	font-weight: 800;
-	border: none;
 	font-family: 'Open Sans', sans-serif;
 	background-color: #e24b4b;
 	margin-left: 70px;
 	border-radius: 15px;
-	margin-bottom: 15px;
-	margin-top:45px;
+	margin-bottom: 10px;
+	margin-top:18px;
 }
 
 .formulario {
 	border: 1px solid #e0d4d4;
 	width: 900px;
+	height: 600px;
 	background: #fff;
 	border-radius: 15px;
-	padding: 10px 60px 40px 80px;
+	padding: 5px 60px 60px 80px;
 }
 
 .logo {
 	background-color: #f0eee9;
 	border: 2px solid #de1d1d;
 	border-radius: 35px;
-	height: 280px;
-	width: 460px;
+	height: 257px;
+	width: 440px;
+
 }
 
-.seccion_1{
+.seccion_1{ /*abarca el logo, nombre y detalle*/
+	/*border: 3px solid #e2e2e2;*/
 	margin-top:30px;
 	display: inline-flex;
+	margin-right:60px;
 }
 
- .seccion_2  {
+ .seccion_2  {/*abarca nombre y detalle*/
 	width: 40vh;
 	height: 20vh;
 	flex-direction:column; 
-	margin-left:50px;
+	margin-left:70px;
  }
 
  .seccion_3{
@@ -66,7 +69,7 @@
  }
 
 .formulario div {
-	margin-bottom: 12px;
+	margin-bottom: 9px;
 }
 
 .formulario, label {
@@ -76,6 +79,7 @@
 	font-size: 15px;
 	margin-bottom: 6px;
 	color: #1f1f1f;
+	text-align: left;
 }
 
 .nombre {
@@ -182,7 +186,7 @@
 
 .formulario input:focus {
 	outline: none;
-	border: 2px solid black;
+	border: 1px solid black;
 }
 
 .formulario .error {
@@ -192,7 +196,7 @@
 }
 
 .formulario nav button[type="submit"] {
-	
+	/*botones añadir y borrar*/
 	font-size: 17px;
 	background-color: #67ae549d;
 	font-weight: 600;
@@ -208,34 +212,24 @@
 }
 
 .formulario button[type="submit"] {
-	font-size: 20px;
+	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
 	background-color: #d87f7f;
 	font-weight: 600;
 	font-family: 'Open Sans', sans-serif;
 	border: none;
 	cursor: pointer;
-	width: 30%;
-	padding: 10px;
+	width: 25%;
+	height: 30px;
 	border-radius: 15px;
 	color: #fff;
-	transition: .2s ease all;
-	margin-left: 340px;
+	transition: .1s ease all;
+	margin-left: 365px;
+	margin-top:10px;
 }
 
 .formulario button[type="submit"]:hover {
-	background: #f10820;
-}
-
-.formulario .exito {
-	text-align: center;
-	font-size: 14px;
-	padding-top: 20px;
-	color: #02a802;
-}
-
-.formulario input[type="radio"] {
-	width: auto;
+	background: #8fc08b;
 }
 
 

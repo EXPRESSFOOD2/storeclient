@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import MenuCards from "../../components/MenuCards/MenuCards";
 import NavBar from "../../Shared/NavBar/NavBar";
 import Pagination from "../../Shared/Pagination/Pagination";
-import Filter from "../../Shared/Filter/Filter";
+import Filter from "../../Shared/Filter/Filter"
 
 import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from "../../redux/Actions/actions";
-import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [pagina, setPagina] = useState(1);
@@ -24,15 +23,12 @@ const Menu = () => {
       dispatch(getMenu());
     }
   }, [render, dispatch]);
-
+  //console.log(render)
   return (
     <div>
       <NavBar />
-      <Link to="/menu/create">
-        <button>Crear menú</button>
-      </Link>
       <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
-      <Filter />
+      <Filter/>
       <MenuCards pagina={pagina} porPagina={porPagina} render={render} />
     </div>
   );

@@ -6,7 +6,9 @@ const MenuCards = (props) => {
   // TODO Este será el estado global que contiene todos los menus
   const { render } = props;
   // * Debe recibir por props el numer de la página en que se encuentra y la cantidad de cards que mostrará en cada página;
-
+ 
+  //console.log(render)
+  
   return (
     <div className={styles.cards}>
       <div className={styles.description}>
@@ -23,12 +25,12 @@ const MenuCards = (props) => {
             (props.pagina - 1) * props.porPagina,
             (props.pagina - 1) * props.porPagina + props.porPagina
           )
-          .map((element, index) => (
+          .map((element, i) => (
             <CardMenu
               id={element.id}
               name={element.name}
               cuantity={element.stock}
-              key={index}
+              key={i}
               imgURL={element.url_image}
               price={element.price}
             />

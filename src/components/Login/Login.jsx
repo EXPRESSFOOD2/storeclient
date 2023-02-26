@@ -1,57 +1,52 @@
 import React from "react";
+import Title from "../../Shared/Title/Title";
 import style from "./Login.module.css";
-import img from "./image/logoSinFondo.png";
 
-const Login = ({ formik }) => {
-    return (
-        <div className={style.superDiv}>
-            <div className={style.createLogin}>
-                <div className={style.prev}>
-                    <img src={img} alt="not found" className={style.image} />
-                    <p>¡Te damos la bienvenida!</p>
-                </div>
-                <form action="" className={style.form} onSubmit={formik.handleSubmit}>
-                    <div className={style.col}>
-                        <label htmlFor="email">E-mail</label>
-                        <input
-                            type="text"
-                            className={formik.errors.email ? style.errorInput : ""}
-                            id="email"
-                            name="email"
-                            {...formik.getFieldProps("email")}
-                        />
-                        {formik.touched.email && formik.errors.email ? (
-                            <label className={style.errorText}>{formik.errors.email}</label>
-                        ) : null}
-                    </div>
-                    <div className={style.col}>
-                        <label htmlFor="password">Contraseña</label>
-                        <input
-                            type="password"
-                            className={formik.errors.password ? style.errorInput : ""}
-                            id="password"
-                            name="password"
-                            {...formik.getFieldProps("password")}
-                        />
-                        {formik.touched.password && formik.errors.password ? (
-                            <label className={style.errorText}>{formik.errors.password}</label>
-                        ) : null}
-                        <a href="https://github.com/EXPRESSFOOD2">olvide mi contraseña</a>
-                    </div>
-                    <div className={style.logins}>
-                        <button type="submit">iniciar sesión</button>
-                    </div>
-                    <div className={style.checkbox}>
-                        <input type="checkbox" name="" id="" value="rememberMe" />
-                        <label htmlFor="">Recuerdame</label>
-                    </div>
-                </form>
-                <div className={style.question}>
-                    <p>¿primera vez en SARASASASA? </p> <a href="/register"> ¡Registrate! </a>
-                </div>
-            </div>
+export default function Login({ formik }) {
+  return (
+    <div className={style.login}>
+      <Title data="Bienvenido" />
+      <form className={style.data} onSubmit={formik.handleSubmit}>
+        <div className={style.col}>
+          <input
+            type="text"
+            name="correo"
+            placeholder="correo"
+            className={formik.errors.correo ? style.errorInput : ""}
+            onChange={formik.handleChange}
+            value={formik.values.correo}
+          />
+          {formik.errors.correo && (
+            <label className={style.errorText}>{formik.errors.correo}</label>
+          )}
         </div>
-    );
-};
-
-export default Login;
+        <div className={style.col}>
+          <input
+            name="contraseña"
+            type="text"
+            placeholder="contraseña"
+            className={formik.errors.contraseña ? style.errorInput : ""}
+            onChange={formik.handleChange}
+            value={formik.values.contraseña}
+          />
+          {formik.errors.contraseña && (
+            <label className={style.errorText}>
+              {formik.errors.contraseña}
+            </label>
+          )}
+        </div>
+        <span>Recuperar mi contraseña</span>
+        <button type="submit">Iniciar sesión</button>
+        <div className={style.checkbox}>
+          <input
+            name="remember"
+            type="checkbox"
+            value="Remember me"
+            id="remember"
+          />
+          <label htmlFor="remember">Recordarme</label>
+        </div>
+      </form>
+    </div>
+  );
+}

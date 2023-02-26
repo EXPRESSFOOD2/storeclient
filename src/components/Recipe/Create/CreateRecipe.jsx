@@ -197,7 +197,7 @@ const CreateRecipe = () => {
 				    </div>
 
 				    <div>
-					  <label htmlFor="ingredientes">Ingredientes Añadidos*</label>
+					  <label htmlFor='añadidos'>Ingredientes Añadidos</label>
 					  <input className='añadidos'
 						type="text"
 						name="añadidos"

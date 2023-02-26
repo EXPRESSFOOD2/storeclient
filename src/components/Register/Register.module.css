@@ -176,28 +176,3 @@
   max-width: 329px;
   color: rgb(251, 133, 133);
 }
-
-.contentfile {
-  position: relative;
-  background-color: #8f1414;
-  width: 150px;
-  height: 40px;
-  border-radius: 5px;
-}
-
-.contentfile > p {
-  color: #f5f5f5;
-  margin: 0px;
-  padding-top: 7px;
-}
-
-.inputfile {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
