@@ -20,7 +20,7 @@ const Filter = () => {
         </select>
       </div>
 
-      <div className={styles.col}>
+      <div className={styles.col1}>
         <label htmlFor="">Filtrar </label>
         <select
           name=""

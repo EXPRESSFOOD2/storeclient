@@ -258,7 +258,7 @@ export const createIngredients = (data) => async (dispatch) => {
 export const getRoles = () => {
   return async function (dispatch) {
     try {
-      const roles = (await axios.get('http://localhost:3001/roles/get')).data
+      const roles = (await axios.get('/roles/get')).data
       dispatch({ type: GET_ROLES, payload: roles })
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error })

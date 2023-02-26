@@ -29,6 +29,42 @@
 
 .col > select{
   height: 30px;
+  width: 149px;
+  padding: 0 0 0 24px;
+  border-radius: 2px;
+  cursor: pointer;
+  
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  
+  background-color: rgba(227, 227, 227, 0.345);
+}
+
+.col > select > option{
+  font-weight: 400;
+}
+
+/* ************************* */
+
+.col1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 150px;
+  height: auto;
+  gap: 1em;
+
+}
+
+.col1 > label{
+  font-family: 'Rubik';
+}
+
+.col1 > select{
+  height: 30px;
   padding: 0 7px;
   border-radius: 2px;
   cursor: pointer;
@@ -40,8 +76,7 @@
   background-color: rgba(227, 227, 227, 0.345);
 }
 
-
-
-.col > select > option{
+.col1 > select > option{
   font-weight: 400;
 }
+
