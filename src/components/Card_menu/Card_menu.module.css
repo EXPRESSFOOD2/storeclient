@@ -34,7 +34,7 @@
   display: inline-block; /* cambiar a inline-block */
   white-space: nowrap;
   width: 100%;
-  overflow: scroll; /* cambiar a hidden */
+
   overflow-y: hidden;
   box-sizing: border-box;
   font-weight: 500;

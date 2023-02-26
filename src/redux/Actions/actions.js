@@ -13,7 +13,8 @@ import {
   UPDATE_MENU,
   GET_INGREDIENT_ID,
   LOGIN_STATUS,
-  CREATE_INGREDIENTS
+  CREATE_INGREDIENTS,
+  GET_ROLES,GET_RECETA
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -51,11 +52,25 @@ export const validateLogin = (values) => async (dispatch) => {
       )
       return true
     } else {
-      alert("Invalid Account & Password or This Account Doesn't exist")
+      ReactDOM.render(
+        <Alert
+          title="Error"
+          message={'Invalid Account & Password or This Account Doesn\'t exist'}
+          type="danger"
+        />,
+        document.getElementById('alert')
+      )
     }
     // validUser ? alert("correcto") : alert("INcorrecto");
   } catch (error) {
-    alert(error.response.data.error)
+    ReactDOM.render(
+        <Alert
+          title="Error"
+          message={error}
+          type="danger"
+        />,
+        document.getElementById(alert)
+    )
   }
 }
 
@@ -240,7 +255,29 @@ export const createIngredients = (data) => async (dispatch) => {
   }
 }
 
+export const getRoles = () => {
+  return async function (dispatch) {
+    try {
+      const roles = (await axios.get('/roles/get')).data
+      dispatch({ type: GET_ROLES, payload: roles })
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error })
+    }
+  }
+}
+
 export const resetError = () => {
   // Funcion para resetear el estado de redux error en false, despues de un error
   return { type: ERROR, payload: false }
 }
+
+export const getReceta = () => {
+  return async function (dispatch) {
+    try {
+      const receta = (await axios.get("/recipes/get")).data;
+      dispatch({ type: GET_RECETA, payload: receta });
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  };
+};

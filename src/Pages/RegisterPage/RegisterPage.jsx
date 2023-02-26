@@ -1,14 +1,21 @@
-import React from 'react'
+import { React, useEffect } from 'react'
 import Register from '../../components/Register/Register'
 import NavBar from '../../Shared/NavBar/NavBar'
-import { useDispatch } from 'react-redux'
-import { createUser } from '../../redux/Actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { createUser, getRoles } from '../../redux/Actions/actions'
 
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
   const dispatch = useDispatch()
+  const roles = useSelector(state => state.roles)
+
+  useEffect(() => {
+    if (!roles.length) {
+      dispatch(getRoles())
+    }
+  }, [dispatch, roles])
 
   const emailRegex =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
@@ -26,9 +33,8 @@ const RegisterPage = (props) => {
       account_name: '',
       phone: '',
       password: '',
-      password_question: '',
-      password_answer: '',
-      profile_image: ''
+      profile_image: '',
+      role_id: null
     },
 
     validationSchema: Yup.object({
@@ -52,17 +58,16 @@ const RegisterPage = (props) => {
           passwordRegExp,
           'la contraseña debe ser mayor a 8 digitos y contener mayúsculas y números'
         ),
-      password_question: Yup.string()
-        .required('selecciona una pregunta')
-        .min(3, 'se requiere seleccionar una pregunta'),
-      password_answer: Yup.string().required('Se requiere una respuesta'),
+      role_id: Yup.number()
+        .required('selecciona un rol'),
       profile_image: Yup.string()
     }),
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2))
       dispatch(createUser(values))
     }
   })
+  // console.log(formik.values.role_id)
 
   const selectQuestion = (e) => {
     const value = e.target.value
@@ -76,7 +81,7 @@ const RegisterPage = (props) => {
   return (
     <div>
       <NavBar />
-      <Register formik={formik} selectQuestion={selectQuestion} imageFn={imageFn} />
+      <Register formik={formik} selectQuestion={selectQuestion} imageFn={imageFn} roles={roles} />
     </div>
   )
 }

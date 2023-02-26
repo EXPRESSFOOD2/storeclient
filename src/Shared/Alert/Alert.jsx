@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import style from './alert.module.css'
 import data from './styleType.json'
+import ReactDOM from 'react-dom'
 
 export default function Alert ({
   title = 'Correcto',
@@ -10,6 +11,12 @@ export default function Alert ({
   type = 'danger'
 }) {
   const img = data[type]?.icon || data.success.icon
+
+  setTimeout(() => remove(), 5000)
+
+  const remove = () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById('alert'))
+  }
 
   return (
     <div className={style.container} id="alertBox">
@@ -23,12 +30,7 @@ export default function Alert ({
           <h3>{title}</h3>
           <p>{message}</p>
         </div>
-        <div
-          className={style.close}
-          onClick={() => {
-            document.getElementById('alertBox').remove()
-          }}
-        >
+        <div className={style.close} onClick={remove}>
           X
         </div>
       </div>

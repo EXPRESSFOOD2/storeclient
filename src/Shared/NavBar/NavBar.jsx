@@ -1,4 +1,3 @@
-
 import React from 'react'
 import styles from './NavBar.module.css'
 import img from './image/logoFinal.jpg'
@@ -32,7 +31,7 @@ const NavBar = () => {
         {userData.name && <span>{userData.name}</span>}
       </div>
       <div className={styles.buttons}>
-          {/* <Link to="/store/update">
+        {/* <Link to="/store/update">
             Editar
           </button>
         </Link> */}
@@ -48,7 +47,7 @@ const NavBar = () => {
           </button>
         </Link>
 
-        <Link to="get/recipe">
+        <Link to="/recipe">
           <button className={location === 'recipe' ? styles.currentPag : ''}>
             Receta
           </button>

@@ -2,12 +2,12 @@
 import React from 'react'
 import styles from './Card_Ingredients.module.css'
 
-const CardIngredient = ({ id, name, medida }) => {
+const CardIngredient = ({  name, medida }) => {
   return (
       <div className={styles.ingredient}>
-          <div className={styles.id}>
+          {/* <div className={styles.id}>
               <span>{id}</span>
-          </div>
+          </div> */}
           <div className={styles.name}>
               <span>{name}</span>
           </div>

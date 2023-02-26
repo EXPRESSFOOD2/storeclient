@@ -6,50 +6,30 @@
     align-items: center;
     background-color: #fff;
     border-radius: 0.5rem;
-    font-weight:700;
+
 }
 
-.image img {
-    height: 3rem;
-    width: 3.4rem;
-}
-
-.activo {
-    display: flex;
-    border-radius: 0.5rem;
+.active{
+    border-radius: .5rem;
     background: #d9d9d9;
-    width: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.3rem;
     height: 2.5rem;
-    margin-left: 3rem;
+    margin-left:40px;
 }
+
 .name {
     border-radius: .5rem;
     background: #d9d9d9;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 12rem;
+    width: 16rem;
     height: 2.5rem;
-}
-.price{
-    margin-left: 3rem;
-    border-radius: 0.5rem;
-    background: #d9d9d9;
-    width: 3.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.cuantity {
-    margin-left: 2.5rem;
-    border-radius: 0.5rem;
-    background: #d9d9d9;
-    width: 3.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left:88px;
+    font-weight:900;
 }
 
 .ico{
@@ -61,9 +41,10 @@
     align-items: center;
     justify-content: center;
     margin-left: 1.8rem;
+    margin-left:75px;
 }
 .ico:hover{
-    background: #ec6674;
+    background: #67c787;
     border-radius: 1rem;
     width: 3.5rem;
     height: 3rem;
