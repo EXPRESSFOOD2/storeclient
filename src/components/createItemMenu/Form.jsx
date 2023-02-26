@@ -9,7 +9,7 @@ import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
 import { createMenu, updateMenu } from '../../redux/Actions/actions'
 
-export default function Form ({ path, menu, ingredientes }) {
+export default function Form ({ path, menu, ingredientes }) {  
   const [ingredientesArray, setIngredientesArray] = useState(
     menu?.Ingredients || []
   )
