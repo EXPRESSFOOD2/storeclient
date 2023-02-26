@@ -9,13 +9,12 @@ import CreateItemMenu from "./Pages/Menu/CreateOrUpdate/CreateItemMenu";
 import EditStore from "./Pages/EditStore/EditSore";
 import Menu from "./Pages/Menu/Menu";
 import Ingredients from "./Pages/Ingredients/Ingredients";
-
 import GetRecipe from "./Pages/Recipe/Get/GetRecipe";
-
 import UpdateIngredient from "./Pages/UpdateIngredient/UpdateIngredient";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { changeLoginStatus } from "./redux/Actions/actions";
+import DetailRecipe from "./Pages/Recipe/DetailRecipe/DetailRecipe";
 
 //! sockets
 
@@ -66,6 +65,7 @@ function App() {
       <Route exact path="/menu/update/:id" component={CreateItemMenu} />
       {}
       <Route exact path="/recipe/create" />
+      <Route exact path="/recipe/update/:id" component={DetailRecipe}/>
       <Route exact path="/recipe" component={GetRecipe} />
       <Route exact path="/register" component={RegisterPage} />
       {}

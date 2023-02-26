@@ -1,44 +1,46 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
-import CardRecipe from '../CardRecipe/CardRecipe'
-import styles from './MenuRecipe.module.css'
+import React from "react";
+import CardRecipe from "../CardRecipe/CardRecipe";
+import styles from "./MenuRecipe.module.css";
 
 const MenuRecipe = (props) => {
+  
   // TODO Este será el estado global que contiene todos los menus
-  const { render } = props
+  const { render_receta } = props;
   // * Debe recibir por props el numer de la página en que se encuentra y la cantidad de cards que mostrará en cada página;
-
+  
+  //console.log(render_receta )
+  
   return (
-
+    <div >
+      
       <div className={styles.container}>
-
-<div className={styles.cards}>
+      <div className={styles.cards}>
       <div className={styles.description}>
-        <span>Foto</span>
         <span>Activo</span>
         <span>Nombre</span>
-        <span>Precio</span>
-        <span>Cantidad</span>
         <span>Editar</span>
       </div>
-        {render
-          ?.slice(
+        {render_receta?.slice(
             (props.pagina - 1) * props.porPagina,
             (props.pagina - 1) * props.porPagina + props.porPagina
           )
-          .map((element, index) => (
+          .map((element, i) => (
             <CardRecipe
-              // id={element.id}
+              id = {element.id}
               name={element.name}
-              cuantity={element.stock}
-              key={index}
-              imgURL={element.url_image}
-              price={element.price}
+              details={element.details}
+              stock={element.produced_amount}
+              active={element.is_active}
+              ingredients={(element.Ingredients)}  
+              key={i}
             />
+            
           ))}
-      </div>
+        </div>
+      </div >
     </div>
-  )
-}
+  );
+};
 
-export default MenuRecipe
+export default MenuRecipe;

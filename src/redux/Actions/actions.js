@@ -14,7 +14,7 @@ import {
   GET_INGREDIENT_ID,
   LOGIN_STATUS,
   CREATE_INGREDIENTS,
-  GET_ROLES
+  GET_ROLES,GET_RECETA
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -270,3 +270,14 @@ export const resetError = () => {
   // Funcion para resetear el estado de redux error en false, despues de un error
   return { type: ERROR, payload: false }
 }
+
+export const getReceta = () => {
+  return async function (dispatch) {
+    try {
+      const receta = (await axios.get("/recipes/get")).data;
+      dispatch({ type: GET_RECETA, payload: receta });
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  };
+};
