@@ -6,10 +6,12 @@ import img from './image/image-1.jpg'
 import { getImageUrl } from '../../redux/Actions/actions'
 import { useDispatch } from 'react-redux'
 
+
 import styles from './Register.module.css'
 
 const Register = ({ formik, selectQuestion, imageFn, roles }) => {
   const dispatch = useDispatch()
+
   const [imageInputState, setImageInputState] = useState('')
   const [previewSource, setPreviewSource] = useState('')
 
