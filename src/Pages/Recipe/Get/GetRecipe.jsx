@@ -1,51 +1,37 @@
-import React, { useState, useEffect } from 'react'
-import MenuRecipe from '../../../components/MenuRecipe/MenuRecipe'
-import NavBar from '../../../Shared/NavBar/NavBar'
-import Pagination from '../../../Shared/Pagination/PaginationComponent'
-import Filter from '../../../Shared/Filter/Filter'
+import React, { useState, useEffect } from "react";
+import MenuRecipe from "../../../components/MenuRecipe/MenuRecipe";
+import NavBar from "../../../Shared/NavBar/NavBar";
+import { Pagination } from "@mui/material";
 
-import { useDispatch, useSelector } from 'react-redux'
-import { getMenu } from '../../../redux/Actions/actions'
+import { useDispatch, useSelector } from "react-redux";//Los hoods
+import { getReceta } from "../../../redux/Actions/actions";
 
 const GetRecipe = () => {
-  const [pagina, setPagina] = useState(1)
-  const [porPagina] = useState(5)
+  const [pagina, setPagina] = useState(1);
+  const [porPagina] = useState(5);
 
-  const dispatch = useDispatch()
-  const render = useSelector((state) => state.render)
+  const dispatch = useDispatch();
+  const render_receta = useSelector((state) => state.render_receta);
 
-  const maximo = Math.ceil(render.length / porPagina)
+  let maximo = Math.ceil(render_receta.length / porPagina);
 
   // Dispatch
 
   useEffect(() => {
-    if (!render.length) {
-      dispatch(getMenu())
+    if (!render_receta.length) {
+      dispatch(getReceta());
     }
-  }, [render, dispatch])
-
+  }, [render_receta, dispatch]);
+  //console.log(render_receta)
   return (
     <div>
       <NavBar />
-      <Filter />
-      <MenuRecipe pagina={pagina} porPagina={porPagina} render={render} />
       <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
+      <MenuRecipe pagina={pagina} porPagina={porPagina} render_receta={render_receta} />
+      
     </div>
-  )
-}
+  );
+};
 
-export default GetRecipe
-
-/* import GetRecipe from '../../../components/Recipe/Get/GetRecipe.jsx'
-import NavBar from "../../../Shared/NavBar/NavBar.jsx";
-
-const GetReceta = () => {
-    return (
-        <>
-        <NavBar/>
-        <GetRecipe/>
-        </>
-     );
-}
-
-export default GetReceta;  */
+export default GetRecipe;
+  

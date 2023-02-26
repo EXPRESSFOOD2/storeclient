@@ -11,7 +11,7 @@ import {
   GET_INGREDIENT_ID,
   LOGIN_STATUS,
   CREATE_INGREDIENTS,
-  GET_ROLES
+  GET_ROLES, GET_RECETA
 } from '../Actions/types'
 import { createRoot } from 'react-dom/client'
 
@@ -23,7 +23,9 @@ const initialState = {
   errors: false,
   render: [],
   statusFilter: true,
-  roles: []
+  roles: [],
+  render_receta:[],
+
 }
 
 const filterFunction = (status, array) => {
@@ -69,8 +71,12 @@ const rootReducer = (state = initialState, action) => {
       const root = createRoot(document.getElementById('alert'))
       root.render(<Alert title="Error" message={action.payload} type="danger" />)
       return { ...state, errors: action.payload }
-    case GET_ROLES:
-      return { ...state, roles: action.payload }
+      
+      case GET_ROLES:
+        return { ...state, roles: action.payload }
+        
+              case GET_RECETA:
+              return { ...state, recetas: action.payload, render_receta: [...action.payload] };
     default:
       return { ...state }
   }

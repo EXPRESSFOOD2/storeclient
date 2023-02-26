@@ -1,7 +1,7 @@
 .container {
-    margin-top:50px;
-    margin-left: 300px;
-    width: 63%;
+    margin-top:40px;
+    margin-left: 460px;
+    width: 40%;
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -19,12 +19,32 @@
 }
 
 .description {
-    margin-top:15px;
+    margin-top:5px;
     display: grid;
     grid-template-columns: repeat(6, 1fr); /*Los pone en linea*/
-    width: 100%;
+    width: 230%;
     font-family: "Rubik", sans-serif;
     font-size: medium;
+    margin-left:700px;
+}
+
+.crear_receta{
+    border-radius: 1rem;
+    margin-left:470px;
+    background: #a6deb7;
+    width: 4.6rem;
+    height: 2.5rem;
+    font-weight:700;
+	
+}
+
+.crear_receta:hover{
+    border-radius: 1rem;
+    background: #67c787;
+    width: 4.7rem;
+    height: 2.6rem;
+    font-weight:700;
+	
 }
 
 
