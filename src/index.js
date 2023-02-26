@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react'
 import './index.css'
 import App from './App'
@@ -8,8 +9,7 @@ import reportWebVitals from './reportWebVitals'
 import { createRoot } from 'react-dom/client'
 import axios from 'axios'
 
-// axios.defaults.baseURL = "http://localhost:3001";
-axios.defaults.baseURL = 'https://apiexpressfood.up.railway.app'
+axios.defaults.baseURL = process.env.REACT_APP_APIURL || process.env.REACT_APP_URL_DEPLOY ;
 
 const root = createRoot(document.getElementById('root'))
 root.render(
