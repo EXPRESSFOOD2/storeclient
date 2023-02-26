@@ -18,8 +18,13 @@ import { useEffect, useState } from "react";
 import { changeLoginStatus } from "./redux/Actions/actions";
 
 //! sockets
-import io from "socket.io-client";
-export const socket = io("http://localhost:3001/");
+
+
+// import io from 'socket.io-client'
+// export const socket = io('http://localhost:3001/')
+
+
+
 
 function App() {
   const loginStatus = useSelector((state) => state.loginStatus);
@@ -36,9 +41,13 @@ function App() {
   // Se cambio la verificacion del login a estadoLocal.
 
   useEffect(() => {
-    socket.emit("prueba", { data: "bienvendo a socket io" }, () => {
-      console.log("conexion exitosa");
-    });
+
+    
+
+    // socket.emit('prueba', { data: 'bienvendo a socket io' }, () => {
+    //   console.log('conexion exitosa')
+    // })
+
 
     if (userLogin === "false" || !userLogin) {
       history.push("/");
