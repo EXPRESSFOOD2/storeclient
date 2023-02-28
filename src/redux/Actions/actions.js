@@ -14,7 +14,12 @@ import {
   GET_INGREDIENT_ID,
   LOGIN_STATUS,
   CREATE_INGREDIENTS,
-  GET_ROLES,GET_RECETA
+  GET_ROLES,GET_RECETA,
+  ORDER_BY_PRICE,
+  FILTER_BY_TAG,
+  ORDER_BY_RECOMMENDATION,
+  SORT_BY_ACTIVITY,
+  ORDER_BY_QUANTITY
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -281,3 +286,25 @@ export const getReceta = () => {
     }
   };
 };
+
+
+
+export const orderByPrecio = ( payload ) =>({
+  type: ORDER_BY_PRICE, payload 
+})
+
+export const filterByTag = (payload) =>({
+  type: FILTER_BY_TAG, payload
+})
+
+export const OrderByRecommendation = (payload) =>({
+  type: ORDER_BY_RECOMMENDATION, payload
+})
+
+export const sortByActivity = (payload) => ({
+  type: SORT_BY_ACTIVITY, payload
+})
+
+export const orderByQuantity = (payload) => ({
+  type: ORDER_BY_QUANTITY, payload
+}) 
