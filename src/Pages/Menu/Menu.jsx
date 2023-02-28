@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState} from 'react'
 import MenuCards from '../../components/MenuCards/MenuCards'
 import NavBar from '../../Shared/NavBar/NavBar'
 import Filter from '../../Shared/Filter/Filter'
@@ -12,6 +12,8 @@ import style from './menu.module.css'
 const Menu = () => {
   const dispatch = useDispatch()
   const render = useSelector((state) => state.render)
+  const [orders , setOrders] = useState("")
+
 
   // Dispatch
 
@@ -19,7 +21,7 @@ const Menu = () => {
     if (!render.length) {
       dispatch(getMenu())
     }
-  }, [render, dispatch])
+  }, [render, dispatch, orders])
 
   return (
     <div className={style.container}>
@@ -31,7 +33,7 @@ const Menu = () => {
       </div>
 
       <div className={style.menuFilter}>
-        <Filter />
+        <Filter render={render} setOrders={setOrders} />
         <MenuCards render={render} />
       </div>
     </div>
