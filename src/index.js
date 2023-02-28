@@ -10,7 +10,8 @@ import { createRoot } from 'react-dom/client'
 import axios from 'axios'
 
 
-axios.defaults.baseURL = process.env.REACT_APP_URL_DEPLOY || "http://localhost:3002/";
+
+axios.defaults.baseURL = process.env.REACT_APP_URLDEPLOY || process.env.REACT_APP_APIURLOCAL
 
 
 const root = createRoot(document.getElementById('root'))
