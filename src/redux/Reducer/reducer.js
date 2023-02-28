@@ -11,7 +11,12 @@ import {
   GET_INGREDIENT_ID,
   LOGIN_STATUS,
   CREATE_INGREDIENTS,
-  GET_ROLES, GET_RECETA
+  GET_ROLES, GET_RECETA,
+  ORDER_BY_PRICE,
+  FILTER_BY_TAG,
+  ORDER_BY_RECOMMENDATION,
+  SORT_BY_ACTIVITY,
+  ORDER_BY_QUANTITY
 } from '../Actions/types'
 import { createRoot } from 'react-dom/client'
 
@@ -27,7 +32,7 @@ const initialState = {
   render_receta:[],
 
 }
-
+// console.log(initialState.render);
 const filterFunction = (status, array) => {
   let newRender
   if (status) {
@@ -77,6 +82,43 @@ const rootReducer = (state = initialState, action) => {
         
               case GET_RECETA:
               return { ...state, recetas: action.payload, render_receta: [...action.payload] };
+
+      case ORDER_BY_PRICE:
+      let sortPrice =
+        action.payload === "mayor"
+          ? state.render.sort((a, b) => {
+              return b.price - a.price;
+            })
+          : state.render.sort((a, b) => {
+              return a.price - b.price;
+            });
+      // console.log(sortPrice)
+      return {
+        ...state,
+        render: sortPrice,
+      };
+
+      case ORDER_BY_QUANTITY:
+        let sortQuantity =
+          action.payload === "mayor"
+            ? state.render.sort((a, b) => {
+                return b.stock - a.stock;
+              })
+            : state.render.sort((a, b) => {
+                return a.stock - b.stock;
+              });
+        // console.log(sortPrice)
+        return {
+          ...state,
+          render: sortQuantity,
+        };
+
+      case FILTER_BY_TAG:
+        return { ...state, render: action.payload }
+      case ORDER_BY_RECOMMENDATION:
+        return { ...state, render: action.payload }
+      case SORT_BY_ACTIVITY:
+        return { ...state, render: action.payload }
     default:
       return { ...state }
   }
