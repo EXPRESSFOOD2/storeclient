@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import "./App.css";
 import axios from "axios";
-import { Route, useHistory } from "react-router-dom";
+import { Route, useHistory, useLocation } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import CreateItemMenu from "./Pages/Menu/CreateOrUpdate/CreateItemMenu";
@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { changeLoginStatus } from "./redux/Actions/actions";
 import DetailRecipe from "./Pages/Recipe/DetailRecipe/DetailRecipe";
+import NavBar from "./Shared/NavBar/NavBar";
+import LateralBar from "./components/LateralBar/LateralBar";
 
 //! sockets
 
@@ -30,6 +32,7 @@ function App() {
   const dispatch = useDispatch();
   const history = useHistory();
   const userLogin = window.localStorage.getItem("userLogin");
+  const {pathname} = useLocation()
 
   // useEffect(() => {
   //   if (!loginStatus) {
@@ -56,28 +59,35 @@ function App() {
     }
   }, [userLogin]);
   return (
-    <div className="App">
-      <Route exact path="/" component={LoginPage} />
-      <Route exact path="/dashboard" />
-      {/* menu */}
-      <Route exact path="/menu" component={Menu} />
+      <div className="App">
+          {pathname !== "/login" && <Route path="/" component={NavBar} />}
+          {pathname !== "/login" && <Route path="/" component={LateralBar} />}
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/menu" component={Menu} />
+          <Route exact path="/menu/create" component={CreateItemMenu} />
+          <Route exact path="/recipe" component={GetRecipe} />
+          <Route exact path="/ingredient" component={Ingredients} />
+          <Route exact path="/ingredient/create" component={Ingredients} />
+          {/* <Route exact path="/dashboard" /> */}
+          {/* menu */}
+          {/* <Route exact path="/menu" component={Menu} />
       <Route exact path="/menu/create" component={CreateItemMenu} />
-      <Route exact path="/menu/update/:id" component={CreateItemMenu} />
-      {}
-      <Route exact path="/recipe/create" />
+      <Route exact path="/menu/update/:id" component={CreateItemMenu} /> */}
+          {}
+          {/* <Route exact path="/recipe/create" />
       <Route exact path="/recipe/update/:id" component={DetailRecipe}/>
       <Route exact path="/recipe" component={GetRecipe} />
-      <Route exact path="/register" component={RegisterPage} />
-      {}
-      <Route exact path="/ingredient" component={Ingredients} />
-      <Route exact path="/ingredient/create" component={Ingredients} />
-      {}
-      <Route exact path="/profile" />
+      <Route exact path="/register" component={RegisterPage} /> */}
+          {}
+          {/* <Route exact path="/ingredient" component={Ingredients} />
+      <Route exact path="/ingredient/create" component={Ingredients} /> */}
+          {}
+          {/* <Route exact path="/profile" />
       <Route exact path="/store" />
-      <Route exact path="/orders" />
-      {/* <Route exact path="/store/update" component={EditStore} /> */}
-      <div id="alert" className="alert"></div>
-    </div>
+      <Route exact path="/orders" /> */}
+          {/* <Route exact path="/store/update" component={EditStore} /> */}
+          <div id="alert" className="alert"></div>
+      </div>
   );
 }
 

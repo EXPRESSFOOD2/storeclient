@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MenuRecipe from "../../../components/MenuRecipe/MenuRecipe";
-import NavBar from "../../../Shared/NavBar/NavBar";
-import { Pagination } from "@mui/material";
-
+import Pagination from "../../../Shared/Pagination/PaginationComponent"
+import styles from './GetRecipe.module.css';
 import { useDispatch, useSelector } from "react-redux";//Los hoods
 import { getReceta } from "../../../redux/Actions/actions";
 
@@ -24,11 +23,11 @@ const GetRecipe = () => {
   }, [render_receta, dispatch]);
   //console.log(render_receta)
   return (
-    <div>
-      <NavBar />
+    <div className={styles.container}>
+      <div className={styles.subContainer}>
       <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
-      <MenuRecipe pagina={pagina} porPagina={porPagina} render_receta={render_receta} />
-      
+      <MenuRecipe pagina={pagina} porPagina={porPagina} render_receta={render_receta} /> 
+      </div>
     </div>
   );
 };

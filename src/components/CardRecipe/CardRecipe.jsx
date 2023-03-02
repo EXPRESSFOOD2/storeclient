@@ -8,10 +8,6 @@ const CardRecipe = (props) => {
   
   return (
     <div className={styles.card}>
-      <div className={styles.active}>
-        <h5>{props.active}</h5>
-      </div>
-     
       <div className={styles.name}>
         <h5>{props.name}</h5>
         {/* <span>Hamburguesa</span> */}
