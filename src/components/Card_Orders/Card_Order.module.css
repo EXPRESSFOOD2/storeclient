@@ -1,0 +1,77 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col img {
+  height: 45px;
+  width: 80px;
+  object-fit: cover;
+
+  border-radius: 5px;
+  margin-top: 3px; 
+}
+
+.col{
+  height: 50px;
+  width: 15%;
+  max-width: 15%;
+  text-align: center;
+  line-height: 50px;
+
+  border-bottom: 1px solid grey;
+  padding: 5px 0;
+}
+
+.col > a{
+  height: 45px;
+  width: 80px;
+}
+
+.col > span {
+  display: inline-block; /* cambiar a inline-block */
+  white-space: nowrap;
+  width: 100%;
+
+  overflow-y: hidden;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.col > span::-webkit-scrollbar{
+  border: none;
+}
+
+.colIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 15%;
+  max-width: 15%;
+  text-align: center;
+  line-height: 50px;
+  margin: 0px ;
+ 
+
+  border-bottom: 1px solid grey;
+  padding: 5px 0;
+}
+
+.colIcon > button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(143, 20, 20, 1);
+  padding: 5px;
+  border-radius: 30px;
+  border: 0;
+  margin: 0px 5px;
+  cursor: pointer;
+}
+
+.colIcon > button:hover{
+  background-color: rgb(222, 69, 69);
+}

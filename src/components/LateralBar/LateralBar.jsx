@@ -34,7 +34,9 @@ const LateralBar = () => {
             </div>
             <div className={styles.containerButtons}>
                 <div className={styles.principalButton}>
+                    <Link to="/orders" className={styles.orders}>
                     <span name="menu">Pedidos</span>
+                    </Link>
                     {/* <img src="https://cdn-icons-png.flaticon.com/512/709/709586.png" alt="" /> */}
                 </div>
             </div>

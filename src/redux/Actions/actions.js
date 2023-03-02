@@ -19,7 +19,9 @@ import {
   FILTER_BY_TAG,
   ORDER_BY_RECOMMENDATION,
   SORT_BY_ACTIVITY,
-  ORDER_BY_QUANTITY
+  ORDER_BY_QUANTITY,
+  FINISHED,
+  PREPARING
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -308,3 +310,11 @@ export const sortByActivity = (payload) => ({
 export const orderByQuantity = (payload) => ({
   type: ORDER_BY_QUANTITY, payload
 }) 
+
+export const isFinished = (payload) => ({
+  type: FINISHED, payload
+})
+
+export const inPreparation = (payload) => ({
+  type: PREPARING, payload
+})
