@@ -18,11 +18,6 @@ const IngredientsCards = () => {
                     <span className={styles.name}>Nombre</span>
                     <span className={styles.medida}>Medida</span>
                 </div>
-                <div>
-                    {/* <span className={styles.id}>Id</span> */}
-                    <span className={styles.name}>Nombre</span>
-                    <span className={styles.medida}>Medida</span>
-                </div>
             </div>
             <div className={styles.container}>
                 {ingredients.map((element, index) => (
