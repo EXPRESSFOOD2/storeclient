@@ -58,7 +58,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_MENU:
       return { ...state, menus: action.payload, render: [...action.payload] }
     case CREATE_MENU:
-      return { ...state, menus: [...state.menus, action.payload] }
+      return { ...state, menus: [...state.menus, action.payload], render:[...state.menus, action.payload]}
     case UPDATE_MENU:
       const newMenu = [...state.menus].filter(
         (menu) => menu.id !== action.payload.id
