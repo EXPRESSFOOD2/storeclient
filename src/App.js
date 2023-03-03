@@ -17,6 +17,7 @@ import { changeLoginStatus } from "./redux/Actions/actions";
 import DetailRecipe from "./Pages/Recipe/DetailRecipe/DetailRecipe";
 import NavBar from "./Shared/NavBar/NavBar";
 import LateralBar from "./components/LateralBar/LateralBar";
+import Orders from "./Pages/Orders/ContainerOrders";
 
 //! sockets
 
@@ -68,6 +69,7 @@ function App() {
           <Route exact path="/recipe" component={GetRecipe} />
           <Route exact path="/ingredient" component={Ingredients} />
           <Route exact path="/ingredient/create" component={Ingredients} />
+          <Route exact path="/orders" component={Orders} />
           {/* <Route exact path="/dashboard" /> */}
           {/* menu */}
           {/* <Route exact path="/menu" component={Menu} />
