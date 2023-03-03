@@ -70,7 +70,7 @@ const LateralBar = () => {
                         <Link to="/recipe" className={styles.dropDownsButtons}>
                             <span>Ver Recetas</span>
                         </Link>
-                        <Link className={styles.dropDownsButtons}>
+                        <Link to="/menu/create" className={styles.dropDownsButtons}>
                             <span>Crear Receta</span>
                         </Link>
                     </div>
