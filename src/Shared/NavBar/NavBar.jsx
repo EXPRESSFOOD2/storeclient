@@ -30,7 +30,7 @@ const NavBar = () => {
                 {/* {userData.img && <img src={userData.img} alt="" />}
                 {userData.name && <span>{userData.name}</span>} */}
             </div>
-            <h1>DashBoard</h1>
+            {/* <h1>DashBoard</h1> */}
             <div className={styles.buttons}>
                 <Link to="/register">
                     <button className={location === "register" ? styles.currentPag : ""}>
