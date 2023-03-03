@@ -33,8 +33,7 @@ function App() {
   const dispatch = useDispatch();
   const history = useHistory();
   const userLogin = window.localStorage.getItem("userLogin");
-  const {pathname} = useLocation()
-
+  
   // useEffect(() => {
   //   if (!loginStatus) {
   //     history.push("/");
@@ -61,9 +60,9 @@ function App() {
   }, [userLogin]);
   return (
       <div className="App">
-          {pathname !== "/login" && <Route path="/" component={NavBar} />}
-          {pathname !== "/login" && <Route path="/" component={LateralBar} />}
-          <Route exact path="/login" component={LoginPage} />
+          {loginStatus && <Route path="/" component={NavBar} />}
+          {loginStatus && <Route path="/" component={LateralBar} />}
+          {!loginStatus && <Route exact path="/" component={LoginPage} />}
           <Route exact path="/menu" component={Menu} />
           <Route exact path="/menu/create" component={CreateItemMenu} />
           <Route exact path="/recipe" component={GetRecipe} />
