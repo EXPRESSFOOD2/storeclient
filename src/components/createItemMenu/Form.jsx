@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import style from './form.module.css'
 import img from './image/leftImgBG.jpg'
-import Title from '../../Shared/Title/Title'
+// import Title from '../../Shared/Title/Title'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
@@ -98,7 +98,7 @@ export default function Form ({ path, menu, ingredientes }) {
 
   return (
     <div className={style.menuItem}>
-      <Title data={path === 'create' ? 'Crear menú' : 'Actualizar Menú'} />
+      {/* <Title data={path === 'create' ? 'Crear menú' : 'Actualizar Menú'} /> */}
       <div className={style.container}>
         <form
           action=""

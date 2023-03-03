@@ -70,6 +70,7 @@ function App() {
           <Route exact path="/ingredient" component={Ingredients} />
           <Route exact path="/ingredient/create" component={Ingredients} />
           <Route exact path="/orders" component={Orders} />
+          <Route exact path="/register" component={RegisterPage} /> 
           {/* <Route exact path="/dashboard" /> */}
           {/* menu */}
           {/* <Route exact path="/menu" component={Menu} />
@@ -78,8 +79,7 @@ function App() {
           {}
           {/* <Route exact path="/recipe/create" />
       <Route exact path="/recipe/update/:id" component={DetailRecipe}/>
-      <Route exact path="/recipe" component={GetRecipe} />
-      <Route exact path="/register" component={RegisterPage} /> */}
+      <Route exact path="/recipe" component={GetRecipe} />*/}
           {}
           {/* <Route exact path="/ingredient" component={Ingredients} />
       <Route exact path="/ingredient/create" component={Ingredients} /> */}

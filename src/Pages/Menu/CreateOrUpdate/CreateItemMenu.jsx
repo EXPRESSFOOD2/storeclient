@@ -1,11 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useLocation, useParams } from 'react-router-dom'
 import Form from '../../../components/createItemMenu/Form'
-import NavBar from '../../../Shared/NavBar/NavBar'
+// import NavBar from '../../../Shared/NavBar/NavBar'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllIngredients, getMenu } from '../../../redux/Actions/actions'
 import { useEffect } from 'react'
+
+import styles from "./CreateOrUpdate.module.css"
 
 export default function CreateItemMenu () {
   // get Route [create | update]
@@ -28,8 +30,8 @@ export default function CreateItemMenu () {
   }, [menus, dispatch, route, ingredients])
 
   return (
-    <div>
-      <NavBar />
+    <div className={styles.container}>
+      {/* <NavBar /> */}
 
       {route === 'update'
         ? (

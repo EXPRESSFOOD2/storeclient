@@ -1,6 +1,6 @@
 import { React, useEffect } from 'react'
 import Register from '../../components/Register/Register'
-import NavBar from '../../Shared/NavBar/NavBar'
+import LateralBar from '../../components/LateralBar/LateralBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { createUser, getRoles } from '../../redux/Actions/actions'
 
@@ -80,7 +80,7 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <NavBar />
+      <LateralBar />
       <Register formik={formik} selectQuestion={selectQuestion} imageFn={imageFn} roles={roles} />
     </div>
   )
