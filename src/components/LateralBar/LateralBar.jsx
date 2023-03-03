@@ -86,7 +86,7 @@ const LateralBar = () => {
                 {view.ingredient && (
                     <div className={styles.dropDowns}>
                         <Link to="/ingredient" className={styles.dropDownsButtons}>
-                            <span>Ver Ingredientes</span>
+                            <span>Ver Inventario</span>
                         </Link>
                         <Link to="/ingredient/create" className={styles.dropDownsButtons}>
                             <span>Crear Ingrediente</span>

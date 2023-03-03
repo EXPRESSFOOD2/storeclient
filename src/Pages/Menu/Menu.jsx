@@ -27,7 +27,9 @@ const Menu = () => {
   return (
     <div className={style.container}>
       {/* <LateralBar/> */}
-        {/* <Filter render={render} setOrders={setOrders} /> */}
+      <div className={style.filters}>
+        <Filter render={render} setOrders={setOrders} />
+      </div>
         <MenuCards render={render} />
     </div>
   )

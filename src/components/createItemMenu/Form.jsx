@@ -83,7 +83,6 @@ export default function Form({ path, menu, ingredientes }) {
                     };
                 }),
             };
-
             if (path === "update") {
                 dispatch(updateMenu({ ...menuMapData, id: menu.id }));
             } else {
