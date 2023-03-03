@@ -10,6 +10,7 @@
     color: white;
     position: fixed;
     top: 3rem;
+    z-index: 9000;
 }
 
 .containerButtons {
