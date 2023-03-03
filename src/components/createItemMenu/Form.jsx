@@ -7,7 +7,7 @@ import Title from '../../Shared/Title/Title'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
-import { createMenu, updateMenu } from '../../redux/Actions/actions'
+import { createMenu, updateMenu, getMenu } from '../../redux/Actions/actions'
 
 export default function Form ({ path, menu, ingredientes }) {  
   const [ingredientesArray, setIngredientesArray] = useState(
@@ -90,7 +90,8 @@ export default function Form ({ path, menu, ingredientes }) {
         dispatch(updateMenu({ ...menuMapData, id: menu.id }))
       } else {
         dispatch(createMenu(menuMapData))
-        console.log(menuMapData)
+        dispatch(getMenu())
+        // console.log(menuMapData)
       }
     }
   })
