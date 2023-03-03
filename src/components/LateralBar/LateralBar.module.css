@@ -10,7 +10,7 @@
     color: white;
     position: fixed;
     top: 3rem;
-    z-index: 1000;
+    z-index: 9000;
 }
 
 .containerButtons {
@@ -28,6 +28,7 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     z-index: 1000;
+    cursor: pointer;
 }
 .principalButton img {
     width: 1rem;
