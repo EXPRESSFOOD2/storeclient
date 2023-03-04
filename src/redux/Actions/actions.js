@@ -21,7 +21,9 @@ import {
   SORT_BY_ACTIVITY,
   ORDER_BY_QUANTITY,
   FINISHED,
-  PREPARING
+  PREPARING,
+  DELETE_INGREDIENT,
+  DELETE_RECIPE
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -123,6 +125,10 @@ export const updateIngredient = async (data) => {
   console.log(Ingredient)
 }
 
+// export const deleteIngredient = () => () => {
+  
+// }
+
 export const createMenu = (data) => {
   return async function (dispatch) {
     try {
@@ -193,10 +199,10 @@ export const getImageUrl = (imageStr, imageFn) => {
   }
 }
 
-export const deleteIngredient = async (id) => {
+export const deleteIngredient = (id)=> async (dispatch) => {
   try {
-    const res = await axios.delete(`/ingredients/delete?id=${id}`)
-    return console.log(res)
+    await axios.delete(`/ingredients/delete/${id}`)
+    dispatch({type:DELETE_INGREDIENT, payload:id })
   } catch (err) {
     return console.error(err)
   }
@@ -281,13 +287,23 @@ export const resetError = () => {
 export const getReceta = () => {
   return async function (dispatch) {
     try {
-      const receta = (await axios.get("/recipes/get")).data;
+      const result = (await axios.get("/recipes/get")).data;
+      const receta = result.filter(element=>!element.name?.includes(" OLD "))
       dispatch({ type: GET_RECETA, payload: receta });
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
   };
 };
+
+export const deleteRecipe = (id) => async(dispatch) => {
+  try {
+    await axios.delete(`http://localhost:3002/recipes/delete?id=${id}`);
+    dispatch({type:DELETE_RECIPE, payload:id})
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 

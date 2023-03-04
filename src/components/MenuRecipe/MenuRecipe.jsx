@@ -14,7 +14,8 @@ const MenuRecipe = (props) => {
         <div className={styles.cards}>
             <div className={styles.description}>
                 <span>Nombre</span>
-                <span>Acción</span>
+                <span className={styles.ver}>Ver</span>
+                <span>Eliminar</span>
             </div>
             {render_receta
                 ?.slice(
