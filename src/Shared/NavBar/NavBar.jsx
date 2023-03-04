@@ -9,7 +9,7 @@ import { changeLoginStatus } from "../../redux/Actions/actions";
 const NavBar = () => {
     const location = useLocation().pathname.split("/").at(1);
     const dispatch = useDispatch();
-    // const userData = JSON.parse(window.localStorage.getItem("userData"));
+    const userData = JSON.parse(window.localStorage.getItem("userData"));
 
     function handleResetUserLogin() {
         try {
@@ -27,8 +27,8 @@ const NavBar = () => {
                 <img src={img} alt="" className={styles.logo} />
             </div>
             <div className={styles.userContainer}>
-                {/* {userData.img && <img src={userData.img} alt="" />}
-                {userData.name && <span>{userData.name}</span>} */}
+                {userData.img && <img src={userData.img} alt="" />}
+                {userData.name && <span>{userData.name}</span>}
             </div>
             {/* <h1>DashBoard</h1> */}
             <div className={styles.buttons}>
