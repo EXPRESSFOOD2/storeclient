@@ -13,29 +13,31 @@ const LateralBar = () => {
     const handleMouse = (name) => {
         setview({
             ...view,
-            [name]:true
-        })
-    }
+            [name]: true,
+        });
+    };
     const handleMouseOut = () => {
         setview({
             menu: false,
             recipe: false,
-            ingredient:false
-        })
-    }
+            ingredient: false,
+        });
+    };
 
     return (
         <div className={styles.container}>
             <div className={styles.containerButtons}>
                 <div className={styles.principalButton}>
-                    <span name="menu">Ventas</span>
+                    <Link to="/sales" className={styles.orders}>
+                        <span>Ventas</span>
+                    </Link>
                     {/* <img src="https://cdn-icons-png.flaticon.com/512/709/709586.png" alt="" /> */}
                 </div>
             </div>
             <div className={styles.containerButtons}>
                 <div className={styles.principalButton}>
                     <Link to="/orders" className={styles.orders}>
-                    <span name="menu">Pedidos</span>
+                        <span name="menu">Pedidos</span>
                     </Link>
                     {/* <img src="https://cdn-icons-png.flaticon.com/512/709/709586.png" alt="" /> */}
                 </div>
