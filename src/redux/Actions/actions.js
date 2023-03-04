@@ -20,8 +20,9 @@ import {
   ORDER_BY_RECOMMENDATION,
   SORT_BY_ACTIVITY,
   ORDER_BY_QUANTITY,
-  FINISHED,
-  PREPARING
+  DELIVERY,
+  GET_ORDERS,
+  SALES
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -311,10 +312,33 @@ export const orderByQuantity = (payload) => ({
   type: ORDER_BY_QUANTITY, payload
 }) 
 
-export const isFinished = (payload) => ({
-  type: FINISHED, payload
-})
+export const getOrders = () =>{
+  return async (dispatch) =>{
+    try {
+      const orders = await axios.post("/orders/get")
+      // console.log(orders.data);
+      dispatch({type: GET_ORDERS, payload: orders.data })
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  }
+}
 
-export const inPreparation = (payload) => ({
-  type: PREPARING, payload
-})
+// no testeado
+export const isFinished = async (data) => {
+  try {
+    const order = await axios.patch('/orders/update', data)
+    console.log(order)
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const delivery = async (data) => {
+  try {
+    const order = await axios.patch('/orders/update', data)
+    console.log(order)
+  } catch (error) {
+    console.error(error);
+  }
+}

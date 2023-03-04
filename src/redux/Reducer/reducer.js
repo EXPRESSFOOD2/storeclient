@@ -16,7 +16,8 @@ import {
   FILTER_BY_TAG,
   ORDER_BY_RECOMMENDATION,
   SORT_BY_ACTIVITY,
-  ORDER_BY_QUANTITY
+  ORDER_BY_QUANTITY,
+  GET_ORDERS
 } from '../Actions/types'
 import { createRoot } from 'react-dom/client'
 
@@ -30,7 +31,7 @@ const initialState = {
   statusFilter: true,
   roles: [],
   render_receta:[],
-
+  orders: []
 }
 // console.log(initialState.render);
 const filterFunction = (status, array) => {
@@ -119,6 +120,8 @@ const rootReducer = (state = initialState, action) => {
         return { ...state, render: action.payload }
       case SORT_BY_ACTIVITY:
         return { ...state, render: action.payload }
+      case GET_ORDERS:
+        return { ...state, orders: action.payload}
     default:
       return { ...state }
   }

@@ -60,7 +60,7 @@
   /* background-color: aqua; */
  
 
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
   padding: 5px 0;
 }
 
@@ -72,10 +72,26 @@
   padding: 5px;
   border-radius: 30px;
   border: 0;
-  margin: 0px 5px;
+  margin: 2px 5px;
   cursor: pointer;
 }
 
 .colIcon > button:hover{
   background-color: rgb(222, 69, 69);
+}
+
+
+/**********************************************/
+
+.card{
+  display: flex;
+  flex-direction: row;
+  width: 15rem;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Rubik", sans-serif;
+}
+.card img{
+  width: 4rem;
+  height: 4rem;
 }
