@@ -17,7 +17,9 @@ import {
   ORDER_BY_RECOMMENDATION,
   SORT_BY_ACTIVITY,
   ORDER_BY_QUANTITY,
-  GET_ORDERS
+  GET_ORDERS,
+  DELETE_INGREDIENT,
+  DELETE_RECIPE
 } from '../Actions/types'
 import { createRoot } from 'react-dom/client'
 
@@ -73,13 +75,23 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, ingredientDetail: action.payload }
     case CREATE_INGREDIENTS:
       return { ...state, ingredients: [...state.ingredients, ...action.payload] }
+    case DELETE_INGREDIENT:
+      const ingredients = state.ingredients?.filter(element => element.id !== action.payload)
+      return {
+        ...state, ingredients:[...ingredients],
+      }
     case ERROR:
       const root = createRoot(document.getElementById('alert'))
       root.render(<Alert title="Error" message={action.payload} type="danger" />)
       return { ...state, errors: action.payload }
       
       case GET_ROLES:
-        return { ...state, roles: action.payload }
+      return { ...state, roles: action.payload }
+    case DELETE_RECIPE:
+      const recipes = state.render_receta?.map(element => element.id !== action.payload)
+      return {
+        ...state, render_receta: [...recipes]
+      }
         
               case GET_RECETA:
               return { ...state, recetas: action.payload, render_receta: [...action.payload] };

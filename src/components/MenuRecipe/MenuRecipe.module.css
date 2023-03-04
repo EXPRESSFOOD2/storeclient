@@ -4,9 +4,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: fit-content;
+    /* width: fit-content; */
     padding: 1rem;
-    background-color: rgb(199, 199, 199);
+    background-color: white;
     box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.27);
     border-radius: .5rem;
 }
@@ -14,9 +14,12 @@
 .description {
     margin-top: 5px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
     font-family: "Rubik", sans-serif;
-    font-size: medium;
-    /* margin-left:700px; */
+    font-size: larger;
+    padding-left: 6rem;
+}
+.ver{
+    margin-right: -7rem;
 }
