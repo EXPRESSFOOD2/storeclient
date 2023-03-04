@@ -3,12 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: red;s */
 }
 
 .col img {
   height: 45px;
   width: 80px;
   object-fit: cover;
+  margin-left: -30px;
 
   border-radius: 5px;
   margin-top: 3px; 
@@ -16,10 +18,11 @@
 
 .col{
   height: 50px;
-  width: 15%;
-  max-width: 15%;
+  width: 27%;
+  max-width: 30%;
   text-align: center;
   line-height: 50px;
+  margin-left: -40px;
 
   border-bottom: 1px solid grey;
   padding: 5px 0;
@@ -34,7 +37,7 @@
   display: inline-block; /* cambiar a inline-block */
   white-space: nowrap;
   width: 100%;
-
+/* background-color: antiquewhite; */
   overflow-y: hidden;
   box-sizing: border-box;
   font-weight: 500;
@@ -49,11 +52,12 @@
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 15%;
+  width: 20%;
   max-width: 15%;
   text-align: center;
   line-height: 50px;
   margin: 0px ;
+  /* background-color: aqua; */
  
 
   border-bottom: 1px solid grey;
