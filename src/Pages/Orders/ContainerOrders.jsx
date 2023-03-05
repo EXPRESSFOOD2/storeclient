@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react";
 import styles from "./Orders.module.css";
 import OrdersComponent from "../../components/Card_Orders/Card_Order";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,12 +7,15 @@ import { getOrders, isFinished, delivery } from "../../redux/Actions/actions";
 const OrderPage = () => {
     const orders = useSelector((state) => state.orders);
     const dispatch = useDispatch();
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
       if (!orders.length) {
         dispatch(getOrders());
       }
     }, [dispatch, orders]);
+
+      const clearOrders = orders.filter(order => order.status === "En Progreso")
 
       const delivered = (e) =>{
         const value = e.target.value
@@ -24,18 +27,20 @@ const OrderPage = () => {
         dispatch(isFinished({id: value, status: "Lista"}))
       }
 
-
+      const handleOrder = () => {
+        setIsOpen(isOpen ? false : true);
+      };
 
     return (
         <div className={styles.page}>
             <div className={styles.container}>
-                {orders.length ? (
-                    orders.map((item) => (
+                {clearOrders.length ? (
+                    clearOrders.map((item) => (
                         <div key={item.id} className={styles.subContainer}>
                             <div className={styles.data}>
                                 <span>{`Pedido: ${item.code}`}</span>
                                 <span>{`Estado: ${item.status}`}</span>
-                                {/* <span>{`Total compra: ${item.total}`}</span> */}
+                                {/* <span>{`: ${item.MenuItems[0].OrdersMenu.quantity}`}</span> */}
                                 <div className={styles.colIcon}>
                                   <button onClick={(e)=>finished(e)} value={item.id}> Lista
                                     <svg 
@@ -56,21 +61,24 @@ const OrderPage = () => {
                                   </button>
                                 </div>
                                 <img
-                                    className={styles.icoOpen}
+                                    className={isOpen ? styles.icoOpen : styles.icoClose}
+                                    onClick={handleOrder}
                                     src="https://cdn-icons-png.flaticon.com/512/9861/9861174.png"
                                     alt=""
                                 />
                             </div>
-                            {   <div className={styles.items}>
+                            { isOpen && (
+                              <div className={styles.items}>
                                     {item.MenuItems?.map((menu, i) => (
                                         <OrdersComponent
                                             key={i}
                                             image={menu.url_image}
                                             name={menu.name}
+                                            quantity={menu.OrdersMenu.quantity}
                                         />
                                     ))}
                                 </div>
-                            }
+                            )}
                         </div>
                     ))
                 ) : (
