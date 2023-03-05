@@ -64,6 +64,9 @@ function App() {
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/sales" component={MySales} />
+
+            <Route exact path="/recipe/update/:id" component={DetailRecipe} />
+
             {/* <Route exact path="/dashboard" /> */}
             {/* menu */}
             {/* <Route exact path="/menu" component={Menu} />

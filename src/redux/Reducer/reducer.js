@@ -88,7 +88,7 @@ const rootReducer = (state = initialState, action) => {
       case GET_ROLES:
       return { ...state, roles: action.payload }
     case DELETE_RECIPE:
-      const recipes = state.render_receta?.map(element => element.id !== action.payload)
+      const recipes = state.render_receta?.filter(element => element.id !== action.payload)
       return {
         ...state, render_receta: [...recipes]
       }
