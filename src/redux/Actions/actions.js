@@ -173,16 +173,16 @@ export const filter = () => (dispatch) => {
 }
 
 export const createUser = (user) => {
-  return async (dispatch) => {
+  return async () => {
     try {
       const res = await axios.post('/users/create', user)
       //! PROVICIONAL
       alert('Ok, user Creado')
+      // console.log(res);
     } catch (err) {
       return console.error(err)
     }
   }
-  // después veré que hacer con la respuesta o el error por el momento la consologeo
 }
 
 export const getImageUrl = (imageStr, imageFn) => {
@@ -191,9 +191,10 @@ export const getImageUrl = (imageStr, imageFn) => {
       const result = await axios.post('/processImage/post', {
         imageStr
       })
+      // console.log(result.data);
       imageFn(result.data)
+      return result.data
       //! ?! manejar Success && Error
-      return result
     } catch (error) {
       console.error(error)
     }

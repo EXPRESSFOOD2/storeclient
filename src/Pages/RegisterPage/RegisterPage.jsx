@@ -67,7 +67,7 @@ const RegisterPage = () => {
       dispatch(createUser(values))
     }
   })
-  // console.log(formik.values.role_id)
+  // console.log(formik.values.profile_image)
 
   const selectQuestion = (e) => {
     const value = e.target.value
