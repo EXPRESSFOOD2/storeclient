@@ -1,97 +1,36 @@
-.container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background-color: red;s */
-}
-
-.col img {
-  height: 45px;
-  width: 80px;
-  object-fit: cover;
-  margin-left: -30px;
-
-  border-radius: 5px;
-  margin-top: 3px; 
-}
-
-.col{
-  height: 50px;
-  width: 27%;
-  max-width: 30%;
-  text-align: center;
-  line-height: 50px;
-  margin-left: -40px;
-
-  border-bottom: 1px solid grey;
-  padding: 5px 0;
-}
-
-.col > a{
-  height: 45px;
-  width: 80px;
-}
-
-.col > span {
-  display: inline-block; /* cambiar a inline-block */
-  white-space: nowrap;
-  width: 100%;
-/* background-color: antiquewhite; */
-  overflow-y: hidden;
-  box-sizing: border-box;
-  font-weight: 500;
-}
-
-.col > span::-webkit-scrollbar{
-  border: none;
-}
-
-.colIcon{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 20%;
-  max-width: 15%;
-  text-align: center;
-  line-height: 50px;
-  margin: 0px ;
-  /* background-color: aqua; */
- 
-
-  /* border-bottom: 1px solid grey; */
-  padding: 5px 0;
-}
-
-.colIcon > button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(143, 20, 20, 1);
-  padding: 5px;
-  border-radius: 30px;
-  border: 0;
-  margin: 2px 5px;
-  cursor: pointer;
-}
-
-.colIcon > button:hover{
-  background-color: rgb(222, 69, 69);
-}
-
-
-/**********************************************/
-
 .card{
   display: flex;
+  border-bottom: 1px solid gray;
   flex-direction: row;
-  width: 15rem;
+  width: 90%;
   justify-content: space-between;
   align-items: center;
   font-family: "Rubik", sans-serif;
 }
+
 .card img{
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 20px ;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.quantity{
+  border: 1px solid #e7e7e7;
+  padding: 1rem .3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.left{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
