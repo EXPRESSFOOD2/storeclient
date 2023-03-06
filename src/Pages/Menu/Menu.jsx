@@ -9,6 +9,7 @@ import { getMenu } from '../../redux/Actions/actions'
 
 import { NavLink } from 'react-router-dom'
 import style from './menu.module.css'
+import LateralBar from '../../components/LateralBar/LateralBar'
 const Menu = () => {
   const dispatch = useDispatch()
   const render = useSelector((state) => state.render)
@@ -25,17 +26,11 @@ const Menu = () => {
 
   return (
     <div className={style.container}>
-      <NavBar />
-      <div className={style.rows}>
-        <NavLink to="/menu/create">
-          <button className={style.button}>Crear menú</button>
-        </NavLink>
-      </div>
-
-      <div className={style.menuFilter}>
+      {/* <LateralBar/> */}
+      <div className={style.filters}>
         <Filter render={render} setOrders={setOrders} />
-        <MenuCards render={render} />
       </div>
+        <MenuCards render={render} />
     </div>
   )
 }

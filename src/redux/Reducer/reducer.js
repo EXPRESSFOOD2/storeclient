@@ -16,7 +16,10 @@ import {
   FILTER_BY_TAG,
   ORDER_BY_RECOMMENDATION,
   SORT_BY_ACTIVITY,
-  ORDER_BY_QUANTITY
+  ORDER_BY_QUANTITY,
+  GET_ORDERS,
+  DELETE_INGREDIENT,
+  DELETE_RECIPE
 } from '../Actions/types'
 import { createRoot } from 'react-dom/client'
 
@@ -30,7 +33,7 @@ const initialState = {
   statusFilter: true,
   roles: [],
   render_receta:[],
-
+  orders: []
 }
 // console.log(initialState.render);
 const filterFunction = (status, array) => {
@@ -72,13 +75,23 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, ingredientDetail: action.payload }
     case CREATE_INGREDIENTS:
       return { ...state, ingredients: [...state.ingredients, ...action.payload] }
+    case DELETE_INGREDIENT:
+      const ingredients = state.ingredients?.filter(element => element.id !== action.payload)
+      return {
+        ...state, ingredients:[...ingredients],
+      }
     case ERROR:
       const root = createRoot(document.getElementById('alert'))
       root.render(<Alert title="Error" message={action.payload} type="danger" />)
       return { ...state, errors: action.payload }
       
       case GET_ROLES:
-        return { ...state, roles: action.payload }
+      return { ...state, roles: action.payload }
+    case DELETE_RECIPE:
+      const recipes = state.render_receta?.filter(element => element.id !== action.payload)
+      return {
+        ...state, render_receta: [...recipes]
+      }
         
               case GET_RECETA:
               return { ...state, recetas: action.payload, render_receta: [...action.payload] };
@@ -119,6 +132,8 @@ const rootReducer = (state = initialState, action) => {
         return { ...state, render: action.payload }
       case SORT_BY_ACTIVITY:
         return { ...state, render: action.payload }
+      case GET_ORDERS:
+        return { ...state, orders: action.payload}
     default:
       return { ...state }
   }

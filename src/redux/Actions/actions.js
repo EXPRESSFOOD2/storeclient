@@ -19,7 +19,12 @@ import {
   FILTER_BY_TAG,
   ORDER_BY_RECOMMENDATION,
   SORT_BY_ACTIVITY,
-  ORDER_BY_QUANTITY
+  ORDER_BY_QUANTITY,
+  DELIVERY,
+  GET_ORDERS,
+  DELETE_INGREDIENT,
+  DELETE_RECIPE
+
 } from './types'
 import Alert from '../../Shared/Alert/Alert'
 import { Login } from '@mui/icons-material'
@@ -121,6 +126,10 @@ export const updateIngredient = async (data) => {
   console.log(Ingredient)
 }
 
+// export const deleteIngredient = () => () => {
+  
+// }
+
 export const createMenu = (data) => {
   return async function (dispatch) {
     try {
@@ -164,16 +173,16 @@ export const filter = () => (dispatch) => {
 }
 
 export const createUser = (user) => {
-  return async (dispatch) => {
+  return async () => {
     try {
       const res = await axios.post('/users/create', user)
       //! PROVICIONAL
       alert('Ok, user Creado')
+      // console.log(res);
     } catch (err) {
       return console.error(err)
     }
   }
-  // después veré que hacer con la respuesta o el error por el momento la consologeo
 }
 
 export const getImageUrl = (imageStr, imageFn) => {
@@ -182,19 +191,20 @@ export const getImageUrl = (imageStr, imageFn) => {
       const result = await axios.post('/processImage/post', {
         imageStr
       })
+      // console.log(result.data);
       imageFn(result.data)
+      return result.data
       //! ?! manejar Success && Error
-      return result
     } catch (error) {
       console.error(error)
     }
   }
 }
 
-export const deleteIngredient = async (id) => {
+export const deleteIngredient = (id)=> async (dispatch) => {
   try {
-    const res = await axios.delete(`/ingredients/delete?id=${id}`)
-    return console.log(res)
+    await axios.delete(`/ingredients/delete/${id}`)
+    dispatch({type:DELETE_INGREDIENT, payload:id })
   } catch (err) {
     return console.error(err)
   }
@@ -279,13 +289,23 @@ export const resetError = () => {
 export const getReceta = () => {
   return async function (dispatch) {
     try {
-      const receta = (await axios.get("/recipes/get")).data;
+      const result = (await axios.get("/recipes/get")).data;
+      const receta = result.filter(element=>!element.name?.includes(" OLD "))
       dispatch({ type: GET_RECETA, payload: receta });
     } catch (error) {
       dispatch({ type: ERROR, payload: error.response.data.error });
     }
   };
 };
+
+export const deleteRecipe = (id) => async(dispatch) => {
+  try {
+    await axios.delete(`http://localhost:3002/recipes/delete?id=${id}`);
+    dispatch({type:DELETE_RECIPE, payload:id})
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 
@@ -308,3 +328,34 @@ export const sortByActivity = (payload) => ({
 export const orderByQuantity = (payload) => ({
   type: ORDER_BY_QUANTITY, payload
 }) 
+
+export const getOrders = () =>{
+  return async (dispatch) =>{
+    try {
+      const orders = await axios.post("/orders/get")
+      // console.log(orders.data);
+      dispatch({type: GET_ORDERS, payload: orders.data })
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error });
+    }
+  }
+}
+
+// no testeado
+export const isFinished = async (data) => {
+  try {
+    const order = await axios.patch('/orders/update', data)
+    console.log(order)
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const delivery = async (data) => {
+  try {
+    const order = await axios.patch('/orders/update', data)
+    console.log(order)
+  } catch (error) {
+    console.error(error);
+  }
+}

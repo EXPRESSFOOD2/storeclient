@@ -1,6 +1,6 @@
 import { React, useEffect } from 'react'
 import Register from '../../components/Register/Register'
-import NavBar from '../../Shared/NavBar/NavBar'
+import LateralBar from '../../components/LateralBar/LateralBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { createUser, getRoles } from '../../redux/Actions/actions'
 
@@ -67,7 +67,7 @@ const RegisterPage = () => {
       dispatch(createUser(values))
     }
   })
-  // console.log(formik.values.role_id)
+  // console.log(formik.values.profile_image)
 
   const selectQuestion = (e) => {
     const value = e.target.value
@@ -80,7 +80,7 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <NavBar />
+      <LateralBar />
       <Register formik={formik} selectQuestion={selectQuestion} imageFn={imageFn} roles={roles} />
     </div>
   )
