@@ -52,35 +52,35 @@ export const validateLogin = (values) => async (dispatch) => {
         console.error(error)
       }
       dispatch(changeLoginStatus(true))
-      // ReactDOM.render(
-      //   <Alert
-      //     title="Success"
-      //     message={`Bienvenido ${values.email}`}
-      //     type="success"
-      //   />,
-      //   document.getElementById('alert')
-      // )
+      ReactDOM.render(
+        <Alert
+          title="Success"
+          message={`Bienvenido ${values.email}`}
+          type="success"
+        />,
+        document.getElementById('alert')
+      )
       return true
     } else {
-      // ReactDOM.render(
-      //   <Alert
-      //     title="Error"
-      //     message={'Invalid Account & Password or This Account Doesn\'t exist'}
-      //     type="danger"
-      //   />,
-      //   document.getElementById('alert')
-      // )
+      ReactDOM.render(
+        <Alert
+          title="Error"
+          message={'Invalid Account & Password or This Account Doesn\'t exist'}
+          type="danger"
+        />,
+        document.getElementById('alert')
+      )
     }
     // validUser ? alert("correcto") : alert("INcorrecto");
   } catch (error) {
-    // ReactDOM.render(
-    //     <Alert
-    //       title="Error"
-    //       message={error}
-    //       type="danger"
-    //     />,
-    //     document.getElementById(alert)
-    // )
+    ReactDOM.render(
+        <Alert
+          title="Error"
+          message={error}
+          type="danger"
+        />,
+        document.getElementById(alert)
+    )
   }
 }
 
