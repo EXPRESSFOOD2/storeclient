@@ -59,6 +59,7 @@ function App() {
             {!loginStatus && <Route exact path="/" component={LoginPage} />}
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/menu/create" component={CreateItemMenu} />
+            <Route exact path="/menu/update/:id" component={CreateItemMenu} />
             <Route exact path="/recipe" component={GetRecipe} />
             <Route exact path="/ingredient" component={Ingredients} />
             <Route exact path="/ingredient/create" component={Ingredients} />
