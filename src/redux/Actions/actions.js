@@ -135,6 +135,8 @@ export const createMenu = (data) => {
     try {
       const newMenu = await axios.post('/menu/create', data)
       dispatch({ type: CREATE_MENU, payload: newMenu })
+      // console.log(data);
+      // console.log(newMenu.data);
       const root = createRoot(document.getElementById('alert'))
       root.render(
         <Alert
@@ -178,7 +180,7 @@ export const createUser = (user) => {
       const res = await axios.post('/users/create', user)
       //! PROVICIONAL
       alert('Ok, user Creado')
-      // console.log(res);
+      console.log(res);
     } catch (err) {
       return console.error(err)
     }
@@ -187,17 +189,19 @@ export const createUser = (user) => {
 
 export const getImageUrl = (imageStr, imageFn) => {
   return async (dispatch) => {
+    // console.log("algo 1");
+    console.log(imageStr);
     try {
       const result = await axios.post('/processImage/post', {
         imageStr
       })
-      // console.log(result.data);
+      // console.log("algo 2");
       imageFn(result.data)
       return result.data
-      //! ?! manejar Success && Error
     } catch (error) {
       console.error(error)
     }
+
   }
 }
 
