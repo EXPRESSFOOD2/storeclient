@@ -1,58 +1,59 @@
 .menuItem {
     display: flex;
     flex-direction: column;
-    height: 1121px;
-    overflow: hidden;
-    position: relative;
+    justify-content: center;
     align-items: center;
-    padding-left: 11rem;
+    /* height: auto;s */
+    height: 50rem;
+    overflow: hidden;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  height: 1021px;
-  /* background-color: red; */
-  margin-left: 4rem;
+  width: 55.5%;
+  /* background-color: aqua; */
+  margin-top: 8rem;
+  margin-left: 3.6rem;
+
 }
 
 .formBox {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: 1021px;
-  height: 821px;
+  height: auto;
   border-radius: 5px;
-    box-shadow: 5px 5px 30px rgba(163, 163, 163, 0.23),
-        -5px -5px 30px rgba(163, 163, 163, 0.23);
-}
-
-.col {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-
-    width: auto;
-    height: auto;
+  box-shadow: 5px 5px 40px rgba(0, 0, 0, 0.27);
 }
 
 .errorInput {
     border: 2px rgb(255, 140, 140) solid !important;
 }
+.col {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    /* background-color: red; */
+
+    width: auto;
+    height: auto;
+}
+
 
 .col > input {
     width: 329px;
-    height: 37px;
-    border-radius: 10px;
+    height: 30px;
+    border-radius: 5px;
     border: none;
     color: rgba(143, 143, 143, 1);
     background-color: rgba(183, 177, 177, 0.5);
     font-family: inherit;
+    font-size: 17;
     padding: 2px 10px;
 }
 
@@ -73,6 +74,51 @@
     font-size: 13px;
 }
 
+/* +++++++++++++++++++++++++++++ */
+.col1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    /* background-color: red; */
+    margin-top: -17px;
+
+    width: auto;
+    height: auto;
+}
+
+
+.col1 > input {
+    width: 329px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    color: rgba(143, 143, 143, 1);
+    background-color: rgba(183, 177, 177, 0.5);
+    font-family: inherit;
+    font-size: 17;
+    padding: 2px 10px;
+}
+
+.col1 > input:not(.errorInput) {
+    border: none;
+}
+
+.col1 > input::placeholder {
+    font-family: inherit;
+    font-weight: 500;
+    color: rgba(143, 143, 143, 1);
+    font-size: 17;
+}
+
+.col1 > label {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 13px;
+}
+/* +++++++++++++++++++++++++++++ */
+
+
 .col > button {
     width: auto;
     height: auto;
@@ -85,6 +131,7 @@
     border-radius: 5px;
     cursor: pointer;
 
+    margin-bottom: 20px;
     border: none;
 }
 
@@ -101,10 +148,18 @@
     gap: 1.5em;
     width: 65%;
     height: auto;
-    margin-left: -2rem;
+    /* margin-left: -2rem; */
 }
 
-.formLeft {
+.imageUser{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-top: 1.5rem;
+  }
+
+/* .formLeft {
     position: relative;
     width: 35%;
     height: 100%;
@@ -136,9 +191,9 @@
     border-radius: 360px;
 
     z-index: 100;
-}
+} */
 
-.formLeft > img:first-child {
+/* .formLeft > img:first-child {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -147,7 +202,7 @@
 
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-}
+} */
 
 .checkboxCol {
     display: flex;
@@ -166,7 +221,7 @@
     height: 15.62px;
 }
 
-.logoForm {
+/* .logoForm {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -177,7 +232,7 @@
     fill: white;
     color: white;
     z-index: 200;
-}
+} */
 
 .errorText {
     position: absolute;
@@ -249,7 +304,7 @@
     background-color: rgba(225, 225, 225, 0.5);
 }
 
-.image {
+/* .image {
     position: absolute;
     background-color: #999999;
     width: auto;
@@ -257,21 +312,21 @@
     filter: opacity(0);
     z-index: -10;
     transition: 0.5s;
-}
+} */
 
-.image > img {
+/* .image > img {
     right: 20px;
     position: absolute;
     width: 18rem;
     height: 18rem;
     border-radius: 0.5rem;
-}
+} */
 
-.image:hover {
+/* .image:hover {
     z-index: 10;
-}
+} */
 
-.show {
+/* .show {
     position: absolute;
     background-color: #999999;
     width: auto;
@@ -286,4 +341,24 @@
     width: 18rem;
     height: 18rem;
     border-radius: 0.5rem;
-}
+} */
+
+/* +*+++++++++++++++++++++++++ */
+
+.contentfile {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  
+  .inputfile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  

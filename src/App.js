@@ -19,6 +19,7 @@ import NavBar from "./Shared/NavBar/NavBar";
 import LateralBar from "./components/LateralBar/LateralBar";
 import Orders from "./Pages/Orders/ContainerOrders";
 import MySales from "./Pages/MySales/MySales";
+import ClosingSales from "./components/Closing_Sales/ClosingSales";
 
 //! sockets
 
@@ -65,6 +66,7 @@ function App() {
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/sales" component={MySales} />
+            <Route exact path="/sales/ventas" component={ClosingSales} />
 
             <Route exact path="/recipe/update/:id" component={DetailRecipe} />
 

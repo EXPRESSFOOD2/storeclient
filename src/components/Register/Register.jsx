@@ -3,7 +3,7 @@
 
 // import Title from '../../Shared/Title/Title'
 // import img from './image/image-1.jpg'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getImageUrl } from '../../redux/Actions/actions'
 
@@ -17,19 +17,27 @@ const Register = ({ formik, selectQuestion, imageFn, roles }) => {
   const [imageInputState, setImageInputState] = useState('')
   const [previewSource, setPreviewSource] = useState('')
 
-  // console.log(previewSource);
+  useEffect(()=>{
+    dispatch(getImageUrl(previewSource, imageFn))
+  }, [previewSource, dispatch])
+
   const handleImageInputChange = async (e) => {
     const inputImg = e.target.files[0]
-    prepareImageToShowAndSend(inputImg)
-    previewSource && dispatch(getImageUrl(previewSource, imageFn))
+    await prepareImageToShowAndSend(inputImg)
   }
   
   const prepareImageToShowAndSend = (inputImg) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(inputImg)
-    reader.onloadend = () => {
-      setPreviewSource(reader.result)
-    }
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(inputImg)
+      reader.onloadend = () => {
+        setPreviewSource(reader.result)
+        resolve()
+      }
+      reader.onerror = () => {
+        reject(reader.error)
+      }
+    })
   }
 
   return (
