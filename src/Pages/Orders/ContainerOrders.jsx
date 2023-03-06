@@ -10,9 +10,10 @@ const OrderPage = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-      if (!orders.length) {
+      setTimeout(()=>{    if (!orders.length) {
         dispatch(getOrders());
-      }
+      }}, 30000)
+  
     }, [dispatch, orders]);
 
       const clearOrders = orders.filter(order => order.status === "En Progreso")
