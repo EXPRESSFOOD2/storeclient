@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ClosingSales.module.css";
+import MyTickets from "../MyTickets/MyTickets"
 
 const ClosingSales = ({ date, amount, data }) => {
   const [view, setView] = useState(false)
@@ -18,14 +19,18 @@ const ClosingSales = ({ date, amount, data }) => {
                     />
                 </div>
             </div>
-            {view && (<div className={styles.tickets}>
-                {data.map((ele) => (
-                    <div className={styles.ticket} key={ele.code}>
-                        <span>{`Ticket: ${ele.code}`}</span>
-                        <span>{`Total: $${ele.totalAmountPerorder}`}</span>
-                    </div>
-                ))}
-            </div>)}
+            {view && (
+                <div className={styles.tickets}>
+                    {data.map((ele) => (
+                        <MyTickets
+                            total={ele.totalAmountPerorder}
+                            code={ele.code}
+                            data={ele.productsOfOrder}
+                            key={ele.code}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

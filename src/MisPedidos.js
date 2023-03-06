@@ -3,7 +3,7 @@ export const mYdata = {
         {
             totalAmountPerorder: 237,
             code: "A000",
-            orderDate: "2023-03-05T14:47:18.187Z",
+            orderDate: "2023-03-03T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
@@ -29,12 +29,20 @@ export const mYdata = {
                         "https://www.shutterstock.com/image-photo/cheeseburger-french-fries-soft-drink-260nw-319039442.jpg",
                     totalAmountOfProductPerOrder: 12,
                 },
+                {
+                    name: "Menu Otro",
+                    quantityPerOrder: 1,
+                    productPrice: 12,
+                    url_image:
+                        "https://www.shutterstock.com/image-photo/cheeseburger-french-fries-soft-drink-260nw-319039442.jpg",
+                    totalAmountOfProductPerOrder: 12,
+                },
             ],
         },
         {
             totalAmountPerorder: 237,
             code: "A001",
-            orderDate: "2023-03-06T14:47:18.187Z",
+            orderDate: "2023-03-03T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
@@ -65,7 +73,7 @@ export const mYdata = {
         {
             totalAmountPerorder: 237,
             code: "A002",
-            orderDate: "2023-03-05T14:47:18.187Z",
+            orderDate: "2023-03-04T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
@@ -96,7 +104,7 @@ export const mYdata = {
         {
             totalAmountPerorder: 237,
             code: "A003",
-            orderDate: "2023-03-06T14:47:18.187Z",
+            orderDate: "2023-03-04T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
@@ -158,7 +166,7 @@ export const mYdata = {
         {
             totalAmountPerorder: 237,
             code: "A005",
-            orderDate: "2023-03-06T14:47:18.187Z",
+            orderDate: "2023-03-05T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
@@ -220,7 +228,7 @@ export const mYdata = {
         {
             totalAmountPerorder: 237,
             code: "A007",
-            orderDate: "2023-03-04T14:47:18.187Z",
+            orderDate: "2023-03-06T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
@@ -251,7 +259,7 @@ export const mYdata = {
         {
             totalAmountPerorder: 237,
             code: "A008",
-            orderDate: "2023-03-05T14:47:18.187Z",
+            orderDate: "2023-03-06T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
@@ -282,7 +290,7 @@ export const mYdata = {
         {
             totalAmountPerorder: 237,
             code: "A009",
-            orderDate: "2023-03-03T14:47:18.187Z",
+            orderDate: "2023-03-06T14:47:18.187Z",
             productsOfOrder: [
                 {
                     name: "Menu pa tres",
