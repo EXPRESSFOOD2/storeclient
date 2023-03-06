@@ -9,8 +9,6 @@ import reportWebVitals from './reportWebVitals'
 import { createRoot } from 'react-dom/client'
 import axios from 'axios'
 
-
-
 axios.defaults.baseURL = process.env.REACT_APP_URLDEPLOY || process.env.REACT_APP_APIURLOCAL
 
 
