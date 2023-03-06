@@ -129,19 +129,26 @@ export const updateIngredient = async (data) => {
 // }
 
 export const createMenu = (data) => {
-    return async function (dispatch) {
-        try {
-            const newMenu = await axios.post("/menu/create", data);
-            dispatch({ type: CREATE_MENU, payload: newMenu });
-            const root = createRoot(document.getElementById("alert"));
-            root.render(
-                <Alert title="Success" message="Se ha creado un nuevo menú" type="success" />
-            );
-        } catch (error) {
-            dispatch({ type: ERROR, payload: error.response.data.error });
-        }
-    };
-};
+
+  return async function (dispatch) {
+    try {
+      const newMenu = await axios.post('/menu/create', data)
+      dispatch({ type: CREATE_MENU, payload: newMenu })
+      // console.log(data);
+      // console.log(newMenu.data);
+      const root = createRoot(document.getElementById('alert'))
+      root.render(
+        <Alert
+          title="Success"
+          message="Se ha creado un nuevo menú"
+          type="success"
+        />
+      )
+    } catch (error) {
+      dispatch({ type: ERROR, payload: error.response.data.error })
+    }
+  }
+}
 
 export const updateMenu = (data) => {
     return async function (dispatch) {
@@ -163,42 +170,45 @@ export const filter = () => (dispatch) => {
 };
 
 export const createUser = (user) => {
-    return async (dispatch) => {
-        try {
-            const res = await axios.post("/users/create", user);
-            //! PROVICIONAL
-            alert("Ok, user Creado");
-        } catch (err) {
-            return console.error(err);
-        }
-    };
-    // después veré que hacer con la respuesta o el error por el momento la consologeo
-};
+  return async () => {
+    try {
+      const res = await axios.post('/users/create', user)
+      //! PROVICIONAL
+      alert('Ok, user Creado')
+      console.log(res);
+    } catch (err) {
+      return console.error(err)
+    }
+  }
+}
 
 export const getImageUrl = (imageStr, imageFn) => {
-    return async (dispatch) => {
-        try {
-            const result = await axios.post("/processImage/post", {
-                imageStr,
-            });
-            imageFn(result.data);
-            //! ?! manejar Success && Error
-            return result;
-        } catch (error) {
-            console.error(error);
-        }
-    };
-};
-
-export const deleteIngredient = (id) => async (dispatch) => {
+  return async (dispatch) => {
+    // console.log("algo 1");
+    console.log(imageStr);
     try {
-        await axios.delete(`/ingredients/delete/${id}`);
-        dispatch({ type: DELETE_INGREDIENT, payload: id });
-    } catch (err) {
-        return console.error(err);
+      const result = await axios.post('/processImage/post', {
+        imageStr
+      })
+      // console.log("algo 2");
+      imageFn(result.data)
+      return result.data
+    } catch (error) {
+      console.error(error)
     }
-    // después veré que hacer con la respuesta o el error por el momento la consologeo
-};
+
+  }
+}
+
+export const deleteIngredient = (id)=> async (dispatch) => {
+  try {
+    await axios.delete(`/ingredients/delete/${id}`)
+    dispatch({type:DELETE_INGREDIENT, payload:id })
+  } catch (err) {
+    return console.error(err)
+  }
+  // después veré que hacer con la respuesta o el error por el momento la consologeo
+}
 
 export const createIngredients = (data) => async (dispatch) => {
     try {

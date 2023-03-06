@@ -1,22 +1,32 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
-import style from "./form.module.css";
-import img from "./image/leftImgBG.jpg";
+
+// import img from "./image/leftImgBG.jpg";
 // import Title from '../../Shared/Title/Title'
-import { useFormik } from "formik";
-import * as Yup from "yup";
+
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createMenu, updateMenu } from "../../redux/Actions/actions";
+
+import ImageIcon from '@mui/icons-material/Image';
+import { grey } from '@mui/material/colors';
+import style from "./form.module.css";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export default function Form({ path, menu, ingredientes }) {
     const [ingredientesArray, setIngredientesArray] = useState(menu?.Ingredients || []);
 
+    // eslint-disable-next-line no-unused-vars
     const [showImg, setShowImg] = useState(false);
     const [cantidad, setCantidad] = useState(
         menu?.Ingredients.map((item) => item.IngredientsMenuItems.quantity) || []
     );
     const [urlImage, setUrlImage] = useState("");
+    console.log(urlImage);
+
+
 
     const dispatch = useDispatch();
 
@@ -40,8 +50,8 @@ export default function Form({ path, menu, ingredientes }) {
             setUrlImage(fileReader.result);
         };
     };
-    const imgDefault =
-    "https://c8.alamy.com/compes/her4w9/comida-tradicional-mexicana-de-fondo-con-el-burrito-croquis-dibujados-a-mano-ilustracion-vectorial-mexico-cocina-vintage-banner-her4w9.jpg";
+    // const imgDefault =
+    // "https://c8.alamy.com/compes/her4w9/comida-tradicional-mexicana-de-fondo-con-el-burrito-croquis-dibujados-a-mano-ilustracion-vectorial-mexico-cocina-vintage-banner-her4w9.jpg";
 
 const formik = useFormik({
     initialValues: {
@@ -73,7 +83,7 @@ const formik = useFormik({
             ingredArray: ingredientesMap,
             is_active: true,
             // por ahora el backend no recibe la img del input, por esto le mandamos uno por default
-            url_image: imgDefault,
+            url_image: urlImage,
             Ingredients: cantidad.map((a) => {
                 return {
                     IngredientsMenuItems: {
@@ -86,7 +96,7 @@ const formik = useFormik({
             dispatch(updateMenu({ ...menuMapData, id: menu.id }));
         } else {
             dispatch(createMenu(menuMapData));
-            console.log(menuMapData);
+            console.log(menuMapData.url_image);
         }
     },
 });
@@ -99,7 +109,7 @@ const formik = useFormik({
           className={style.formBox}
           onSubmit={formik.handleSubmit}
         >
-          <div className={style.formLeft}>
+          {/* <div className={style.formLeft}>
             <img src={img} alt="" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -111,19 +121,43 @@ const formik = useFormik({
               <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z" />
               <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z" />
             </svg>
-          </div>
-          <div className={showImg ? style.show : style.image}>
-            <img
+          </div> */}
+          {/* <div className={showImg ? style.show : style.image}>
+             <img
               src={
                 path === 'update'
                   ? menu.url_image
-                  : urlImage || imgDefault
+                  : urlImage 
               }
               alt=""
-            />
-          </div>
+             />
+          </div> */}
           <div className={style.formRight}>
-            <div className={style.col}>
+             <div className={style.contentfile}
+                // onMouseEnter={() => {
+                // setShowImg(true);
+                // }}
+                
+                    // onMouseLeave={() => {
+                    // setShowImg(false);
+                    // }}
+                    >
+                    {
+                        urlImage ? 
+                        <img src={urlImage} alt="Profile Pic" className={style.imageUser}/> :
+                        <ImageIcon sx={{ color: grey[500] , fontSize: 100, mt: 2 }}></ImageIcon>
+                    }
+                    {/* <label>agregar imagen</label> */}
+                    <input
+                    hidden={path === "update"}
+                    type="file"
+                    name="Imagen"
+                    className={style.inputfile}
+                    // accept="image/*"
+                    onChange={imageHandleChange}
+                    />
+             </div>
+             <div className={style.col1}>
               <label>Nombre</label>
               <input
                 type="text"
@@ -137,8 +171,8 @@ const formik = useFormik({
               {formik.errors.name && (
                 <label className={style.errorText}>{formik.errors.name}</label>
               )}
-            </div>
-            <div className={style.col}>
+             </div>
+             <div className={style.col}>
               <label>Descripción</label>
               <input
                 type="text"
@@ -154,8 +188,8 @@ const formik = useFormik({
                   {formik.errors.description}
                 </label>
               )}
-            </div>
-            <div className={style.col}>
+             </div>
+             <div className={style.col}>
               <label>Precio</label>
               <input
                 type="number"
@@ -169,8 +203,8 @@ const formik = useFormik({
               {formik.errors.price && (
                 <label className={style.errorText}>{formik.errors.price}</label>
               )}
-            </div>
-            <div className={style.col}>
+             </div>
+             <div className={style.col}>
               <label>Stock</label>
               <input
                 className={formik.errors.stock ? style.errorInput : ''}
@@ -184,24 +218,7 @@ const formik = useFormik({
               {formik.errors.stock && (
                 <label className={style.errorText}>{formik.errors.stock}</label>
               )}
-            </div>
-                        <div
-                            className={style.col}
-                            onMouseEnter={() => {
-                                setShowImg(true);
-                            }}
-                            onMouseLeave={() => {
-                                setShowImg(false);
-                            }}>
-                            <label>Imagen</label>
-                            <input
-                                hidden={path === "update"}
-                                type="file"
-                                name="Imagen"
-                                accept="image/*"
-                                onChange={imageHandleChange}
-                            />
-                        </div>
+             </div>
                         <div className={style.col}>
                             <label>Ingredientes</label>
                             <input
@@ -220,7 +237,7 @@ const formik = useFormik({
                                     <span>Cantidad</span>
                                 </div>
                                 {ingredientesArray.map((item, i) => {
-                                    console.log(ingredientesArray);
+                                    // console.log(ingredientesArray);
                                     ingredientesArray[i].quantity = 0;
                                     return (
                                         <div className={style.rowTableData} key={i}>
