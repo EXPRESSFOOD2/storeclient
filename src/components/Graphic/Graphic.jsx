@@ -32,7 +32,7 @@ const Graphic = ({total, values}) =>{
                     <Box sx={{ p: 3, pb: 0 }}>
                         <Stack spacing={2}>
                             <Typography variant="h6" sx={{ color: grey[700]}}>
-                                This Week Statistics
+                                Ventas  de esta semana
                             </Typography>
                             <Typography variant="h3"  sx={{ color: grey[700]}}>{`$${total}`}</Typography>
                         </Stack>
