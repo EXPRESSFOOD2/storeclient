@@ -8,10 +8,7 @@ import { delivery, getOrders } from "../../redux/Actions/actions";
 const OrderPage = () => {
   const ordersState = useSelector((state) => state.orders);
   const [orders, setOrders] = useState(ordersState);
-<<<<<<< HEAD
 
-=======
->>>>>>> 9ab03325d4a853646ea330f0eaa7a9fd9cc9355f
   const dispatch = useDispatch();
 
   useEffect(() => {
