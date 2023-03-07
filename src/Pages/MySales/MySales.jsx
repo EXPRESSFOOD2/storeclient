@@ -42,7 +42,7 @@ const MySales = () => {
                     ))}
                 </div>
                 <div className={styles.graphic}>
-                    <Graphic total={total} values={values} />
+                    <Graphic total={total} values={values} dates={dates} />
                 </div>
             </div>
         </div>
