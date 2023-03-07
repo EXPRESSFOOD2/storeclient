@@ -100,7 +100,7 @@ export default function Form({ path, menu, ingredientes }) {
       description: menu?.description || localValues?.description,
       price: menu?.price || localValues?.price || "",
       stock: menu?.stock || localValues?.stock || 0,
-      recomendado: menu?.recomend_first || localValues?.recomend_first || "",
+      recomendado: menu?.recomend_first || localValues?.recomend_first || false,
       url_image: menu?.url_image || localImg || "",
     },
 
