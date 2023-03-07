@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 
 // import img from "./image/leftImgBG.jpg";
 // import Title from '../../Shared/Title/Title'
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createMenu, updateMenu } from "../../redux/Actions/actions";
+import { createMenu, updateMenu , getImageUrl} from "../../redux/Actions/actions";
 
 import ImageIcon from '@mui/icons-material/Image';
 import { grey } from '@mui/material/colors';
@@ -16,19 +17,22 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function Form({ path, menu, ingredientes }) {
-    const [ingredientesArray, setIngredientesArray] = useState(menu?.Ingredients || []);
-
     // eslint-disable-next-line no-unused-vars
-    const [showImg, setShowImg] = useState(false);
+    // const [showImg, setShowImg] = useState(false);
+    const dispatch = useDispatch();
+
+    const [ingredientesArray, setIngredientesArray] = useState(menu?.Ingredients || []);
     const [cantidad, setCantidad] = useState(
         menu?.Ingredients.map((item) => item.IngredientsMenuItems.quantity) || []
     );
+
+    const [imageInputState, setImageInputState] = useState('')
     const [urlImage, setUrlImage] = useState("");
-    console.log(urlImage);
+    // console.log(urlImage);
 
-
-
-    const dispatch = useDispatch();
+    useEffect(()=>{
+    dispatch(getImageUrl(urlImage, imageFn))
+    }, [urlImage, dispatch])
 
     // change ingredient quantity by type
     const onIngredeintFormChangeHandler = (e) => {
@@ -43,23 +47,44 @@ export default function Form({ path, menu, ingredientes }) {
     };
 
     // Manejador imagen
-    const imageHandleChange = (event) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(event.target.files[0]);
-        fileReader.onload = () => {
-            setUrlImage(fileReader.result);
-        };
-    };
+    // const imageHandleChange = (event) => {
+    //     const fileReader = new FileReader();
+    //     fileReader.readAsDataURL(event.target.files[0]);
+    //     fileReader.onload = () => {
+    //         setUrlImage(fileReader.result);
+    //     };
+    // };
+    
+    const handleImageInputChange = async (e) => {
+        const inputImg = e.target.files[0]
+        await prepareImageToShowAndSend(inputImg)
+      }
+
+      const prepareImageToShowAndSend = (inputImg) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader()
+          reader.readAsDataURL(inputImg)
+          reader.onloadend = () => {
+            setUrlImage(reader.result)
+            resolve()
+          }
+          reader.onerror = () => {
+            reject(reader.error)
+          }
+        })
+      }
+    
     // const imgDefault =
     // "https://c8.alamy.com/compes/her4w9/comida-tradicional-mexicana-de-fondo-con-el-burrito-croquis-dibujados-a-mano-ilustracion-vectorial-mexico-cocina-vintage-banner-her4w9.jpg";
 
-const formik = useFormik({
+ const formik = useFormik({
     initialValues: {
         name: menu?.name || "",
         description: menu?.description || "",
         price: menu?.price || "",
         stock: menu?.stock || 0,
         recomendado: menu?.recomend_first || "",
+        url_image: menu?.url_image || ""
     },
 
     validationSchema: Yup.object({
@@ -82,8 +107,7 @@ const formik = useFormik({
             ...values,
             ingredArray: ingredientesMap,
             is_active: true,
-            // por ahora el backend no recibe la img del input, por esto le mandamos uno por default
-            url_image: urlImage,
+            // url_image: urlImage,
             Ingredients: cantidad.map((a) => {
                 return {
                     IngredientsMenuItems: {
@@ -96,10 +120,15 @@ const formik = useFormik({
             dispatch(updateMenu({ ...menuMapData, id: menu.id }));
         } else {
             dispatch(createMenu(menuMapData));
-            console.log(menuMapData.url_image);
+            console.log(formik.values);
         }
     },
-});
+ });
+
+ const imageFn = (imageUrl) => {
+    formik.values.url_image = imageUrl
+  }
+
   return (
     <div className={style.menuItem}>
       {/* <Title data={path === 'create' ? 'Crear menú' : 'Actualizar Menú'} /> */}
@@ -153,8 +182,9 @@ const formik = useFormik({
                     type="file"
                     name="Imagen"
                     className={style.inputfile}
-                    // accept="image/*"
-                    onChange={imageHandleChange}
+                    value={imageInputState}
+                    // onChange={imageHandleChange}
+                    onChange={handleImageInputChange}
                     />
              </div>
              <div className={style.col1}>
@@ -189,80 +219,81 @@ const formik = useFormik({
                 </label>
               )}
              </div>
-             <div className={style.col}>
-              <label>Precio</label>
-              <input
-                type="number"
-                placeholder="Precio"
-                name="price"
-                className={formik.errors.price ? style.errorInput : ''}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.price}
-              />
-              {formik.errors.price && (
-                <label className={style.errorText}>{formik.errors.price}</label>
-              )}
+             <div className={style.rowData}>
+                <div className={style.col}>
+                <label>Precio</label>
+                <input
+                    type="number"
+                    placeholder="Precio"
+                    name="price"
+                    className={formik.errors.price ? style.errorInput : ''}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.price}
+                />
+                {formik.errors.price && (
+                    <label className={style.errorText}>{formik.errors.price}</label>
+                )}
+                </div>
+                <div className={style.col}>
+                <label>Stock</label>
+                <input
+                    className={formik.errors.stock ? style.errorInput : ''}
+                    type="number"
+                    placeholder="Stock"
+                    name="stock"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.stock}
+                />
+                {formik.errors.stock && (
+                    <label className={style.errorText}>{formik.errors.stock}</label>
+                )}
+                </div>
              </div>
-             <div className={style.col}>
-              <label>Stock</label>
-              <input
-                className={formik.errors.stock ? style.errorInput : ''}
-                type="number"
-                placeholder="Stock"
-                name="stock"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.stock}
-              />
-              {formik.errors.stock && (
-                <label className={style.errorText}>{formik.errors.stock}</label>
-              )}
-             </div>
-                        <div className={style.col}>
-                            <label>Ingredientes</label>
-                            <input
-                                hidden={path === "update"}
-                                type="text"
-                                name="ingredientes"
-                                list="ingredientes"
-                                placeholder="Ingredientes"
-                                onChange={onIngredeintFormChangeHandler}
-                            />
-                        </div>
-                        <div className={style.col}>
-                            <div className={style.table}>
-                                <div className={style.rowTableTitle}>
-                                    <span>Nombre</span>
-                                    <span>Cantidad</span>
-                                </div>
-                                {ingredientesArray.map((item, i) => {
-                                    // console.log(ingredientesArray);
-                                    ingredientesArray[i].quantity = 0;
-                                    return (
-                                        <div className={style.rowTableData} key={i}>
-                                            <span>
-                                                {item.name + " "}
-                                                <span style={{ fontWeight: "bold" }}>
-                                                    {item.type_measure}
-                                                </span>
-                                            </span>
-                                            {path === "update" ? (
-                                                <span>{cantidad[i]} </span>
-                                            ) : (
-                                                <input
-                                                    type="text"
-                                                    placeholder="Cantidad"
-                                                    value={cantidad[i]}
-                                                    onChange={(e) => {
-                                                        cantidad[i] = e.target.value;
-                                                        setCantidad([...cantidad]);
-                                                    }}
-                                                />
-                                            )}
-                                        </div>
-                                    );
-                                })}
+                <div className={style.col}>
+                    <label className={style.label}>Ingredientes</label>
+                    <input
+                    hidden={path === "update"}
+                    type="text"
+                    name="ingredientes"
+                    list="ingredientes"
+                    placeholder="Ingredientes"
+                    onChange={onIngredeintFormChangeHandler}
+                    />
+                </div>
+                    <div className={style.col}>
+                        <div className={style.table}>
+                            <div className={style.rowTableTitle}>
+                                <span>Nombre</span>
+                                <span>Cantidad</span>
+                            </div>
+                            {ingredientesArray.map((item, i) => {
+                            ingredientesArray[i].quantity = 0;
+                              return (
+                               <div className={style.rowTableData} key={i}>
+                                 <span>
+                                    {item.name + " "}
+                                    <span style={{ fontWeight: "bold" }}>
+                                        {item.type_measure}
+                                    </span>
+                                 </span>
+                                    {path === "update" ? (
+                                    <span>{cantidad[i]} </span>
+                                    ) : (
+                                    <input
+                                    type="text"
+                                    placeholder="Cantidad"
+                                    value={cantidad[i]}
+                                    onChange={(e) => {
+                                    cantidad[i] = e.target.value;
+                                    setCantidad([...cantidad]);
+                                    }}
+                                    />
+                                    )}
+                               </div>
+                              )
+                            })}
                                 <datalist id="ingredientes">
                                     {ingredientes.map((ingrediente) => {
                                         return <option value={ingrediente.name}></option>;

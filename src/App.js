@@ -64,11 +64,11 @@ function App() {
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/sales" component={MySales} />
+            <Route exact path="/menu/update/:id" component={CreateItemMenu} /> 
             {/* <Route exact path="/dashboard" /> */}
             {/* menu */}
             {/* <Route exact path="/menu" component={Menu} />
-      <Route exact path="/menu/create" component={CreateItemMenu} />
-      <Route exact path="/menu/update/:id" component={CreateItemMenu} /> */}
+      <Route exact path="/menu/create" component={CreateItemMenu} />*/}
             {}
             {/* <Route exact path="/recipe/create" />
       <Route exact path="/recipe/update/:id" component={DetailRecipe}/>
