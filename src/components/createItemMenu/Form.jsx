@@ -23,7 +23,7 @@ import * as Yup from "yup";
 export default function Form({ path, menu, ingredientes }) {
   // eslint-disable-next-line no-unused-vars
   // const [showImg, setShowImg] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
 
   const [ingredientesArray, setIngredientesArray] = useState(
     menu?.Ingredients || []
