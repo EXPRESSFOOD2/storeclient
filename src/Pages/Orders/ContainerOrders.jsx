@@ -8,17 +8,15 @@ import { delivery, getOrders } from "../../redux/Actions/actions";
 const OrderPage = () => {
   const ordersState = useSelector((state) => state.orders);
   const [orders, setOrders] = useState(ordersState);
+  const dispatch = useDispatch();
 
-<<<<<<< HEAD
     useEffect(() => {
       setTimeout(()=>{    if (!orders.length) {
         dispatch(getOrders());
       }}, 30000)
   
     }, [dispatch, orders]);
-=======
-  const dispatch = useDispatch();
->>>>>>> 33cbf66e371190d4be8945feacd8dd56d773d891
+
 
   useEffect(() => {
     dispatch(getOrders());
@@ -29,7 +27,7 @@ const OrderPage = () => {
   //   setOrders(orders.filter((order) => order.id != value));
   //   delivery({ id: value, status: "Entregada" });
   // };
-
+s
   return (
     <div className={styles.page}>
       <div className={styles.container}>

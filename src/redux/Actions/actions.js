@@ -154,7 +154,7 @@ export const createMenu = (data) => {
 export const updateMenu = (data) => {
     return async function (dispatch) {
         try {
-            await axios.patch("/menu/update", data);
+            await axios.patch("/menu/update", data, headers);
             dispatch({ type: UPDATE_MENU, payload: data });
             const root = createRoot(document.getElementById("alert"));
             root.render(
