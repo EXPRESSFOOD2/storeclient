@@ -65,8 +65,7 @@ function App() {
             <Route exact path="/ingredient/create" component={Ingredients} />
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/register" component={RegisterPage} />
-            <Route exact path="/sales" component={MySales} />
-            <Route exact path="/menu/update/:id" component={CreateItemMenu} /> 
+            <Route exact path="/sales" component={MySales} />            
             <Route exact path="/recipe/update/:id" component={DetailRecipe} />
             {/* <Route exact path="/dashboard" /> */}
             {/* menu */}

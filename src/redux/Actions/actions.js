@@ -185,13 +185,12 @@ export const createUser = (user) => {
 
 export const getImageUrl = (imageStr, imageFn) => {
   return async (dispatch) => {
-    // console.log("algo 1");
-    console.log(imageStr);
+    // console.log("algo 1");    
     try {
       const result = await axios.post('/processImage/post', {
         imageStr
       })
-      // console.log("algo 2");
+      // console.log("algo 2");      
       imageFn(result.data)
       return result.data
     } catch (error) {
