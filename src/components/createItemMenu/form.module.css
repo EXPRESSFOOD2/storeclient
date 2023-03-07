@@ -305,6 +305,14 @@
     background-color: rgba(225, 225, 225, 0.5);
 }
 
+.rowTableData >img{
+    position: sticky;
+    width: 1rem;
+    height: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
 /* .image {
     position: absolute;
     background-color: #999999;
