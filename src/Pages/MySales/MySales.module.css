@@ -5,6 +5,8 @@
     flex-direction: column;
     align-items: center;
     padding-top: 7rem;
+    font-family: "Rubik", sans-serif;
+    font-size: larger;
 }
 
 .container{
@@ -17,14 +19,20 @@
 
 .description{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: fit-content;
+    grid-template-columns: repeat(3, auto);
+    width: 29rem;
+    /* gap: -2rem; */
+    padding-left: 2.5rem;
+    /* border: 1px solid blue; */
+}
+.total{
+    margin-right: -4rem;
 }
 .sales{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border: 1px solid black;
-    gap: 8rem;
+    gap: 1rem;
     margin-right: -10rem;
     padding: 1rem;
 }
