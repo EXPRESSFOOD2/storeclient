@@ -2,21 +2,20 @@
 import { React }from 'react'
 import { useDispatch } from 'react-redux'
 import ReactDOM from 'react-dom'
-import { orderByPrecio, filterByTag, OrderByRecommendation , sortByActivity, orderByQuantity } from '../../redux/Actions/actions'
+import { orderByPrecio, filterByTag, OrderByRecommendation , sortByActivity, orderByQuantity, getMenu } from '../../redux/Actions/actions'
 import styles from './Filter.module.css'
 import Alert from '../Alert/Alert'
-
-
 
 const Filter = (props) => {
   const { render } = props
   const { setOrders } = props
   const dispatch = useDispatch()
 
-// const all = () =>{
-//   window.location.reload()
-// }
 
+const all = () =>{
+ dispatch(getMenu())
+ console.log(render);
+}
 //?---------------------------------------------
 
 const orderByPrice = (e)=>{
@@ -115,7 +114,7 @@ const orderActivity = (e) =>{
 
   return (
     <div className={styles.container}>
-      {/* <button onChange={()=>all()}>Todo</button> */}
+      <button onClick={all} className={styles.colButton}>Actualizar</button>
       <div className={styles.col}>
         <label htmlFor="">Ordenar por precio</label>
         <select name="" id="" className={styles.select} onChange={(e)=>{orderByPrice(e)}}>
