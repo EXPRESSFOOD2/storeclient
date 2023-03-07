@@ -26,6 +26,7 @@
     position: absolute;
     flex-direction: column;
     background-color: rgb(226, 226, 226);
+    border: 2px solid rgb(226, 226, 226);
     max-height: 12rem;
     border-radius: .5rem;
     padding: .5rem;
