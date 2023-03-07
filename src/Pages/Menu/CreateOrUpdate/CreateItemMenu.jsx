@@ -24,10 +24,8 @@ export default function CreateItemMenu () {
     if (route === 'update' && !menus.length) {
       dispatch(getMenu())
     }
-    // if (!ingredients.length) {
-    //   dispatch(getAllIngredients())
-    // }
-  }, [menus, dispatch, route])
+      dispatch(getAllIngredients())
+  }, [menus, dispatch, route, ingredients])
 
   return (
     <div className={styles.container}>
