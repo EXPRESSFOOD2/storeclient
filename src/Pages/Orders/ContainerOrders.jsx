@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import styles from "./Orders.module.css";
 import Order from "../../components/Card_Orders/Order/Order";
 
@@ -10,17 +10,10 @@ const OrderPage = () => {
   const [orders, setOrders] = useState(ordersState);
   const dispatch = useDispatch();
 
-    useEffect(() => {
-      setTimeout(()=>{    if (!orders.length) {
-        dispatch(getOrders());
-      }}, 30000)
-  
-    }, [dispatch, orders]);
-
-
   useEffect(() => {
-    dispatch(getOrders());
-  }, [dispatch]);
+    !orders.length && dispatch(getOrders())
+  },[])
+
 
   // const delivered = (e) => {
   //   const value = e.target.value;
@@ -32,7 +25,7 @@ s
     <div className={styles.page}>
       <div className={styles.container}>
         {orders.length ? (
-          orders.map((item) => <Order item={item}  />)
+          orders.map((item) => <Order item={item} />)
         ) : (
           <div className={styles.message}>
             <h2>Sin pedidos</h2>

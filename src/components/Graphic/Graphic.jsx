@@ -15,7 +15,7 @@ import { grey } from '@mui/material/colors'
 import styles from "./Graphic.module.css"
 
 
-const Graphic = ({total, values}) =>{
+const Graphic = ({total, values, dates}) =>{
 
     return (
         <div className={styles.container}>
@@ -32,12 +32,14 @@ const Graphic = ({total, values}) =>{
                     <Box sx={{ p: 3, pb: 0 }}>
                         <Stack spacing={2}>
                             <Typography variant="h6" sx={{ color: grey[700]}}>
-                                This Week Statistics
+
+                                Grafico de ventas
+
                             </Typography>
                             <Typography variant="h3"  sx={{ color: grey[700]}}>{`$${total}`}</Typography>
                         </Stack>
                     </Box>
-                        <MonthlyBarChart values={values} />
+                        <MonthlyBarChart values={values} dates={dates} />
                 </MainCard>
             </Grid>
         </Grid>
