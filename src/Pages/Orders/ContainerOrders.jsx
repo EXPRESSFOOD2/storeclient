@@ -13,8 +13,9 @@ const OrderPage = () => {
       if (!orders.length) {
         dispatch(getOrders());
       }
-    }, [dispatch, orders]);
-
+    }, []);
+    
+  //}, [dispatch, orders]);
       const clearOrders = orders.filter(order => order.status === "En Progreso")
 
       const delivered = (e) =>{

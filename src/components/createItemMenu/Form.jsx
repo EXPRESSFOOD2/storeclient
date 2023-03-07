@@ -59,7 +59,7 @@ const formik = useFormik({
         description: menu?.description || "",
         price: menu?.price || "",
         stock: menu?.stock || 0,
-        recomendado: menu?.recomend_first || "",
+        recomend_first: menu?.recomend_first || false,
     },
 
     validationSchema: Yup.object({
@@ -273,10 +273,10 @@ const formik = useFormik({
                         <div className={style.checkboxCol}>
                             <input
                                 type="checkbox"
-                                name="recomendado"
+                                name="recomend_first"
                                 onChange={formik.handleChange}
-                                value={formik.values.recomendado}
-                                checked={formik.values.recomendado}
+                                value={formik.values.recomend_first}
+                                checked={formik.values.recomend_first}
                             />
                             <label>
                                 Recomendarías este ítem sobre los otros que has creado?
