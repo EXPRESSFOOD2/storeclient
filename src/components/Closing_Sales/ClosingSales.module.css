@@ -2,12 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: .8rem;
 }
 .container{
     display: grid;
     grid-template-columns: auto .5fr auto;
     border: 1px solid black;
-    width: 32rem;
+    border-radius: .5rem;
+    width: 27rem;
     gap: 1rem;
     /* padding-left: 5rem; */
     align-items: center;
