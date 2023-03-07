@@ -27,6 +27,7 @@ import {
     DELETE_INGREDIENT,
     DELETE_RECIPE,
     GET_BALANCE,
+    DELETE_MENU
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 import { Login } from "@mui/icons-material";
@@ -364,6 +365,15 @@ export const getOrderBalance = () => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const deleteMenu = (id) => async (dispatch) => {
+    try {
+        dispatch({type:DELETE_MENU, payload:id})
+        await axios.delete(`/menu/delete/?id=${id}`);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 // ************************************************************************************************
 // FUNCIONES AUXILIARES:
