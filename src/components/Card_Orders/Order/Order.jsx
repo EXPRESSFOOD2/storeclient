@@ -27,13 +27,14 @@ const Order = ({ item }) => {
     
     dispatch(isFinished({ id: value, status: "Lista" }));
   };
-
+  
   const handleOrder = () => {
     setIsOpen(isOpen ? false : true);
   };
   const delivered = (e) => {
     setStatus("Entregado")
     const value = e.target.value;    
+    socket.emit('complete',('ok'))
     delivery({ id: value, status: "Entregada" });
   };
 
