@@ -357,8 +357,9 @@ export const delivery = async (data) => {
 
 export const getOrderBalance = () => async (dispatch) => {
     try {
-        // const result = await axios.get("http://localhost:3002/orders/getBalance");
-        const Mydata = sortBalanceByDate(mYdata.ticketsAll);
+        const result = (await axios.get("http://localhost:3002/orders/getBalance")).data;
+        console.log(result);
+        const Mydata = sortBalanceByDate(result.ticketsAll);
         // console.log(mYdata.ticketsAll);
         return dispatch({ type: GET_BALANCE, payload: { ...Mydata } });
     } catch (error) {
