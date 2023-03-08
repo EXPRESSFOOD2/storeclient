@@ -48,9 +48,11 @@ export const validateLogin = (values) => async (dispatch) => {
         if (login.valid) {
             const name = login.user.name;
             const img = login.user.profile_image;
+            const token = login.user.token;
+            const user_id = login.user.id;
             try {
                 window.localStorage.setItem("userLogin", "true");
-                window.localStorage.setItem("userData", JSON.stringify({ name, img }));
+                window.localStorage.setItem("userData", JSON.stringify({ name, img, token, user_id }));
             } catch (error) {
                 console.error(error);
             }
@@ -86,7 +88,12 @@ export const validateLogin = (values) => async (dispatch) => {
 export const getMenu = () => {
     return async function (dispatch) {
         try {
-            const menu = (await axios.get("/menu/get")).data;
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+            }
+            const menu = (await axios.get("/menu/get", {headers})).data;
             dispatch({ type: GET_MENU, payload: menu });
         } catch (error) {
             dispatch({ type: ERROR, payload: error.response.data.error });
@@ -100,7 +107,12 @@ export const getMenu = () => {
 export const getAllIngredients = () => {
     return async function (dispatch) {
         try {
-            const ingredients = (await axios.get("/ingredients/get")).data;
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+            }
+            const ingredients = (await axios.get("/ingredients/get", {headers})).data;
             dispatch({ type: GET_ALL_INGREDIENTS, payload: ingredients });
         } catch (error) {
             dispatch({ type: ERROR, payload: error.response.data.error });
@@ -111,7 +123,12 @@ export const getAllIngredients = () => {
 export const getIngredientById = (id) => {
     return async function (dispatch) {
         try {
-            const ingredient = (await axios.get(`/ingredients/get/${id}`)).data;
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+            }
+            const ingredient = (await axios.get(`/ingredients/get/${id}`,{headers})).data;
             dispatch({ type: GET_INGREDIENT_ID, payload: ingredient });
         } catch (error) {
             dispatch({ type: ERROR, payload: error.response.data.error });
@@ -120,9 +137,12 @@ export const getIngredientById = (id) => {
 };
 
 export const updateIngredient = async (data) => {
-    // no testeado
-    const Ingredient = await axios.patch("/ingredients/update", data);
-    console.log(Ingredient);
+    const userData = JSON.parse(window.localStorage.getItem("userData"))
+    const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+    const Ingredient = await axios.patch("/ingredients/update", data, {headers});
 };
 
 // export const deleteIngredient = () => () => {
@@ -133,7 +153,12 @@ export const createMenu = (data) => {
 
   return async function (dispatch) {
     try {
-      const newMenu = await axios.post('/menu/create', data)
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+      const newMenu = await axios.post('/menu/create', data, {headers})
       dispatch({ type: CREATE_MENU, payload: newMenu })
       // console.log(data);
       // console.log(newMenu.data);
@@ -154,7 +179,12 @@ export const createMenu = (data) => {
 export const updateMenu = (data) => {
     return async function (dispatch) {
         try {
-            await axios.patch("/menu/update", data, headers);
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+            await axios.patch("/menu/update", data, {headers});
             dispatch({ type: UPDATE_MENU, payload: data });
             const root = createRoot(document.getElementById("alert"));
             root.render(
@@ -173,10 +203,16 @@ export const filter = () => (dispatch) => {
 export const createUser = (user) => {
   return async () => {
     try {
-      const res = await axios.post('/users/create', user)
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+
+        const res = await axios.post('/users/create', user, {headers})
       //! PROVICIONAL
-      alert('Ok, user Creado')
-      console.log(res);
+        alert('Ok, user Creado')
+     
     } catch (err) {
       return console.error(err)
     }
@@ -185,8 +221,6 @@ export const createUser = (user) => {
 
 export const getImageUrl = (imageStr, imageFn) => {
   return async (dispatch) => {
-    // console.log("algo 1");
-    console.log(imageStr);
     try {
       const result = await axios.post('/processImage/post', {
         imageStr
@@ -203,7 +237,12 @@ export const getImageUrl = (imageStr, imageFn) => {
 
 export const deleteIngredient = (id)=> async (dispatch) => {
   try {
-    await axios.delete(`/ingredients/delete/${id}`)
+    const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+    await axios.delete(`/ingredients/delete/${id}`, {headers})
     dispatch({type:DELETE_INGREDIENT, payload:id })
   } catch (err) {
     return console.error(err)
@@ -213,8 +252,14 @@ export const deleteIngredient = (id)=> async (dispatch) => {
 
 export const createIngredients = (data) => async (dispatch) => {
     try {
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
         const promises = await data.map(async (element) => {
-            const res = await axios.post("/ingredients/create", { ...element });
+            const res = await axios.post("/ingredients/create", { ...element }, {headers});
             return res.data;
         });
         const results = await Promise.allSettled(promises);
@@ -265,7 +310,13 @@ export const createIngredients = (data) => async (dispatch) => {
 export const getRoles = () => {
     return async function (dispatch) {
         try {
-            const roles = (await axios.get("/roles/get")).data;
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
+            const roles = (await axios.get("/roles/get", {headers})).data;
             dispatch({ type: GET_ROLES, payload: roles });
         } catch (error) {
             dispatch({ type: ERROR, payload: error.response.data.error });
@@ -281,7 +332,13 @@ export const resetError = () => {
 export const getReceta = () => {
     return async function (dispatch) {
         try {
-            const result = (await axios.get("/recipes/get")).data;
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+               
+            const result = (await axios.get("/recipes/get", {headers})).data;
             const receta = result.filter((element) => !element.name?.includes(" OLD "));
             dispatch({ type: GET_RECETA, payload: receta });
         } catch (error) {
@@ -292,7 +349,13 @@ export const getReceta = () => {
 
 export const deleteRecipe = (id) => async (dispatch) => {
     try {
-        await axios.delete(`http://localhost:3002/recipes/delete?id=${id}`);
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
+        await axios.delete(`http://localhost:3002/recipes/delete?id=${id}`, {headers});
         dispatch({ type: DELETE_RECIPE, payload: id });
     } catch (error) {
         console.log(error);
@@ -327,7 +390,13 @@ export const orderByQuantity = (payload) => ({
 export const getOrders = () => {
     return async (dispatch) => {
         try {
-            const orders = await axios.post("/orders/get");
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
+            const orders = await axios.post("/orders/get", {headers});
             // console.log(orders.data);
             dispatch({ type: GET_ORDERS, payload: orders.data });
         } catch (error) {
@@ -339,7 +408,13 @@ export const getOrders = () => {
 // no testeado
 export const isFinished = async (data) => {
     try {
-        const order = await axios.patch("/orders/update", data);
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
+        const order = await axios.patch("/orders/update", data, {headers});
         console.log(order);
     } catch (error) {
         console.error(error);
@@ -348,7 +423,13 @@ export const isFinished = async (data) => {
 
 export const delivery = async (data) => {
     try {
-        const order = await axios.patch("/orders/update", data);
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
+        const order = await axios.patch("/orders/update", data, {headers});
         console.log(order);
     } catch (error) {
         console.error(error);
@@ -368,8 +449,14 @@ export const getOrderBalance = () => async (dispatch) => {
 
 export const deleteMenu = (id) => async (dispatch) => {
     try {
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
         dispatch({type:DELETE_MENU, payload:id})
-        await axios.delete(`/menu/delete/?id=${id}`);
+        await axios.delete(`/menu/delete/?id=${id}`, {headers});
     } catch (error) {
         console.log(error.message);
     }
