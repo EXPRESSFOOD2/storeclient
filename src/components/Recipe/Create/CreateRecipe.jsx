@@ -239,7 +239,8 @@ const deleteIngredient =(e)=>{
 					<input
 					className={errors.name ? styles.errorInput : ''}
                     type="text"
-					name="name"
+					//se cambio "name" por "ingredients"
+					name="ingredients"
 					value={input.name}
                     list="ingredientes"
                     placeholder="Ingredientes"
