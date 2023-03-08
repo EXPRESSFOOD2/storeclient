@@ -380,3 +380,23 @@ const sortBalanceByDate = (array) => {
     }
     return obj;
 };
+
+//* Recipe
+// router.use("/recipes/create", recipesPostRouter);
+// router.use("/recipes/get", recipesGetRouter);
+// router.use("/recipes/delete", recipesDeleteRouter);
+// router.use("/recipes/update", recipesPatchRouter);
+
+export const createRecipe = (recipe) =>{
+    return async () =>{
+        // console.log(recipe);
+        try {
+            const newRecipe = (await axios.post("/recipes/create", recipe)).data
+            // console.log(newRecipe);
+        } catch (error) {
+            // console.log("dos");
+            console.error(error);
+        }
+    }
+}
+
