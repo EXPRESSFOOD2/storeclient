@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-unused-vars */
 import  { useEffect, useState } from "react";
 import styles from "./Orders.module.css";
 import Order from "../../components/Card_Orders/Order/Order";
@@ -11,16 +14,10 @@ const OrderPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !orders.length && dispatch(getOrders())
+    dispatch(getOrders())
   },[])
 
 
-  // const delivered = (e) => {
-  //   const value = e.target.value;
-  //   setOrders(orders.filter((order) => order.id != value));
-  //   delivery({ id: value, status: "Entregada" });
-  // };
-s
   return (
     <div className={styles.page}>
       <div className={styles.container}>
