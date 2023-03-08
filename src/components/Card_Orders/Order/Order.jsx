@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { isFinished, delivery } from "../../../redux/Actions/actions";
+import { isFinished, delivery , getOrders } from "../../../redux/Actions/actions";
 import styles from "./Order.module.css";
 import OrdersComponent from "../Card_Order";
 import { useDispatch } from "react-redux";
+import { socket } from '../../../App'
 
 const Order = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState(item.status);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    
+    socket.on('Completado',(data)=>{
+        dispatch(getOrders())
+    })
+    
+  }, [])
+  
+
   const finished = (e) => {
     if (status === "Lista") return alert("Pedido ya se encuentra listo!");
     const value = e.target.value;
+    socket.emit('complete',('ok'))
     setStatus("Lista");
+    
     dispatch(isFinished({ id: value, status: "Lista" }));
   };
 
