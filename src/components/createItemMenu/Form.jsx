@@ -7,12 +7,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  createMenu,
-  updateMenu,
-  getImageUrl,
-  getMenu,
-} from "../../redux/Actions/actions";
+import { createMenu, updateMenu, getImageUrl, getMenu } from "../../redux/Actions/actions";
 
 import ImageIcon from "@mui/icons-material/Image";
 import { grey } from "@mui/material/colors";
