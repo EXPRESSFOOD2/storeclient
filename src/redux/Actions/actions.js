@@ -494,3 +494,27 @@ const sortBalanceByDate = (array) => {
     }
     return obj;
 };
+
+//* Recipe
+// router.use("/recipes/create", recipesPostRouter);
+// router.use("/recipes/get", recipesGetRouter);
+// router.use("/recipes/delete", recipesDeleteRouter);
+// router.use("/recipes/update", recipesPatchRouter);
+
+export const createRecipe = (recipe) =>{
+    return async () =>{
+        try {
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+            const newRecipe = (await axios.post("/recipes/create", recipe, { headers })).data
+            // console.log(newRecipe);
+        } catch (error) {
+            // console.log("dos");
+            console.error(error);
+        }
+    }
+}
+
