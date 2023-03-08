@@ -44,7 +44,7 @@ const barChartOptions = {
 
 // ==============================|| MONTHLY BAR CHART ||============================== //
 
-const MonthlyBarChart = () => {
+const MonthlyBarChart = ({values, dates}) => {
     const theme = useTheme();
 
     const { primary, secondary } = theme.palette.text;
@@ -52,11 +52,11 @@ const MonthlyBarChart = () => {
 
     const [series] = useState([
         {
-            data: [5, 95, 70, 42, 65, 55, 100]
+            data: [...values]
         }
     ]);
 
-    const [options, setOptions] = useState(barChartOptions);
+    const [options, setOptions] = useState({...barChartOptions, xaxis:{...barChartOptions.xaxis, categories:[...dates]}});
 
     useEffect(() => {
         setOptions((prevState) => ({

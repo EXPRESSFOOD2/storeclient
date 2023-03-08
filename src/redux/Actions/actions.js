@@ -27,6 +27,8 @@ import {
     DELETE_INGREDIENT,
     DELETE_RECIPE,
     GET_BALANCE,
+    DELETE_MENU,
+    GET_TAGS
 } from "./types";
 import Alert from "../../Shared/Alert/Alert";
 import { Login } from "@mui/icons-material";
@@ -121,7 +123,7 @@ export const getIngredientById = (id) => {
 export const updateIngredient = async (data) => {
     // no testeado
     const Ingredient = await axios.patch("/ingredients/update", data);
-    console.log(Ingredient);
+    
 };
 
 // export const deleteIngredient = () => () => {
@@ -132,10 +134,11 @@ export const createMenu = (data) => {
 
   return async function (dispatch) {
     try {
-      const newMenu = await axios.post('/menu/create', data)
-      dispatch({ type: CREATE_MENU, payload: newMenu })
-      // console.log(data);
-      // console.log(newMenu.data);
+      
+        const newMenu = await axios.post('/menu/create', data)
+        dispatch({ type: CREATE_MENU, payload: newMenu })
+       
+        
       const root = createRoot(document.getElementById('alert'))
       root.render(
         <Alert
@@ -184,13 +187,12 @@ export const createUser = (user) => {
 
 export const getImageUrl = (imageStr, imageFn) => {
   return async (dispatch) => {
-    // console.log("algo 1");
-    console.log(imageStr);
+
     try {
       const result = await axios.post('/processImage/post', {
         imageStr
       })
-      // console.log("algo 2");
+     
       imageFn(result.data)
       return result.data
     } catch (error) {
@@ -334,6 +336,17 @@ export const getOrders = () => {
         }
     };
 };
+export const getTags = () => {
+    return async (dispatch) => {
+        try {
+            const tags = await axios.get("/tags/get");
+       
+            dispatch({ type: GET_TAGS, payload: tags.data });
+        } catch (error) {
+            dispatch({ type: ERROR, payload: error.response.data.error });
+        }
+    };
+};
 
 // no testeado
 export const isFinished = async (data) => {
@@ -348,7 +361,7 @@ export const isFinished = async (data) => {
 export const delivery = async (data) => {
     try {
         const order = await axios.patch("/orders/update", data);
-        console.log(order);
+      
     } catch (error) {
         console.error(error);
     }
@@ -356,14 +369,24 @@ export const delivery = async (data) => {
 
 export const getOrderBalance = () => async (dispatch) => {
     try {
-        // const result = await axios.get("http://localhost:3002/orders/getBalance");
-        const Mydata = sortBalanceByDate(mYdata.ticketsAll);
+        const result = (await axios.get("http://localhost:3002/orders/getBalance")).data;
+        console.log(result);
+        const Mydata = sortBalanceByDate(result.ticketsAll);
         // console.log(mYdata.ticketsAll);
         return dispatch({ type: GET_BALANCE, payload: { ...Mydata } });
     } catch (error) {
         console.log(error);
     }
 };
+
+export const deleteMenu = (id) => async (dispatch) => {
+    try {
+        dispatch({type:DELETE_MENU, payload:id})
+        await axios.delete(`/menu/delete/?id=${id}`);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 // ************************************************************************************************
 // FUNCIONES AUXILIARES:

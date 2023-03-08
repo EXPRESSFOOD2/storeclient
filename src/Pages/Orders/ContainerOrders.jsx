@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-unused-vars */
+import  { useEffect, useState } from "react";
 import styles from "./Orders.module.css";
 import Order from "../../components/Card_Orders/Order/Order";
 
@@ -12,20 +15,15 @@ const OrderPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getOrders());
-  }, [dispatch]);
+    dispatch(getOrders())
+  },[])
 
-  // const delivered = (e) => {
-  //   const value = e.target.value;
-  //   setOrders(orders.filter((order) => order.id != value));
-  //   delivery({ id: value, status: "Entregada" });
-  // };
 
   return (
     <div className={styles.page}>
       <div className={styles.container}>
         {orders.length ? (
-          orders.map((item) => <Order item={item}  />)
+          orders.map((item) => <Order item={item} />)
         ) : (
           <div className={styles.message}>
             <h2>Sin pedidos</h2>

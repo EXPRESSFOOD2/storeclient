@@ -53,10 +53,15 @@
   max-width: 15%;
   text-align: center;
   line-height: 50px;
- 
+  gap: .7rem;
 
   border-bottom: 1px solid grey;
   padding: 5px 0;
+}
+.colIcon img{
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
 
 .colIcon > a{

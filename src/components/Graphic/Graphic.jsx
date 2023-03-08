@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 
 import MainCard from './MainCard'
@@ -15,29 +16,31 @@ import { grey } from '@mui/material/colors'
 import styles from "./Graphic.module.css"
 
 
-const Graphic = () =>{
+const Graphic = ({total, values, dates}) =>{
 
     return (
         <div className={styles.container}>
 
         <Grid>
                 <Grid item xs={12} md={5} lg={4}>
-                <Grid container alignItems="center" justifyContent="space-between">
+                {/* <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
                         <Typography variant="h5">Income Overview</Typography>
                     </Grid>
                     <Grid item />
-                </Grid>
+                </Grid> */}
                 <MainCard sx={{ mt: 2 }} content={false} >
                     <Box sx={{ p: 3, pb: 0 }}>
                         <Stack spacing={2}>
                             <Typography variant="h6" sx={{ color: grey[700]}}>
-                                This Week Statistics
+
+                                Grafico de ventas
+
                             </Typography>
-                            <Typography variant="h3"  sx={{ color: grey[700]}}>$7,650</Typography>
+                            <Typography variant="h3"  sx={{ color: grey[700]}}>{`$${total}`}</Typography>
                         </Stack>
                     </Box>
-                    <MonthlyBarChart />
+                        <MonthlyBarChart values={values} dates={dates} />
                 </MainCard>
             </Grid>
         </Grid>

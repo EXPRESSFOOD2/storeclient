@@ -20,7 +20,8 @@ import {
   GET_ORDERS,
   DELETE_INGREDIENT,
   DELETE_RECIPE,
-  GET_BALANCE
+  GET_BALANCE,
+  DELETE_MENU, GET_TAGS
 } from '../Actions/types'
 import { createRoot } from 'react-dom/client'
 
@@ -35,6 +36,7 @@ const initialState = {
   roles: [],
   render_receta:[],
   orders: [],
+  tags: [],
   balance:{}
 }
 // console.log(initialState.render);
@@ -48,8 +50,12 @@ const filterFunction = (status, array) => {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case DELETE_MENU:
+      const newState = state.menus?.filter(ele=>ele.id!==action.payload)
+      return {
+        ...state, menus:[...newState], render:[...newState]
+      }
     case GET_BALANCE:
-      // console.log(action.payload);
       return {
         ...state, balance:{...action.payload}
       }
@@ -141,6 +147,8 @@ const rootReducer = (state = initialState, action) => {
         return { ...state, render: action.payload }
       case GET_ORDERS:
         return { ...state, orders: action.payload}
+      case GET_TAGS:
+        return { ...state, tags: action.payload}
     default:
       return { ...state }
   }

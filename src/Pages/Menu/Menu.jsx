@@ -22,11 +22,10 @@ const Menu = () => {
     if (!render.length) {
       dispatch(getMenu())
     }
-  }, [render, dispatch, orders])
+  }, [])
 
   return (
     <div className={style.container}>
-      {/* <LateralBar/> */}
       <div className={style.filters}>
         <Filter render={render} setOrders={setOrders} />
       </div>
