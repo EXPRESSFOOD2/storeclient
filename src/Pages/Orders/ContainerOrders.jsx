@@ -12,15 +12,9 @@ const OrderPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !orders.length && dispatch(getOrders())
+    dispatch(getOrders())
   },[])
 
-
-  // const delivered = (e) => {
-  //   const value = e.target.value;
-  //   setOrders(orders.filter((order) => order.id != value));
-  //   delivery({ id: value, status: "Entregada" });
-  // };
 
   return (
     <div className={styles.page}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import Sales from "../../components/Sales/Sales";
 import styles from "./MySales.module.css";
 import ClosingSales from "../../components/Closing_Sales/ClosingSales";
@@ -9,7 +9,7 @@ import Graphic from "../../components/Graphic/Graphic";
 const MySales = () => {
     const dispatch = useDispatch();
     const balance = useSelector((state) => state.balance);
-    const dates = Object.keys(balance);
+    const [dates] = useState(Object.keys(balance).sort((a, b) => new Date(b) - new Date(a))) 
     let total = 0
     const values = []
 
@@ -19,7 +19,7 @@ const MySales = () => {
 
     for (const date of dates) {
         total += parseInt(balance[date]?.amount);
-        values.length<15 && values.push(parseInt(balance[date]?.amount));
+        values.length<=30 && values.push(parseInt(balance[date]?.amount));
     }
     // console.log(balance);
 
@@ -42,7 +42,7 @@ const MySales = () => {
                     ))}
                 </div>
                 <div className={styles.graphic}>
-                    <Graphic total={total} values={values} dates={dates} />
+                    <Graphic total={total} values={values.reverse()} dates={dates.reverse()} />
                 </div>
             </div>
         </div>

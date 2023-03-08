@@ -23,6 +23,7 @@
 }
 .detail{
     display: flex;
+    width: 23rem;
     position: absolute;
     flex-direction: column;
     background-color: rgb(226, 226, 226);
@@ -33,6 +34,7 @@
     gap: .5rem;
     overflow: scroll;
     overflow-x: hidden;
+    z-index: 1000;
 }
 .detail::-webkit-scrollbar {
     -webkit-appearance: none;
