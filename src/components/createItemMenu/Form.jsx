@@ -34,9 +34,10 @@ export default function Form({ path, menu, ingredientes, tags }) {
   );
 
   const [imageInputState, setImageInputState] = useState("");
-  const [urlImage, setUrlImage] = useState("");
+  const [urlImage, setUrlImage] = useState(menu?.url_image || "");
   // console.log(urlImage);
-  const [tagsArray, setTagsArray] = useState([]);
+  const [tagsArray, setTagsArray] = useState(menu?.TagsFull || []);
+
   useEffect(() => {
     if (urlImage) {
       dispatch(getImageUrl(urlImage, imageFn));
@@ -105,7 +106,7 @@ export default function Form({ path, menu, ingredientes, tags }) {
     });
   };
   const localValues = JSON.parse(localStorage.getItem("localMenu"));
-  const localImg = localStorage.getItem("localImg");
+  const localImg = localStorage.getItem("localImg") || "";
 
   const formik = useFormik({
     initialValues: {
@@ -157,29 +158,33 @@ export default function Form({ path, menu, ingredientes, tags }) {
         dispatch(getMenu());
       }
       localStorage.removeItem("localImg");
-      setUrlImage("")
-      setTagsArray([])
-      setIngredientesArray([])
-      setCantidad([])
-
+      setUrlImage("");
+      setTagsArray([]);
+      setIngredientesArray([]);
+      setCantidad([]);      
       formik.resetForm();
+      localStorage.removeItem("localMenu");
     },
   });
 
   const imageFn = (imageUrl) => {
     formik.values.url_image = imageUrl;
-    localStorage.setItem("localImg", imageUrl);
+    if (path === "create") {
+      localStorage.setItem("localImg", imageUrl);
+    }
   };
 
   useEffect(() => {
-    if (path !== "update") {
+    if (path === "create") {
       const values = JSON.stringify(formik.values);
       localStorage.setItem("localMenu", values);
     }
   }, [formik]);
 
   useEffect(() => {
-    setUrlImage(localImg);
+    if (path === "create") {
+      setUrlImage(localImg);
+    }
   }, []);
 
   return (
@@ -326,12 +331,16 @@ export default function Form({ path, menu, ingredientes, tags }) {
                           }}
                         />
                       )}
-                      <img
-                        name={item.name}
-                        src="https://cdn-icons-png.flaticon.com/128/5171/5171840.png"
-                        alt=""
-                        onClick={(e) => handleDeleteIngredient(e.target?.name)}
-                      />
+                      {path === "create" && (
+                        <img
+                          name={item.name}
+                          src="https://cdn-icons-png.flaticon.com/128/5171/5171840.png"
+                          alt=""
+                          onClick={(e) =>
+                            handleDeleteIngredient(e.target?.name)
+                          }
+                        />
+                      )}
                     </div>
                   );
                 })}
@@ -409,7 +418,10 @@ export default function Form({ path, menu, ingredientes, tags }) {
             <div className={style.col}>
               <button
                 disabled={
-                  Object.keys(formik.errors).length || cantidad.length === 0
+                  Object.keys(formik.errors).length ||
+                  !cantidad.length ||
+                  !tagsArray.length ||
+                  cantidad.includes(0)
                 }
                 type="submit"
               >
