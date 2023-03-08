@@ -21,7 +21,7 @@ import {
   DELETE_INGREDIENT,
   DELETE_RECIPE,
   GET_BALANCE,
-  DELETE_MENU
+  DELETE_MENU, GET_TAGS
 } from '../Actions/types'
 import { createRoot } from 'react-dom/client'
 
@@ -36,6 +36,7 @@ const initialState = {
   roles: [],
   render_receta:[],
   orders: [],
+  tags: [],
   balance:{}
 }
 // console.log(initialState.render);
@@ -146,6 +147,8 @@ const rootReducer = (state = initialState, action) => {
         return { ...state, render: action.payload }
       case GET_ORDERS:
         return { ...state, orders: action.payload}
+      case GET_TAGS:
+        return { ...state, tags: action.payload}
     default:
       return { ...state }
   }
