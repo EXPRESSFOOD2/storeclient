@@ -412,9 +412,13 @@ const sortBalanceByDate = (array) => {
 
 export const createRecipe = (recipe) =>{
     return async () =>{
-        // console.log(recipe);
         try {
-            const newRecipe = (await axios.post("/recipes/create", recipe)).data
+        const userData = JSON.parse(window.localStorage.getItem("userData"))
+        const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+            const newRecipe = (await axios.post("/recipes/create", recipe, { headers })).data
             // console.log(newRecipe);
         } catch (error) {
             // console.log("dos");
