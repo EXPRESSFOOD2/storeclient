@@ -9,7 +9,11 @@ import { useDispatch } from "react-redux";
 import {
   createMenu,
   updateMenu,
+<<<<<<< HEAD
   getImageUrl,getMenu
+=======
+  getImageUrl,
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
 } from "../../redux/Actions/actions";
 
 import ImageIcon from "@mui/icons-material/Image";
@@ -19,14 +23,22 @@ import style from "./form.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+<<<<<<< HEAD
 export default function Form({ path, menu, ingredientes, tags }) {
   // eslint-disable-next-line no-unused-vars
   // const [showImg, setShowImg] = useState(false);
   const dispatch = useDispatch();
+=======
+export default function Form({ path, menu, ingredientes }) {
+  // eslint-disable-next-line no-unused-vars
+  // const [showImg, setShowImg] = useState(false);
+  const dispatch = useDispatch();  
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
 
   const [ingredientesArray, setIngredientesArray] = useState(
     menu?.Ingredients || []
   );
+<<<<<<< HEAD
   const [tagsArray, setTagsArray] = useState([]);
 
   const [cantidad, setCantidad] = useState(
@@ -101,6 +113,73 @@ export default function Form({ path, menu, ingredientes, tags }) {
       stock: menu?.stock || 0,
       recomendado: menu?.recomend_first || "",
       url_image: menu?.url_image || "",
+=======
+  const [cantidad, setCantidad] = useState(
+    menu?.Ingredients.map((item) => item.IngredientsMenuItems.quantity) || []
+  );
+
+  const [imageInputState, setImageInputState] = useState("");
+  const [urlImage, setUrlImage] = useState("");
+  // console.log(urlImage);
+
+  useEffect(() => {
+    dispatch(getImageUrl(urlImage, imageFn));
+  }, [urlImage, dispatch]);
+
+  // change ingredient quantity by type
+  const onIngredeintFormChangeHandler = (e) => {
+    const ingre = ingredientes.find((item) => e.target.value === item.name);
+    if (ingre) {
+      const exist = ingredientesArray.filter(
+        (ele) => ele.name === ingre["name"]
+      );
+      if (!exist.length) {
+        setIngredientesArray([ingre, ...ingredientesArray]);
+        setCantidad([...cantidad, 0]);
+        e.target.value = "";
+        e.target.placeholder = "Ingredientes";
+      } else {
+        e.target.value = "";
+        e.target.placeholder = "EL INGREDIENTE YA EXISTE";
+      }
+    }
+  };
+
+  const handleDeleteIngredient = (name) => {
+    const newArray = ingredientesArray.filter((ele) => ele.name !== name);
+    setIngredientesArray([...newArray]);
+  };
+
+  const handleImageInputChange = async (e) => {
+    const inputImg = e.target.files[0];
+    await prepareImageToShowAndSend(inputImg);
+  };
+
+  const prepareImageToShowAndSend = (inputImg) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(inputImg);
+      reader.onloadend = () => {
+        setUrlImage(reader.result);
+        resolve();
+      };
+      reader.onerror = () => {
+        reject(reader.error);
+      };
+    });
+  };
+  const localValues = JSON.parse(localStorage.getItem("localMenu"));
+  const localImg = localStorage.getItem("localImg");
+
+  const formik = useFormik({
+    initialValues: {
+      name: menu?.name || localValues?.name || "",
+      description: menu?.description || localValues?.description,
+      price: menu?.price || localValues?.price || "",
+      stock: menu?.stock || localValues?.stock || 0,
+      recomendado: menu?.recomend_first || localValues?.recomend_first || false,
+      url_image: menu?.url_image || localImg || "",
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
     },
 
     validationSchema: Yup.object({
@@ -116,17 +195,26 @@ export default function Form({ path, menu, ingredientes, tags }) {
 
     onSubmit: (values) => {
       const ingredientesMap = ingredientesArray.map((item, i) => {
+<<<<<<< HEAD
         return { id: item.id, quantity: cantidad[i] };
       });
       const tagsMap = tagsArray.map((item) => {
         return item.id;
+=======
+        if (cantidad[i] !== "" || parseInt(cantidad[i]) !== 0)
+          return { id: item.id, quantity: cantidad[i] };
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
       });
       const menuMapData = {
         id: menu?.id || "",
         ...values,
         ingredArray: ingredientesMap,
         is_active: true,
+<<<<<<< HEAD
         tagsIds: tagsMap,
+=======
+        // url_image: urlImage,
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
         Ingredients: cantidad.map((a) => {
           return {
             IngredientsMenuItems: {
@@ -137,18 +225,43 @@ export default function Form({ path, menu, ingredientes, tags }) {
       };
       if (path === "update") {
         dispatch(updateMenu({ ...menuMapData, id: menu.id }));
+<<<<<<< HEAD
         dispatch(getMenu())
     } else {
         console.log(formik.values);
         dispatch(createMenu(menuMapData));
         dispatch(getMenu())
       }
+=======
+      } else {
+        dispatch(createMenu(menuMapData));
+        console.log(formik.values);
+      }
+      localStorage.removeItem("localImg");
+      localStorage.removeItem("localMenu");
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
     },
   });
 
   const imageFn = (imageUrl) => {
     formik.values.url_image = imageUrl;
+<<<<<<< HEAD
   };
+=======
+    localStorage.setItem("localImg", imageUrl);
+  };
+
+  useEffect(() => {
+    if (path !== "update") {
+      const values = JSON.stringify(formik.values);
+      localStorage.setItem("localMenu", values);
+    }
+  }, [formik]);
+  
+  useEffect(() => {
+    setUrlImage(localImg);
+  }, []);
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
 
   return (
     <div className={style.menuItem}>
@@ -168,16 +281,31 @@ export default function Form({ path, menu, ingredientes, tags }) {
                 />
               ) : (
                 <ImageIcon
+<<<<<<< HEAD
                   sx={{ color: grey[500], fontSize: 100, mt: 2 }}
                 ></ImageIcon>
               )}
 
+=======
+                  sx={{
+                    color: grey[500],
+                    fontSize: 100,
+                    mt: 2,
+                  }}
+                ></ImageIcon>
+              )}
+              {/* <label>agregar imagen</label> */}
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
               <input
                 hidden={path === "update"}
                 type="file"
                 name="Imagen"
                 className={style.inputfile}
                 value={imageInputState}
+<<<<<<< HEAD
+=======
+                // onChange={imageHandleChange}
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
                 onChange={handleImageInputChange}
               />
             </div>
@@ -250,8 +378,14 @@ export default function Form({ path, menu, ingredientes, tags }) {
               </div>
             </div>
             <div className={style.col}>
+<<<<<<< HEAD
               <input
              hidden={path === "update"}
+=======
+              <label>Ingredientes</label>
+              <input
+                hidden={path === "update"}
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
                 type="text"
                 name="ingredientes"
                 list="ingredientes"
@@ -259,7 +393,10 @@ export default function Form({ path, menu, ingredientes, tags }) {
                 onChange={onIngredeintFormChangeHandler}
               />
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
             <div className={style.col}>
               <div className={style.table}>
                 <div className={style.rowTableTitle}>
@@ -267,7 +404,11 @@ export default function Form({ path, menu, ingredientes, tags }) {
                   <span>Cantidad</span>
                 </div>
                 {ingredientesArray.map((item, i) => {
+<<<<<<< HEAD
                   ingredientesArray[i].quantity = 0;
+=======
+                  item.quantity = 0;
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
                   return (
                     <div className={style.rowTableData} key={i}>
                       <span>
@@ -289,11 +430,21 @@ export default function Form({ path, menu, ingredientes, tags }) {
                           }}
                         />
                       )}
+<<<<<<< HEAD
+=======
+                      <img
+                        name={item.name}
+                        src="https://cdn-icons-png.flaticon.com/128/5171/5171840.png"
+                        alt=""
+                        onClick={(e) => handleDeleteIngredient(e.target?.name)}
+                      />
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
                     </div>
                   );
                 })}
                 <datalist id="ingredientes">
                   {ingredientes.map((ingrediente) => {
+<<<<<<< HEAD
                     return (
                       <option
                         key={ingrediente.id}
@@ -352,6 +503,9 @@ export default function Form({ path, menu, ingredientes, tags }) {
                 <datalist id="Categoria">
                   {tags.map((tag) => {
                     return <option key={tag.id} value={tag.name}></option>;
+=======
+                    return <option value={ingrediente.name}></option>;
+>>>>>>> e853e10723cfa6e9a89e1d50a94a0d9a0dfe3a88
                   })}
                 </datalist>
               </div>
