@@ -16,7 +16,7 @@ const ClosingSales = ({ date, amount, data }) => {
                 <div onClick={handleView}>
                     <img
                         src="https://cdn-icons-png.flaticon.com/128/1666/1666578.png"
-                        alt=""
+                        alt="Detail"
                     />
                 </div>
             </div>

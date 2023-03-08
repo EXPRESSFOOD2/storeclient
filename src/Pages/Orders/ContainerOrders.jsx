@@ -9,20 +9,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { delivery, getOrders } from "../../redux/Actions/actions";
 
 const OrderPage = () => {
-  const ordersState = useSelector((state) => state.orders);
-  const [orders, setOrders] = useState(ordersState);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getOrders())
-  },[])
+  },[ dispatch ])
 
+  const ordersState = useSelector((state) => state.orders);
+  const [orders, setOrders] = useState(ordersState);
+
+  useEffect(() => {
+    setOrders(ordersState)
+  }, [ordersState, setOrders ])
 
   return (
     <div className={styles.page}>
       <div className={styles.container}>
+        <p>Pedidos</p>
         {orders.length ? (
-          orders.map((item) => <Order item={item} />)
+          orders.map((item) => <Order key={item.id} item={item} />)
         ) : (
           <div className={styles.message}>
             <h2>Sin pedidos</h2>

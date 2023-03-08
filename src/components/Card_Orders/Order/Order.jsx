@@ -20,13 +20,14 @@ const Order = ({ item }) => {
     setIsOpen(isOpen ? false : true);
   };
   const delivered = (e) => {
-    setStatus("Entregado")
-    const value = e.target.value;    
+    setStatus("Entregada")
+    const value = e.target.value;
     delivery({ id: value, status: "Entregada" });
-  };
 
+  };
+  // style={{ display: status === 'Entregada' ? 'none' : 'flex' }}
   return (
-    <div key={item.id} className={styles.subContainer}>
+    <div key={item.id} className={styles.subContainer} >
       <div className={styles.data}>
         <span>{`Pedido: ${item.code}`}</span>
         <span>{`Estado: ${status}`}</span>
@@ -47,6 +48,7 @@ const Order = ({ item }) => {
               <path d="M9.999 13.587 7.7 11.292l-1.412 1.416 3.713 3.705 6.706-6.706-1.414-1.414z"></path>
             </svg>
           </button>
+
           <button
             className={styles.finish}
             onClick={(e) => delivered(e)}

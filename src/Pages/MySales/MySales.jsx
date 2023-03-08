@@ -7,15 +7,21 @@ import { getOrderBalance } from "../../redux/Actions/actions";
 import Graphic from "../../components/Graphic/Graphic";
 
 const MySales = () => {
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getOrderBalance());
+    }, [ dispatch ]);
+
     const balance = useSelector((state) => state.balance);
-    const [dates] = useState(Object.keys(balance).sort((a, b) => new Date(b) - new Date(a))) 
+    const [dates, setDates] = useState(Object.keys(balance).sort((a, b) => new Date(b) - new Date(a))) 
     let total = 0
     const values = []
 
     useEffect(() => {
-        dispatch(getOrderBalance());
-    }, []);
+        setDates(Object.keys(balance).sort((a, b) => new Date(b) - new Date(a)))
+    }, [setDates, balance])
 
     for (const date of dates) {
         total += parseInt(balance[date]?.amount);
@@ -34,6 +40,7 @@ const MySales = () => {
                     </div>
                     {dates.map((date) => (
                         <ClosingSales
+                            //key={data.code}
                             date={date}
                             amount={balance[date]?.amount}
                             data={balance[date]?.data}

@@ -395,9 +395,9 @@ export const getOrders = () => {
                 "token": userData.token,
                 "id": userData.user_id
                 }
-                
-            const orders = await axios.post("/orders/get", {headers});
-            // console.log(orders.data);
+            const orders = await axios.get("/orders/get", {headers});
+            //! LOGS!!!
+            console.log(orders.data);
             dispatch({ type: GET_ORDERS, payload: orders.data });
         } catch (error) {
             dispatch({ type: ERROR, payload: error.response.data.error });
@@ -407,7 +407,13 @@ export const getOrders = () => {
 export const getTags = () => {
     return async (dispatch) => {
         try {
-            const tags = await axios.get("/tags/get");
+            const userData = JSON.parse(window.localStorage.getItem("userData"))
+            const headers = {
+                "token": userData.token,
+                "id": userData.user_id
+                }
+                
+            const tags = await axios.get("/tags/get", {headers});
        
             dispatch({ type: GET_TAGS, payload: tags.data });
         } catch (error) {
@@ -438,10 +444,8 @@ export const delivery = async (data) => {
         const headers = {
                 "token": userData.token,
                 "id": userData.user_id
-                }
-                
+            }
         const order = await axios.patch("/orders/update", data, {headers});
-        console.log(order);
     } catch (error) {
         console.error(error);
     }
