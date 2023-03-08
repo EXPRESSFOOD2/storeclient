@@ -53,7 +53,7 @@ export default function CreateItemMenu() {
           "Loading"
         )
       ) : (
-        <Form path={route} ingredientes={ingredients} />
+        <Form path={route} ingredientes={ingredients} tags={tags}/>
       )}
 
     </div>
