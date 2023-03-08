@@ -10,7 +10,8 @@ import { useDispatch } from "react-redux";
 import {
   createMenu,
   updateMenu,
-  getImageUrl,getMenu
+  getImageUrl,
+  getMenu,
 } from "../../redux/Actions/actions";
 
 import ImageIcon from "@mui/icons-material/Image";
@@ -23,7 +24,7 @@ import * as Yup from "yup";
 export default function Form({ path, menu, ingredientes, tags }) {
   // eslint-disable-next-line no-unused-vars
   // const [showImg, setShowImg] = useState(false);
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
 
   const [ingredientesArray, setIngredientesArray] = useState(
     menu?.Ingredients || []
@@ -150,18 +151,19 @@ export default function Form({ path, menu, ingredientes, tags }) {
       };
       if (path === "update") {
         dispatch(updateMenu({ ...menuMapData, id: menu.id }));
-        dispatch(getMenu())
-    } else {
-   
+        dispatch(getMenu());
+      } else {
         dispatch(createMenu(menuMapData));
-        dispatch(getMenu())
+        dispatch(getMenu());
       }
-      
       localStorage.removeItem("localImg");
-      localStorage.removeItem("localMenu");
-      
+      setUrlImage("")
+      setTagsArray([])
+      setIngredientesArray([])
+      setCantidad([])
+
+      formik.resetForm();
     },
-   
   });
 
   const imageFn = (imageUrl) => {
@@ -175,7 +177,7 @@ export default function Form({ path, menu, ingredientes, tags }) {
       localStorage.setItem("localMenu", values);
     }
   }, [formik]);
-  
+
   useEffect(() => {
     setUrlImage(localImg);
   }, []);
@@ -342,7 +344,7 @@ export default function Form({ path, menu, ingredientes, tags }) {
             </div>
             <div className={style.col}>
               <input
-              hidden={path==="update"}
+                hidden={path === "update"}
                 type="text"
                 name="Categorias"
                 list="Categorias"
@@ -373,7 +375,7 @@ export default function Form({ path, menu, ingredientes, tags }) {
                           {item.name}
                         </span>
                         <button
-                        hidden={path === "update"}
+                          hidden={path === "update"}
                           type="button"
                           value={item.name}
                           onClick={tagsRemove}
