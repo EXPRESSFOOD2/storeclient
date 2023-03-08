@@ -110,7 +110,7 @@ export default function Form({ path, menu, ingredientes, tags }) {
   const formik = useFormik({
     initialValues: {
       name: menu?.name || localValues?.name || "",
-      description: menu?.description || localValues?.description,
+      description: menu?.description || localValues?.description || "",
       price: menu?.price || localValues?.price || "",
       stock: menu?.stock || localValues?.stock || 0,
       recomendado: menu?.recomend_first || localValues?.recomend_first || false,
