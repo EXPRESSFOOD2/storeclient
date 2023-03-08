@@ -39,7 +39,7 @@ const MenuCards = (props) => {
                 cuantity={element.stock}
                 key={index}
                 imgURL={element.url_image}
-                price={element.price}
+                price={element.price?.toFixed(2)}
                 active={element.is_active}
               />
             ))}

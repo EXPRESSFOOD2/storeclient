@@ -1,32 +1,49 @@
-import React from "react";
-import Sales from "../../components/Sales/Sales";
+import React, { useEffect, useState } from "react";
+// import Sales from "../../components/Sales/Sales";
 import styles from "./MySales.module.css";
+import ClosingSales from "../../components/Closing_Sales/ClosingSales";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrderBalance } from "../../redux/Actions/actions";
+import Graphic from "../../components/Graphic/Graphic";
 
 const MySales = () => {
+    const dispatch = useDispatch();
+    const balance = useSelector((state) => state.balance);
+    const [dates] = useState(Object.keys(balance).sort((a, b) => new Date(b) - new Date(a))) 
+    let total = 0
+    const values = []
+
+    useEffect(() => {
+        dispatch(getOrderBalance());
+    }, []);
+
+    for (const date of dates) {
+        total += parseInt(balance[date]?.amount);
+        values.length<=30 && values.push(parseInt(balance[date]?.amount));
+    }
+    // console.log(balance);
+
     return (
         <div className={styles.page}>
-            <div className={styles.sales}>
-                <div className={styles.container}>
-                    <h1>mis vientas</h1>
+            <div className={styles.container}>
+                <div className={styles.sales}>
                     <div className={styles.description}>
                         <span>Fecha</span>
-                        <span>Código</span>
-                        <span>Total día</span>
+                        <span className={styles.total}>Total</span>
+                        <span>Detalle</span>
                     </div>
-                    <Sales />
-                    <Sales />
-                    <Sales />
-                    <Sales />
-                    <Sales />
-                    <Sales />
-                    <Sales />
-                    <Sales />
-                    <Sales />
+                    {dates.map((date) => (
+                        <ClosingSales
+                            date={date}
+                            amount={balance[date]?.amount}
+                            data={balance[date]?.data}
+                            key={date}
+                        />
+                    ))}
                 </div>
-                <img
-                    src="https://tudashboard.com/wp-content/uploads/2019/06/ventas-hasta-la-fecha.jpg"
-                    alt=""
-                />
+                <div className={styles.graphic}>
+                    <Graphic total={total} values={values.reverse()} dates={dates.reverse()} />
+                </div>
             </div>
         </div>
     );

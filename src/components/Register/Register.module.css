@@ -5,7 +5,6 @@
   align-items: center;
   height: 50rem;
   overflow: hidden;
-  align-items: center;
 }
 
 
@@ -16,7 +15,7 @@
   border-radius: 5px;
   width: 70%;
   margin-left: 10.8rem;
-  margin-top: 7rem;
+  margin-top: 3.8rem;
 }
 
 .formBox {
@@ -168,11 +167,6 @@
   cursor: pointer;
 }
 
-.contentfile > p {
-  color: #f5f5f5;
-  margin: 0px;
-  padding-top: 7px;
-}
 
 .inputfile {
   position: absolute;

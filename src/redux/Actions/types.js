@@ -18,3 +18,6 @@ export const GET_ORDERS = "GET_ORDERS"
 export const DELIVERY = "DELIVERY"
 export const DELETE_INGREDIENT = "DELETE_INGREDIENT";
 export const DELETE_RECIPE = "DELETE_RECIPE"
+export const GET_BALANCE = "GET_BALANCE"
+export const DELETE_MENU = "DELETE_MENU"
+export const GET_TAGS = "GET_TAGS"
