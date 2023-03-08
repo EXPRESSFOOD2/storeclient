@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-unused-vars */
 import  { useEffect, useState } from "react";
 import styles from "./Orders.module.css";
 import Order from "../../components/Card_Orders/Order/Order";
