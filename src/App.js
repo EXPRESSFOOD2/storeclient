@@ -20,6 +20,7 @@ import LateralBar from "./components/LateralBar/LateralBar";
 import Orders from "./Pages/Orders/ContainerOrders";
 import MySales from "./Pages/MySales/MySales";
 import ClosingSales from "./components/Closing_Sales/ClosingSales";
+import CreateRecipe from "./components/Recipe/Create/CreateRecipe";
 
 //! sockets
 
@@ -68,13 +69,13 @@ function App() {
             <Route exact path="/sales" component={MySales} />
             <Route exact path="/menu/update/:id" component={CreateItemMenu} /> 
             <Route exact path="/recipe/update/:id" component={DetailRecipe} />
+            <Route exact path="/recipe/create" component={CreateRecipe}/>
             {/* <Route exact path="/dashboard" /> */}
             {/* menu */}
             {/* <Route exact path="/menu" component={Menu} />
       <Route exact path="/menu/create" component={CreateItemMenu} />*/}
             {}
             {/* <Route exact path="/recipe/create" />
-      <Route exact path="/recipe/update/:id" component={DetailRecipe}/>
       <Route exact path="/recipe" component={GetRecipe} />*/}
             {}
             {/* <Route exact path="/ingredient" component={Ingredients} />
