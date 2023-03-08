@@ -36,6 +36,7 @@ const Order = ({ item }) => {
     const value = e.target.value;    
     socket.emit('complete',('ok'))
     delivery({ id: value, status: "Entregada" });
+    console.log('prueba');
   };
 
   return (
