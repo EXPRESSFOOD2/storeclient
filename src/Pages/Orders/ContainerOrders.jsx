@@ -11,7 +11,6 @@ import { delivery, getOrders } from "../../redux/Actions/actions";
 const OrderPage = () => {
   const ordersState = useSelector((state) => state.orders);
   const [orders, setOrders] = useState(ordersState);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
