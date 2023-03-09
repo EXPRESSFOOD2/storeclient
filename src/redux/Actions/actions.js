@@ -514,10 +514,10 @@ export const createRecipe = (recipe) =>{
                 "id": userData.user_id
                 }
             const newRecipe = (await axios.post("/recipes/create", recipe, { headers })).data
-            // console.log(newRecipe);
+            console.log(newRecipe);
         } catch (error) {
             // console.log("dos");
-            console.error(error);
+            console.error(error.message);
         }
     }
 }

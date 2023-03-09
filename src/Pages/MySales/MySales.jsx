@@ -48,7 +48,7 @@ const MySales = () => {
                         <span className={styles.total}>Total</span>
                         <span>Detalle</span>
                     </div>
-                    {dates.map((date) => (
+                    {dates?.map((date) => (
                         <ClosingSales
                             //key={data.code}
                             date={date}
