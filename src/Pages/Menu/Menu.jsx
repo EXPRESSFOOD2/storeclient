@@ -22,7 +22,7 @@ const Menu = () => {
     if (!render.length) {
       dispatch(getMenu())
     }
-  }, [])
+  }, [render])
 
   return (
     <div className={style.container}>
