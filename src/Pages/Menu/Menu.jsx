@@ -19,9 +19,9 @@ const Menu = () => {
   // Dispatch
 
   useEffect(() => {
-    if (!render.length) {
+  
       dispatch(getMenu())
-    }
+  
   }, [])
 
   return (
