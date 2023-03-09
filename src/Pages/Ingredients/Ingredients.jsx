@@ -13,7 +13,8 @@ const Ingredients = () => {
 
   useEffect(() => {
     !ingredients.length && dispatch(getAllIngredients())
-  })
+  },[])
+  //})
   return (
       <div className={styles.page}>
           {location === '/ingredient/create' && <CreateIngredientForm />}

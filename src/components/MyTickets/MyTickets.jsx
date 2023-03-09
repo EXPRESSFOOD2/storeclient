@@ -18,7 +18,7 @@ const MyTickets = ({ code, total, data }) => {
             </div>
             {view && (
                 <div className={styles.detail}>
-                    {data.map((ele) => (
+                    {data?.map((ele) => (
                         <div className={styles.info} key={ele.name}>
                             <img src={ele.url_image} alt="" />
                             <span>{ele.name}</span>

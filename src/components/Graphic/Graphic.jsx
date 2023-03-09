@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import MainCard from './MainCard'
 import MonthlyBarChart from './MonthlyBarChart'
@@ -16,7 +16,13 @@ import { grey } from '@mui/material/colors'
 import styles from "./Graphic.module.css"
 
 
-const Graphic = ({total, values, dates}) =>{
+const Graphic = ({ total, values, dates }) => {
+
+    const [_, setState] = useState()
+    
+    useEffect(() => {
+        setState({});
+    }, [total, values, dates]);
 
     return (
         <div className={styles.container}>
