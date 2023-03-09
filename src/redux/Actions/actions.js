@@ -355,7 +355,7 @@ export const deleteRecipe = (id) => async (dispatch) => {
                 "token": userData.token,
                 "id": userData.user_id
                 }
-        await axios.delete(`http://localhost:3002/recipes/delete?id=${id}`, {headers});
+        await axios.delete(`/recipes/delete?id=${id}`, {headers});
         dispatch({ type: DELETE_RECIPE, payload: id });
     } catch (error) {
         console.log(error);
@@ -458,7 +458,7 @@ export const getOrderBalance = () => async (dispatch) => {
                 "token": userData.token,
                 "id": userData.user_id
                 }
-        const result = (await axios.get("http://localhost:3002/orders/getBalance", {headers})).data;
+        const result = (await axios.get("/orders/getBalance", {headers})).data;
         console.log(result);
         const Mydata = sortBalanceByDate(result.ticketsAll);
         // console.log(mYdata.ticketsAll);
