@@ -50,11 +50,19 @@ const MonthlyBarChart = ({values, dates}) => {
     const { primary, secondary } = theme.palette.text;
     const info = theme.palette.info.light;
 
-    const [series] = useState([
+    const [series, setSeries] = useState([
         {
             data: [...values]
         }
     ]);
+
+    useEffect(() => {
+        setSeries([{ data: [...values] }])
+        setOptions({
+            ...barChartOptions,
+            xaxis: { ...barChartOptions.xaxis, categories: [...dates] },
+        });
+    }, [values, setSeries])
 
     const [options, setOptions] = useState({...barChartOptions, xaxis:{...barChartOptions.xaxis, categories:[...dates]}});
 
