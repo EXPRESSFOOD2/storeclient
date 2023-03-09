@@ -15,18 +15,28 @@ const MySales = () => {
     }, [ dispatch ]);
 
     const balance = useSelector((state) => state.balance);
-    const [dates, setDates] = useState(Object.keys(balance).sort((a, b) => new Date(b) - new Date(a))) 
-    let total = 0
-    const values = []
+    const [dates, setDates] = useState([]) 
+    const [total, setTotal] = useState(0)
+    const [values, setValues] = useState([])
 
+    
     useEffect(() => {
-        setDates(Object.keys(balance).sort((a, b) => new Date(b) - new Date(a)))
+        setDates(Object.keys(balance).sort((a, b) => new Date(a) - new Date(b)))
     }, [setDates, balance])
-
-    for (const date of dates) {
-        total += parseInt(balance[date]?.amount);
-        values.length<=30 && values.push(parseInt(balance[date]?.amount));
-    }
+    
+    useEffect(() => {
+        if (dates.length) {
+            const valores = []
+            let myTotal = 0;
+            for (const date of dates) {
+                myTotal += parseInt(balance[date]?.amount);
+                valores.length <= 30 && valores.push(parseInt(balance[date]?.amount));
+            }
+            setValues([...valores])
+            setTotal(myTotal)
+        }
+    },[dates, setValues, setTotal, balance])
+    
     // console.log(balance);
 
     return (
@@ -49,7 +59,7 @@ const MySales = () => {
                     ))}
                 </div>
                 <div className={styles.graphic}>
-                    <Graphic total={total} values={values.reverse()} dates={dates.reverse()} />
+                    {values.length && <Graphic total={total} values={values.reverse()} dates={dates.reverse()} />}
                 </div>
             </div>
         </div>
