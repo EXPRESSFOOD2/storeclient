@@ -2,6 +2,7 @@
 import React from "react";
 import style from "./Login.module.css";
 import img from "./image/logoSinFondo.png";
+import { red } from "@mui/material/colors";
 
 const Login = ({ formik }) => {
     return (
@@ -9,7 +10,9 @@ const Login = ({ formik }) => {
             <div className={style.createLogin}>
                 <div className={style.prev}>
                     <img src={img} alt="not found" className={style.image} />
-                    <p>¡Te damos la bienvenida!</p>
+                    <p >¡Te damos la bienvenida!</p>
+                    <p style={{color:"red", fontSize:"small"}}>Usuario de prueba: x@x.com</p>
+                    <p style={{color:"red", fontSize:"small"}}>password de prueba:12345678</p>
                 </div>
                 <form action="" className={style.form} onSubmit={formik.handleSubmit}>
                     <div className={style.col}>
