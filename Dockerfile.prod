@@ -1,19 +1,19 @@
 # Etapa de construcción
 FROM node:latest AS builder
-
+RUN npm i -g pnpm
 WORKDIR /app
 
 # Copiamos solo los archivos necesarios para la instalación de dependencias
 COPY package.json ./
 
 # Instalamos dependencias
-RUN yarn install --frozen-lockfile
+RUN pnpm install 
 
 # Copiamos el resto de los archivos
 COPY . .
 
 # Construimos la aplicación
-RUN yarn build
+RUN pnpm build
 
 # Etapa de producción
 FROM nginx:alpine
